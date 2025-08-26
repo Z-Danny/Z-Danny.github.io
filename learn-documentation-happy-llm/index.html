@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_04 编解码器、手搓Transformer - ~ Danny&#39;s Homie ~</title><meta name="Description" content="bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器."><meta property="og:url" content="http://localhost:1313/learn-documentation-happy-llm/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_04 编解码器、手搓Transformer">
+  <meta property="og:description" content="bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-26T14:25:33+08:00">
+    <meta property="article:modified_time" content="2025-08-26T14:25:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_04 编解码器、手搓Transformer">
+  <meta name="twitter:description" content="bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/learn-documentation-happy-llm/" /><link rel="prev" href="http://localhost:1313/theme-documentation-bilibili-shortcode/" /><link rel="next" href="http://localhost:1313/theme-documentation-music-shortcode/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_04 编解码器、手搓Transformer",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/learn-documentation-happy-llm\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM","wordcount":  683 ,
+        "url": "http:\/\/localhost:1313\/learn-documentation-happy-llm\/","datePublished": "2025-08-26T14:25:33+08:00","dateModified": "2025-08-26T14:25:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "曾丹妮"
+            },"description": "bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="博客"> Posts </a><a class="menu-item" href="/tags/" title="关键词"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/" title="关于我"> About </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/learn-documentation-happy-llm/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="博客">Posts</a><a class="menu-item" href="/tags/" title="关键词">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="关于我">About</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/learn-documentation-happy-llm/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_04 编解码器、手搓Transformer</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>曾丹妮</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-26">2025-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;683 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#transformer的定位图">Transformer的定位图</a></li>
+    <li><a href="#transformer架构图">Transformer架构图</a></li>
+    <li><a href="#transformer论文结构图">Transformer论文结构图</a></li>
+    <li><a href="#transformer和seq2seq的关系">transformer和seq2seq的关系</a></li>
+    <li><a href="#tokenizer-分词器">tokenizer 分词器</a></li>
+    <li><a href="#embedding">embedding</a>
+      <ul>
+        <li><a href="#what-输入输出矩阵形状-of-input-embedding"><em>what 输入输出矩阵形状 of input embedding？</em></a></li>
+        <li><a href="#what-词典向量表"><em>what 词典向量表？</em></a></li>
+        <li><a href="#why-position-encoding"><em>why position encoding？</em></a></li>
+        <li><a href="#how-position-encoding"><em>how position encoding？</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#encoder-编码器">encoder 编码器</a>
+      <ul>
+        <li><a href="#encoder的整体组成"><em>encoder的整体组成</em></a></li>
+        <li><a href="#2个细节"><em>2个细节？</em></a></li>
+        <li><a href="#代码实现"><em>代码实现</em></a></li>
+        <li><a href="#拓深度神经网络中的归一化"><em>拓：深度神经网络中的归一化？</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#decoder-解码器">decoder 解码器</a>
+      <ul>
+        <li><a href="#decoder的整体组成"><em>decoder的整体组成</em></a></li>
+        <li><a href="#decoder的两个注意力层">decoder的两个注意力层</a></li>
+        <li><a href="#代码实现-1">代码实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#末尾步骤">末尾步骤</a></li>
+    <li><a href="#手搓transformer代码">手搓Transformer代码</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="task04第二章-nlp-基础概念">Task04：第二章 NLP 基础概念</h1>
+<p>Task03+04：第二章 Transformer架构
+本篇是task04： 2.2 2.3 编解码器、搭建一个Transformer
+（这是笔者自己的学习记录，仅供参考，原始<a href="https://datawhalechina.github.io/happy-llm/#/./chapter1/%E7%AC%AC%E4%B8%80%E7%AB%A0%20NLP%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5?id=_13-nlp-%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener noreffer ">学习链接</a>，愿 LLM 越来越好❤）</p>
+<p>Transformer架构很重要，需要分几天啃一啃。</p>
+<hr>
+<h2 id="transformer的定位图">Transformer的定位图</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/0e34ce46a46345ee87f69bb36216c602.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/0e34ce46a46345ee87f69bb36216c602.png, https://i-blog.csdnimg.cn/direct/0e34ce46a46345ee87f69bb36216c602.png 1.5x, https://i-blog.csdnimg.cn/direct/0e34ce46a46345ee87f69bb36216c602.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/0e34ce46a46345ee87f69bb36216c602.png"
+        title="在这里插入图片描述" /></p>
+<h2 id="transformer架构图">Transformer架构图</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/c0c59b0e582a4ece9edaa3591879747e.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/c0c59b0e582a4ece9edaa3591879747e.png, https://i-blog.csdnimg.cn/direct/c0c59b0e582a4ece9edaa3591879747e.png 1.5x, https://i-blog.csdnimg.cn/direct/c0c59b0e582a4ece9edaa3591879747e.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/c0c59b0e582a4ece9edaa3591879747e.png"
+        title="请添加图片描述" /></p>
+<h2 id="transformer论文结构图">Transformer论文结构图</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/76ee38e9d36c4e64ac7b24075fe36295.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/76ee38e9d36c4e64ac7b24075fe36295.png, https://i-blog.csdnimg.cn/direct/76ee38e9d36c4e64ac7b24075fe36295.png 1.5x, https://i-blog.csdnimg.cn/direct/76ee38e9d36c4e64ac7b24075fe36295.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/76ee38e9d36c4e64ac7b24075fe36295.png"
+        title="在这里插入图片描述" /></p>
+<hr>
+<p>接下来，我会按照顺序依次介绍各个部分，这样因果关系会清晰一些</p>
+<ul>
+<li><strong>顺序</strong>：tokenizer、【transformer：（embedding、encoder、decoder、线性层+softmax）】</li>
+<li><strong>transformer的核心</strong>：attention、encoder、decoder</li>
+<li><strong>encoder、decoder的核心组件（3个）</strong>：层归一化（layer norm）、前馈全连接神经网络（FNN）、残差连接（residual connection）</li>
+<li>FNN：如MLP，线性层 + 非线性RELU激活函数 + 线性层</li>
+</ul>
+<hr>
+<h2 id="transformer和seq2seq的关系">transformer和seq2seq的关系</h2>
+<p>transformer就是一种seq2seq模型，可以用来完成seq2seq任务</p>
+<p><em>什么是seq2seq？</em></p>
+<blockquote>
+<p>序列到序列，是一种NLP经典任务，输入是文本序列，输出也是。其实所有nlp任务都可以看成是广义的seq2seq，如机器翻译、文本分类、词性标注等</p></blockquote>
+<hr>
+<h2 id="tokenizer-分词器">tokenizer 分词器</h2>
+<p>分词器不在transformer架构中，他是前缀处理模块。</p>
+<p><em>tokenizer作用？</em></p>
+<blockquote>
+<p>把 文本
+&ndash;&gt; 切分成很多token=seq_len（有很多策略，词、子词、字符等）
+&ndash;&gt; index数值，变成（batchsize, seq_len, 1）</p></blockquote>
+<hr>
+<h2 id="embedding">embedding</h2>
+<p>embedding有两个流程：</p>
+<ul>
+<li>流程1——input embedding ：转成词向量。把前面的<strong>数值索引</strong> 根据<code>词典向量表</code> 变成<strong>词向量矩阵</strong></li>
+<li>流程2——position encoding：位置编码。根据 token在序列中的位置 得到<strong>位置编码矩阵</strong></li>
+</ul>
+<p>最后，把上面两个矩阵相加，得到这一层的输出。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/070c71f7eae34a16956ca1ec600bed26.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/070c71f7eae34a16956ca1ec600bed26.png, https://i-blog.csdnimg.cn/direct/070c71f7eae34a16956ca1ec600bed26.png 1.5x, https://i-blog.csdnimg.cn/direct/070c71f7eae34a16956ca1ec600bed26.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/070c71f7eae34a16956ca1ec600bed26.png"
+        title="在这里插入图片描述" /></p>
+<h3 id="what-输入输出矩阵形状-of-input-embedding"><em>what 输入输出矩阵形状 of input embedding？</em></h3>
+<blockquote>
+<p>其实就是把一维数值变成了多维的
+输入形状：（batch_size, seq_len, 1）
+输出形状：（batch_size, seq_len, embedding_dim）</p></blockquote>
+<h3 id="what-词典向量表"><em>what 词典向量表？</em></h3>
+<blockquote>
+<p>是一个可训练的权重矩阵，（vocab_size,
+embedding_dim），每一个数值index对应一个embedding_dim维的词向量。</p></blockquote>
+<h3 id="why-position-encoding"><em>why position encoding？</em></h3>
+<blockquote>
+<p>因为transformer他是并行计算，和传统的RNN、LSTM这些顺序计算的不太一样，会丢失位置信息。导致模型会认为“我喜欢你”和“你喜欢我”弄成是一样的意思。所以，要在进入编码器之前加上位置信息。</p></blockquote>
+<h3 id="how-position-encoding"><em>how position encoding？</em></h3>
+<blockquote>
+<p>位置编码有很多方式，transformer论文中用的是正余弦绝对位置编码，和输入文本的内容无关，是和序列的token数有关，以及他是奇偶位置有关，具体的计算可以参考原文。得到的位置编码矩阵的形状就是（seq_size,
+embedding_dim），要和词向量矩阵的维度一样才可以相加。</p></blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/22b2fd018317467aa6d160c54e92c334.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/22b2fd018317467aa6d160c54e92c334.png, https://i-blog.csdnimg.cn/direct/22b2fd018317467aa6d160c54e92c334.png 1.5x, https://i-blog.csdnimg.cn/direct/22b2fd018317467aa6d160c54e92c334.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/22b2fd018317467aa6d160c54e92c334.png"
+        title="在这里插入图片描述" /></p>
+<hr>
+<h2 id="encoder-编码器">encoder 编码器</h2>
+<h3 id="encoder的整体组成"><em>encoder的整体组成</em></h3>
+<blockquote>
+<ul>
+<li>encoder：里有N个encoder layer（论文里是6个层）</li>
+<li>encoder layer：里有2个layer norm、1个attention、1个fnn</li>
+</ul>
+<p>总结：先归一化，再给attention，输出后归一化，再进fnn。然后6个layer组装，再归一化。</p></blockquote>
+<h3 id="2个细节"><em>2个细节？</em></h3>
+<blockquote>
+<p>层归一化收敛快一点
+残差连接不让模型走偏，下一层input = 上一层output + 上一层 input</p></blockquote>
+<h3 id="代码实现"><em>代码实现</em></h3>
+<p>先写encoder layer类，再组装出encoder</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">EncoderLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;&#39;&#39;Encoder层&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 一个 Layer 中有两个 LayerNorm，分别在 Attention 之前和 MLP 之前</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attention_norm</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Encoder 不需要掩码，传入 is_causal=False</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_causal</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">fnn_norm</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Layer Norm</span>
+</span></span><span class="line"><span class="cl">        <span class="n">norm_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention_norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 自注意力</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">norm_x</span><span class="p">,</span> <span class="n">norm_x</span><span class="p">,</span> <span class="n">norm_x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 经过前馈神经网络</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fnn_norm</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;Encoder 块&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">Encoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1"># 一个 Encoder 由 N 个 Encoder Layer 组成</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">EncoderLayer</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_layer</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;分别通过 N 层 Encoder Layer&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div></div>
+<h3 id="拓深度神经网络中的归一化"><em>拓：深度神经网络中的归一化？</em></h3>
+<blockquote>
+<p>有两种：</p>
+<ul>
+<li>批归一化（batch norm）</li>
+<li>层归一化（layer norm）：transformer里用的是这个</li>
+</ul>
+<p>都涉及均值和方差，具体的公式先不管</p></blockquote>
+<h2 id="decoder-解码器">decoder 解码器</h2>
+<h3 id="decoder的整体组成"><em>decoder的整体组成</em></h3>
+<blockquote>
+<p>decoder和encoder很像，就是单层里的结构有点差异</p>
+<ul>
+<li>decoder：里有N个decoder layer（论文里也是6个层）</li>
+<li>decoder layer：里有3个layer norm、2个attention（mask self attention、multi head attention）、1个fnn</li>
+</ul>
+<p>总结：先归一化，经过掩码自注意，再归一化，经过多头注意力，再归一化，经过fnn。再把6个层组装，再归一化</p></blockquote>
+<h3 id="decoder的两个注意力层">decoder的两个注意力层</h3>
+<blockquote>
+<p>第一个注意力层是一个掩码自注意力层，即使用 <code>Mask 的</code>注意力计算，保证每一个 token 只能使用该 token之前的注意力分数；
+第二个注意力层是一个多头注意力层，该层将使用<code>第一个注意力层的输出作为 query</code>，使用 <code>Encoder 的输出作为 key和 value</code>，来计算注意力分数。</p></blockquote>
+<h3 id="代码实现-1">代码实现</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DecoderLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;&#39;&#39;解码层&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 一个 Layer 中有三个 LayerNorm，分别在 Mask Attention 之前、Self Attention 之前和 MLP 之前</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attention_norm_1</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Decoder 的第一个部分是 Mask Attention，传入 is_causal=True</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">mask_attention</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_causal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attention_norm_2</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Decoder 的第二个部分是 类似于 Encoder 的 Attention，传入 is_causal=False</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_causal</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ffn_norm</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 第三个部分是 MLP</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">enc_out</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Layer Norm</span>
+</span></span><span class="line"><span class="cl">        <span class="n">norm_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention_norm_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 掩码自注意力</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_attention</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">norm_x</span><span class="p">,</span> <span class="n">norm_x</span><span class="p">,</span> <span class="n">norm_x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 多头注意力</span>
+</span></span><span class="line"><span class="cl">        <span class="n">norm_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention_norm_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">norm_x</span><span class="p">,</span> <span class="n">enc_out</span><span class="p">,</span> <span class="n">enc_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 经过前馈神经网络</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ffn_norm</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;解码器&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">Decoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1"># 一个 Decoder 由 N 个 Decoder Layer 组成</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">DecoderLayer</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_layer</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">enc_out</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Pass the input (and mask) through each layer in turn.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">enc_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div></div>
+<h2 id="末尾步骤">末尾步骤</h2>
+<p>经过一个线性层，再经过softmax。softmax就是只取正，否则就是0</p>
+<hr>
+<h2 id="手搓transformer代码">手搓Transformer代码</h2>
+<p>论文中写的归一化是post-norm，但是发出来的代码中用的是pre-norm，鉴于pre-norm可以让loss更稳定，便默认用pre-norm（就是在输入每个attention或者fnn前归一化）</p>
+<blockquote>
+<p>经过 tokenizer 映射后的输出先经过 Embedding 层和 Positional Embedding层编码，然后进入 N 个 Encoder 和 N 个 Decoder（在 Transformer 原模型中，N取为6），最后经过一个线性层和一个 Softmax 层就得到了最终输出。</p></blockquote>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="s1">&#39;&#39;&#39;整体模型&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 必须输入词表大小和 block size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">args</span><span class="o">.</span><span class="n">vocab_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">args</span><span class="o">.</span><span class="n">block_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">wte</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">wpe</span> <span class="o">=</span> <span class="n">PositionalEncoding</span><span class="p">(</span><span class="n">args</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">drop</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dropout</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">encoder</span> <span class="o">=</span> <span class="n">Encoder</span><span class="p">(</span><span class="n">args</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">decoder</span> <span class="o">=</span> <span class="n">Decoder</span><span class="p">(</span><span class="n">args</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 最后的线性层，输入是 n_embd，输出是词表大小</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">lm_head</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_embd</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 初始化所有的权重</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_weights</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 查看所有参数的数量</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;number of parameters: </span><span class="si">%.2f</span><span class="s2">M&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_num_params</span><span class="p">()</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;统计所有参数的数量&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get_num_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_embedding</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># non_embedding: 是否统计 embedding 的参数</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 如果不统计 embedding 的参数，就减去</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">non_embedding</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">n_params</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wte</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">n_params</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;初始化权重&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_init_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 线性层和 Embedding 层初始化为正则分布</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">zeros_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;前向计算函数&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 输入为 idx，维度为 (batch size, sequence length, 1)；targets 为目标序列，用于计算 loss</span>
+</span></span><span class="line"><span class="cl">        <span class="n">device</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">device</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">block_size</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;不能计算该序列，该序列长度为 </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, 最大序列长度只有 </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">block_size</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 通过 self.transformer</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 首先将输入 idx 通过 Embedding 层，得到维度为 (batch size, sequence length, n_embd)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;idx&#34;</span><span class="p">,</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 通过 Embedding 层</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tok_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wte</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;tok_emb&#34;</span><span class="p">,</span><span class="n">tok_emb</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 然后通过位置编码</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pos_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wpe</span><span class="p">(</span><span class="n">tok_emb</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1"># 再进行 Dropout</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">pos_emb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 然后通过 Encoder</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;x after wpe:&#34;</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enc_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;enc_out:&#34;</span><span class="p">,</span><span class="n">enc_out</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 再通过 Decoder</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">enc_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;x after decoder:&#34;</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 训练阶段，如果我们给了 targets，就计算 loss</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 先通过最后的 Linear 层，得到维度为 (batch size, sequence length, vocab size)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lm_head</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 再跟 targets 计算交叉熵</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">logits</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">targets</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 推理阶段，我们只需要 logits，loss 为 None</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 取 -1 是只取序列中的最后一个作为输出</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lm_head</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">:])</span> <span class="c1"># note: using list [-1] to preserve the time dim</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loss</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">loss</span></span></span></code></pre></div></div>
+<p>注意，上述代码除去搭建了整个 Transformer 结构外，还额外实现了三个函数：</p>
+<ul>
+<li>get_num_params：用于统计模型的参数量</li>
+<li>_init_weights：用于对模型所有参数进行随机初始化</li>
+<li>forward：前向计算函数</li>
+</ul>
+<p>强调：本篇中所有代码都是原文链接中提供的，不是主包自己贡献的！！感谢开源大佬</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-08-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/learn-documentation-happy-llm/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-title="Happy_LLM_04 编解码器、手搓Transformer" data-hashtags="LLM"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-title="Happy_LLM_04 编解码器、手搓Transformer"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-hashtag="LLM"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-title="Happy_LLM_04 编解码器、手搓Transformer"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-title="Happy_LLM_04 编解码器、手搓Transformer"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-title="Happy_LLM_04 编解码器、手搓Transformer"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/learn-documentation-happy-llm/" data-title="Happy_LLM_04 编解码器、手搓Transformer" data-description="bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器."><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2flearn-documentation-happy-llm%2f&amp;text=Happy_LLM_04%20%e7%bc%96%e8%a7%a3%e7%a0%81%e5%99%a8%e3%80%81%e6%89%8b%e6%90%93Transformer" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llm/">LLM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/theme-documentation-bilibili-shortcode/" class="prev" rel="prev" title="Theme Documentation - bilibili Shortcode"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Theme Documentation - bilibili Shortcode</a>
+            <a href="/theme-documentation-music-shortcode/" class="next" rel="next" title="Theme Documentation - music Shortcode">Theme Documentation - music Shortcode<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"search":{"algoliaAppID":"4D1IDY8JU6","algoliaIndex":"index","algoliaSearchKey":"05332ac5ed76655a511f0da583a9afac","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>

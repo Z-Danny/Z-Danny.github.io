@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_03 Transformer的注意力机制 - ~ Danny&#39;s Homie ~</title><meta name="Description" content="Discover what the Hugo - LoveIt theme is all about and the core-concepts behind it."><meta property="og:url" content="http://localhost:1313/en/learn-documentation-happy-llm3/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_03 Transformer的注意力机制">
+  <meta property="og:description" content="Discover what the Hugo - LoveIt theme is all about and the core-concepts behind it.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-26T14:25:33+08:00">
+    <meta property="article:modified_time" content="2025-08-26T14:25:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Configuration">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_03 Transformer的注意力机制">
+  <meta name="twitter:description" content="Discover what the Hugo - LoveIt theme is all about and the core-concepts behind it.">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/en/learn-documentation-happy-llm3/" /><link rel="prev" href="http://localhost:1313/en/theme-documentation-content/" /><link rel="next" href="http://localhost:1313/en/learn-documentation-happy-llm2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_03 Transformer的注意力机制",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/en\/learn-documentation-happy-llm3\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM, configuration","wordcount":  1042 ,
+        "url": "http:\/\/localhost:1313\/en\/learn-documentation-happy-llm3\/","datePublished": "2025-08-26T14:25:33+08:00","dateModified": "2025-08-26T14:25:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "Danny"
+            },"description": "Discover what the Hugo - LoveIt theme is all about and the core-concepts behind it."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/en/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/en/posts/" title="博客"> Posts </a><a class="menu-item" href="/en/tags/" title="关键词"> Tags </a><a class="menu-item" href="/en/categories/"> Categories </a><a class="menu-item" href="/en/categories/documentation/" title="所做项目"> Projects </a><a class="menu-item" href="/en/about/" title="关于我"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/en/learn-documentation-happy-llm3/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/en/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/en/posts/" title="博客">Posts</a><a class="menu-item" href="/en/tags/" title="关键词">Tags</a><a class="menu-item" href="/en/categories/" title="">Categories</a><a class="menu-item" href="/en/categories/documentation/" title="所做项目">Projects</a><a class="menu-item" href="/en/about/" title="关于我">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/en/learn-documentation-happy-llm3/" selected>English</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_03 Transformer的注意力机制</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/en/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Danny</a></span>&nbsp;<span class="post-category">included in <a href="/en/categories/learn-notes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Learn-Notes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-26">2025-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1042 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1fnn全连接-feedforward-nn">1、FNN（全连接 Feedforward NN）：</a></li>
+    <li><a href="#2cnn卷积-convolutional-nn">2、CNN（卷积 Convolutional NN）：</a></li>
+    <li><a href="#3rnn循环-recycle-nn">3、RNN（循环 Recycle NN）：</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1rnnlstm架构">1、RNN、LSTM架构</a></li>
+    <li><a href="#2transformer架构">2、Transformer架构</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1核心变量">1、核心变量</a></li>
+    <li><a href="#2公式拆解">2、公式拆解</a>
+      <ul>
+        <li><a href="#拆解式子1得到权重"><strong>拆解式子1——得到权重：</strong></a></li>
+        <li><a href="#拆解式子2得到对其他词的关注度"><strong>拆解式子2——得到对其他词的关注度：</strong></a></li>
+        <li><a href="#拆解式子3得到q本身的表示"><strong>拆解式子3——得到q本身的表示：</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#3代码实现">3、代码实现</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1注意力-attention">1、注意力 Attention：</a></li>
+    <li><a href="#2自注意力-self-attention">2、自注意力 Self-Attention：</a></li>
+    <li><a href="#3-掩码自注意力-mask-self-attention">3、 掩码<strong>自</strong>注意力 Mask Self-Attention</a>
+      <ul>
+        <li><a href="#mask长什么样"><em>mask长什么样</em></a></li>
+        <li><a href="#代码实现mask矩阵">代码实现mask矩阵</a></li>
+        <li><a href="#mask怎么用">mask怎么用？</a></li>
+        <li><a href="#什么是张量-tensor">什么是张量 Tensor？</a></li>
+        <li><a href="#维度和形状的区别">维度和形状的区别？</a></li>
+        <li><a href="#什么是广播机制-broadcasting">什么是广播机制 Broadcasting？</a></li>
+      </ul>
+    </li>
+    <li><a href="#4多头注意力">4、多头注意力：</a>
+      <ul>
+        <li><a href="#代码实现">代码实现</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Discover what the Hugo - <strong>LoveIt</strong> theme is all about and the core-concepts behind it.</p>
+<h1 id="task03-05第二章-transformer架构">Task03-05：第二章 Transformer架构</h1>
+<p>本篇是task03： 2.1 注意力机制
+（这是笔者自己的学习记录，仅供参考，原始学习链接，愿 LLM 越来越好❤）</p>
+<p>Transformer架构很重要，需要分几天啃一啃。</p>
+<hr>
+<p>在NLP中的核心基础任务文本表示，从用统计方法得到向量进入用神经网络方法。而这个神经网络NN（Neural Network）确实从CV计算机视觉发展来的。</p>
+<p>所以我们应该先了解一下CV中神经网络的核心架构。</p>
+<hr>
+<h1 id="一cv中nn的核心架构共3种">一、CV中NN的核心架构（共3种）</h1>
+<h2 id="1fnn全连接-feedforward-nn">1、FNN（全连接 Feedforward NN）：</h2>
+<ul>
+<li>
+<p>连接方式：每一层的每个神经元都和上下的每个神经元连接。</p>
+</li>
+<li>
+<p>参数量：全连接层的参数量 = 输入维度 × 输出维度，6层的网络，要计算6-1次相加</p>
+</li>
+<li>
+<p>特点：简单但是参数量巨大</p>
+</li>
+</ul>
+<h2 id="2cnn卷积-convolutional-nn">2、CNN（卷积 Convolutional NN）：</h2>
+<ul>
+<li>连接方式：卷积核</li>
+<li>参数量：3x3（卷积核）x 输入通道数 x 输出通道数</li>
+<li>特点：参数量远小于FNN的，进行特征提取和学习</li>
+</ul>
+<h2 id="3rnn循环-recycle-nn">3、RNN（循环 Recycle NN）：</h2>
+<ul>
+<li>有循环，输出作为输入</li>
+</ul>
+<table>
+  <tr>
+    <td><img src="https://i-blog.csdnimg.cn/direct/8930b4a829ac42739af9dcbf19292a64.png" width="100%" alt=”FNN“></td>
+    <td><img src="https://i-blog.csdnimg.cn/direct/aa418f277c8e4e8f926903517568da86.png" width="100%"></td>
+    <td><img src="https://i-blog.csdnimg.cn/direct/d17f2289b7724233b0728d82d97b2ade.png" width="100%"></td>
+  </tr>
+</table>
+<hr>
+<h1 id="二nn在nlp的使用发展">二、NN在NLP的使用发展</h1>
+<h2 id="1rnnlstm架构">1、RNN、LSTM架构</h2>
+<p>以前用的比较多（LSTM是RNN的衍生，如ELMo文本表示模型用的双向LSTM）NLP处理的是文本序列，用这种架构效果比其他2种好。</p>
+<p><em>这种架构的优点？</em></p>
+<blockquote>
+<p>能捕捉时序信息、适合序列生成</p></blockquote>
+<p><em>架构的问题？</em></p>
+<blockquote>
+<p>2个
+一个是串行不能并行计算，时间久。
+另一个是RNN长距离关系很难捕捉，且要把整个序列读到内存，对序列长度有限制</p></blockquote>
+<h2 id="2transformer架构">2、Transformer架构</h2>
+<p>现在火起来的，架构中的核心是Attention注意力机制（这个机制常被融到RNN中，现在被单拎出来做成新的NN架构，并用在NLP作为LLM的核心架构了）也是深度学习里最核心的架构。</p>
+<blockquote>
+<p>总结：架构核心是CV领域RNN的Attention机制，是神经网络、深度学习的架构，现用在NLP的LLM中</p></blockquote>
+<p><em>Attention注意力机制的思想是什么？</em></p>
+<blockquote>
+<p>cv领域的思想是看图片只要关注重点部分（比如看海边画你不用每个细节注意到，你只要看天颜色美你就觉得画好看）；
+nlp领域的思想是语言只要关注重点token进行计算（人的语言理解也是，听别人说话可能你听些词就能自动脑补别人全部意思了）</p></blockquote>
+<hr>
+<h1 id="三注意力机制公式推导">三、注意力机制公式推导</h1>
+<p><em>attention的核心计算公式是什么？</em></p>
+<blockquote>
+<p>$$ attention(Q,K,V) = softmax（ \frac{QK^T}{\sqrt{d  _k}}）V. $$</p></blockquote>
+<h2 id="1核心变量">1、核心变量</h2>
+<p>Q（query查询值）、K（key键）、V（value值）</p>
+<p>【大写为矩阵，小写为向量。tt = tokens target ，ts = tokens source】</p>
+<ul>
+<li>q词向量 =（1 x d<del>k</del>）</li>
+<li>Q矩阵 = （目标序列token数 n<del>tt</del> x d<del>k</del>）</li>
+<li>K矩阵 = （源序列token数 n<del>ts</del> x d<del>k</del>）</li>
+<li>V矩阵 = （源序列token数 n<del>ts</del> x d<del>v</del>）</li>
+</ul>
+<blockquote>
+<p>备注：K和V都来自同一个输入序列，行数是一样的。k和v都来自同一个token，但是数值却不同。（因为token进行embedding后会有一个x向量，会分别乘不同的权重矩阵进行线性变换。k
+= xW<del>k</del>，v=xW<del>v</del>。）</p></blockquote>
+<p><strong>（多头注意力中，当d<del>model</del>=512，head=8时）</strong>
+$$ d_k = d_v= \frac{d_{model} }{h} = \frac{512}{8} = 64$$
+<strong>（自注意力中，QKV来自同一个序列，每个token对应一行）</strong>
+$$ n_{tt} = n_{ts}$$</p>
+<hr>
+<h2 id="2公式拆解">2、公式拆解</h2>
+<h3 id="拆解式子1得到权重"><strong>拆解式子1——得到权重：</strong></h3>
+<p>单个token（“fruit”）和序列每个token（“apple”、“banana”，“car”）的相似度【点积】
+$$
+x = qK^{\mathsf{T}} ~~维度(1 \times n_{ts} )
+$$维度变化如下：$$
+q \in \mathbb{R}^{1 \times d_k}, \quad
+K \in \mathbb{R}^{n_{ts} \times d_k}
+$$$$
+(1 \times d_k) \cdot (n_{tt} \times d_k)^{\mathsf{T}}
+= (1 \times d_k) \cdot (d_k \times n_{ts})
+= (1 \times n_{ts})$$结果值含义如下：
+$$
+q_{fruit} = \begin{bmatrix}
+1.0 &amp; 0.5 &amp; -0.3 &amp; 0.8
+\end{bmatrix}
+,\quad$$$$
+K =
+\begin{bmatrix}
+k_{apple}:0.9 &amp; 0.4 &amp; -0.2 &amp; 0.7 \
+k_{banana}:0.8 &amp; 0.6 &amp; -0.1 &amp; -0.6 \
+k_{car}:-0.5 &amp; 0.2 &amp; 0.9 &amp; -0.4
+\end{bmatrix}
+$$$$
+x = \begin{bmatrix}
+1.72 &amp; 1.61 &amp; -0.99
+\end{bmatrix}
+.\quad$$q和K矩阵中每个向量进行点积， $x$向量的每个数值对应fruit和序列中每个token的<code>相关性=注意力分数=权重</code></p>
+<p>同理，
+$$ X = QK^T ~~维度(n_{tt} \times n_{ts} )$$</p>
+<hr>
+<h3 id="拆解式子2得到对其他词的关注度"><strong>拆解式子2——得到对其他词的关注度：</strong></h3>
+<p><code>softmax</code> 将 $x$ 或者说$X$转成权重值加起来等于1（统一一下）。
+(当$d_k$比较大时，这里需要对$x$进行一个放缩，即除以$\sqrt{d_k}$再用$softmax$)</p>
+<blockquote>
+<p>目的：否则经过函数后不同值得差异很大，容易影响<strong>梯度稳定性</strong></p></blockquote>
+<p>$$softmax(x)<em>{i} = \frac{e^{x</em>{i}}}{Z}= \frac{e^{x_{i}}}{\sum_{j=0}^{n_{ts}-1}{e^{x_{j}}}}$$结果值如下：</p>
+<p><strong>（不放缩时）</strong>$$
+x = \begin{bmatrix}
+1.72 &amp; 1.61 &amp; -0.99
+\end{bmatrix}
+.\quad$$$$
+e^{1.72} \approx 5.58, \quad
+e^{1.61} \approx 5.00, \quad
+e^{-0.99} \approx 0.37
+$$$$Z=5.58+5.00+0.37=10.95$$$$
+x_{scaled} =\begin{bmatrix}
+\frac{0.51}{10.95} &amp; \frac{0.46}{10.95} &amp; \frac{0.03}{10.95}
+\end{bmatrix}= \begin{bmatrix}
+0.51 &amp; 0.46 &amp; 0.03
+\end{bmatrix}
+.\quad$$
+<strong>（放缩时，假设$d_k$=4很大，这里是除以2）</strong>
+$$
+x = \begin{bmatrix}
+0.86 &amp; 0.805 &amp; -0.495
+\end{bmatrix}
+.\quad$$$$
+x_{scaled} =\begin{bmatrix}
+\frac{2.364}{5.211} &amp; \frac{2.237}{5.211} &amp; \frac{0.610}{5.211}
+\end{bmatrix}= \begin{bmatrix}
+0.454 &amp; 0.429 &amp; 0.117
+\end{bmatrix}
+.\quad$$<code>fruit</code> 对 apple 的关注度45.4%，对 banana 的关注度42.9%，对 car 的关注度11.7%【这是fruit对别人的】</p>
+<hr>
+<h3 id="拆解式子3得到q本身的表示"><strong>拆解式子3——得到q本身的表示：</strong></h3>
+<p>K和V可以一样，因为来自同一个序列。具体是否相同和第一步embedding的线性变换的权重矩阵$W^k$、$W^v$有关。
+权重和V矩阵的各个向量【加权求和】
+$$attention= x_{scaled}\cdot V$$
+（这里假设K、V不一样）$$
+V =
+\begin{bmatrix}
+v_{apple}:1.2 &amp; 0.3 &amp; 0.5 &amp; 0.9 \
+v_{banana}:1.0 &amp; 0.4 &amp; 0.6 &amp; 0.8 \
+v_{car}:0.2 &amp; 0.9 &amp; 1.1 &amp; 0.1
+\end{bmatrix}
+$$$$
+x_{scaled} = \begin{bmatrix}
+0.454 &amp; 0.429 &amp; 0.117
+\end{bmatrix}
+.\quad$$
+结果值如下：
+$$
+attention_{fruit} = \begin{bmatrix}
+0.9972 &amp; 0.4131 &amp; 0.6131&amp;0.7635
+\end{bmatrix}$$每一维都是fruit在不同语义方面特征的示意程度【这是fruit自己的性质，用来描述fruit的】，可以观察到结果和apple、banana的kv向量各维度数值都比较接近。</p>
+<blockquote>
+<p>你可以把 Attention输出向量想象成：
+“我看了上下文中所有相关的信息（apple、banana、car），根据它们和‘fruit’的关系，我总结出fruit这四个方面的重点信息。”</p></blockquote>
+<hr>
+<h2 id="3代码实现">3、代码实现</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;注意力计算函数&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">attention</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    args:
+</span></span></span><span class="line"><span class="cl"><span class="s1">    query: 查询值矩阵
+</span></span></span><span class="line"><span class="cl"><span class="s1">    key: 键值矩阵
+</span></span></span><span class="line"><span class="cl"><span class="s1">    value: 真值矩阵
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 获取键向量的维度，键向量的维度和值向量的维度相同</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d_k</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="c1"># 计算Q与K的内积并除以根号dk</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># transpose——相当于转置</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Softmax</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_attn</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">dropout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p_attn</span> <span class="o">=</span> <span class="n">dropout</span><span class="p">(</span><span class="n">p_attn</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 采样</span>
+</span></span><span class="line"><span class="cl">     <span class="c1"># 根据计算结果对value进行加权求和</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">p_attn</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">p_attn</span></span></span></code></pre></div></div>
+<hr>
+<h1 id="四注意力机制的使用及衍生">四、注意力机制的使用及衍生</h1>
+<h2 id="1注意力-attention">1、注意力 Attention：</h2>
+<p>在 Decoder 中，Q来自 Decoder 的输入，KV来自 Encoder 的输出。目的是拟合编码信息和历史信息之间的关系，综合预测未来。</p>
+<h2 id="2自注意力-self-attention">2、自注意力 Self-Attention：</h2>
+<p>在 Encoder 中，采用<strong>自注意力机制</strong> Self-Attention（Attention变种），QKV是同一个输入，分别经过3个参数矩阵得到。目的是拟合输入语句中每一个token对其他所有token的依赖关系。</p>
+<h2 id="3-掩码自注意力-mask-self-attention">3、 掩码<strong>自</strong>注意力 Mask Self-Attention</h2>
+<p>用掩码遮蔽某些位置的token，不让模型学习的时候学未来的。类似n-gram，不过他是串行，达咩。所以一次性输入下面的这个就可以并行计算，得到语言模型。掩码矩阵就是和文本序列token数等长的上三角矩阵。</p>
+<h3 id="mask长什么样"><em>mask长什么样</em></h3>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/dfc3adcd77af42d28c6e0dd05a0576ef.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/dfc3adcd77af42d28c6e0dd05a0576ef.png, https://i-blog.csdnimg.cn/direct/dfc3adcd77af42d28c6e0dd05a0576ef.png 1.5x, https://i-blog.csdnimg.cn/direct/dfc3adcd77af42d28c6e0dd05a0576ef.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/dfc3adcd77af42d28c6e0dd05a0576ef.png"
+        title="在这里插入图片描述" />
+（当 n = 4时，代码的-inf就是负无穷）
+$$
+Mask =
+\begin{bmatrix}
+0      &amp; -\infty &amp; -\infty &amp; -\infty \
+0      &amp; 0       &amp; -\infty &amp; -\infty \
+0      &amp; 0       &amp; 0       &amp; -\infty \
+0      &amp; 0       &amp; 0       &amp; 0
+\end{bmatrix}
+$$</p></blockquote>
+<h3 id="代码实现mask矩阵">代码实现mask矩阵</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 创建一个上三角矩阵，用于遮蔽未来信息。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 先通过 full 函数创建一个 1 * seq_len * seq_len 的矩阵</span>
+</span></span><span class="line"><span class="cl"><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">max_seq_len</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">max_seq_len</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&#34;-inf&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># triu 函数的功能是创建一个上三角矩阵</span>
+</span></span><span class="line"><span class="cl"><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">diagonal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></span></span></code></pre></div></div>
+<h3 id="mask怎么用">mask怎么用？</h3>
+<p>是在得出注意力分数之后，把X和Mask相加，-inf就会覆盖X的原值，经过softmax后就变成0，注意力遮蔽了。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 此处的 scores 为计算得到的注意力分数，mask 为上文生成的掩码矩阵</span>
+</span></span><span class="line"><span class="cl"><span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span> <span class="o">+</span> <span class="n">mask</span><span class="p">[:,</span> <span class="p">:</span><span class="n">seqlen</span><span class="p">,</span> <span class="p">:</span><span class="n">seqlen</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">scores</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">type_as</span><span class="p">(</span><span class="n">xq</span><span class="p">)</span></span></span></code></pre></div></div>
+<h3 id="什么是张量-tensor">什么是张量 Tensor？</h3>
+<p>矩阵：
+$$
+A = \begin{bmatrix}
+1 &amp; -2 &amp; 3 \
+0 &amp; 4 &amp; -1 \end{bmatrix}\in \mathbb{R}^{2 \times 3}
+$$三维张量：$$
+\mathcal{T} =
+\left{
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 \
+4 &amp; 5 &amp; 6
+\end{bmatrix},
+\begin{bmatrix}
+7 &amp; 8 &amp; 9 \
+10 &amp; 11 &amp; 12
+\end{bmatrix}
+\right}
+\in \mathbb{R}^{2 \times 2 \times 3}
+$$四维张量：$$
+\mathcal{T} =
+\left{
+\begin{array}{c}
+\text{样本 1: }
+\left[
+\begin{array}{c}
+\text{通道 1: } 4 \times 5 \
+\text{通道 2: } 4 \times 5 \
+\text{通道 3: } 4 \times 5
+\end{array}
+\right],
+\[1ex]
+\text{样本 2: }
+\left[
+\begin{array}{c}
+\text{通道 1: } 4 \times 5 \
+\text{通道 2: } 4 \times 5 \
+\text{通道 3: } 4 \times 5
+\end{array}
+\right]
+\end{array}
+\right}
+\in \mathbb{R}^{2 \times 3 \times 4 \times 5}
+$$</p>
+<h3 id="维度和形状的区别">维度和形状的区别？</h3>
+<p>维度是数值，1、2、3维；形状是元组（2 x 3）</p>
+<h3 id="什么是广播机制-broadcasting">什么是广播机制 Broadcasting？</h3>
+<p>就是在张量（三维及以上数组）运算的时候，能像史莱姆一样自动拓展维度成目标张量的形状。</p>
+<p>掩码矩阵的shape为： $$（1，seq_len，seq_len）$$注意力分数的shape为：$$（batch_size，n_heads，seq_len，seq_len）$$广播后的掩码矩阵的shape为：$$（batch_size，n_heads，seq_len，seq_len）$$</p>
+<hr>
+<h2 id="4多头注意力">4、多头注意力：</h2>
+<p>就是对同一个序列进行多次注意力计算，再拼接结果，每次可以学到不同的关系，从而让对token的表示更加深入。
+n个头就是计算n次的注意力</p>
+<p>公式：$$
+\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O
+$$</p>
+<p>其中：
+$$
+\text{head}_i = \text{Attention}(Q W_i^Q, ; K W_i^K, ; V W_i^V)
+$$</p>
+<h3 id="代码实现">代码实现</h3>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;多头自注意力计算模块&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MultiHeadAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">ModelArgs</span><span class="p">,</span> <span class="n">is_causal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 构造函数</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># args: 配置对象</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 隐藏层维度必须是头数的整数倍，因为后面我们会将输入拆成头数个矩阵</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">args</span><span class="o">.</span><span class="n">dim</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">n_heads</span> <span class="o">==</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 模型并行处理大小，默认为1。</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model_parallel_size</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 本地计算头数，等于总头数除以模型并行处理大小。</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">n_heads</span> <span class="o">//</span> <span class="n">model_parallel_size</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 每个头的维度，等于模型维度除以头的总数。</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dim</span> <span class="o">//</span> <span class="n">args</span><span class="o">.</span><span class="n">n_heads</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Wq, Wk, Wv 参数矩阵，每个参数矩阵为 n_embd x n_embd</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 这里通过三个组合矩阵来代替了n个参数矩阵的组合，其逻辑在于矩阵内积再拼接其实等同于拼接矩阵再内积，</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 不理解的读者可以自行模拟一下，每一个线性层其实相当于n个参数矩阵的拼接</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">wq</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">wk</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">wv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 输出权重矩阵，维度为 dim x n_embd（head_dim = n_embeds / n_heads）</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">wo</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 注意力的 dropout</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 残差连接的 dropout</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">resid_dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         
+</span></span><span class="line"><span class="cl">        <span class="c1"># 创建一个上三角矩阵，用于遮蔽未来信息</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 注意，因为是多头注意力，Mask 矩阵比之前我们定义的多一个维度</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">is_causal</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">           <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">max_seq_len</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">max_seq_len</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&#34;-inf&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">           <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">diagonal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="c1"># 注册为模型的缓冲区</span>
+</span></span><span class="line"><span class="cl">           <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s2">&#34;mask&#34;</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 获取批次大小和序列长度，[batch_size, seq_len, dim]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bsz</span><span class="p">,</span> <span class="n">seqlen</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">shape</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 计算查询（Q）、键（K）、值（V）,输入通过参数矩阵层，维度为 (B, T, n_embed) x (n_embed, n_embed) -&gt; (B, T, n_embed)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xq</span><span class="p">,</span> <span class="n">xk</span><span class="p">,</span> <span class="n">xv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wq</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">wk</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">wv</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 将 Q、K、V 拆分成多头，维度为 (B, T, n_head, C // n_head)，然后交换维度，变成 (B, n_head, T, C // n_head)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 因为在注意力计算中我们是取了后两个维度参与计算</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 为什么要先按B*T*n_head*C//n_head展开再互换1、2维度而不是直接按注意力输入展开，是因为view的展开方式是直接把输入全部排开，</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 然后按要求构造，可以发现只有上述操作能够实现我们将每个头对应部分取出来的目标</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xq</span> <span class="o">=</span> <span class="n">xq</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bsz</span><span class="p">,</span> <span class="n">seqlen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xk</span> <span class="o">=</span> <span class="n">xk</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bsz</span><span class="p">,</span> <span class="n">seqlen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xv</span> <span class="o">=</span> <span class="n">xv</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bsz</span><span class="p">,</span> <span class="n">seqlen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_local_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xq</span> <span class="o">=</span> <span class="n">xq</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xk</span> <span class="o">=</span> <span class="n">xk</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xv</span> <span class="o">=</span> <span class="n">xv</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 注意力计算</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 计算 QK^T / sqrt(d_k)，维度为 (B, nh, T, hs) x (B, nh, hs, T) -&gt; (B, nh, T, T)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">xq</span><span class="p">,</span> <span class="n">xk</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 掩码自注意力必须有注意力掩码</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_causal</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 这里截取到序列长度，因为有些序列可能比 max_seq_len 短</span>
+</span></span><span class="line"><span class="cl">            <span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="n">seqlen</span><span class="p">,</span> <span class="p">:</span><span class="n">seqlen</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 计算 softmax，维度为 (B, nh, T, T)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">scores</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">type_as</span><span class="p">(</span><span class="n">xq</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 做 Dropout</span>
+</span></span><span class="line"><span class="cl">        <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># V * Score，维度为(B, nh, T, T) x (B, nh, T, hs) -&gt; (B, nh, T, hs)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">xv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 恢复时间维度并合并头。</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 将多头的结果拼接起来, 先交换维度为 (B, T, n_head, C // n_head)，再拼接成 (B, T, n_head * C // n_head)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># contiguous 函数用于重新开辟一块新内存存储，因为Pytorch设置先transpose再view会报错，</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 因为view直接基于底层存储得到，然而transpose并不会改变底层存储，因此需要额外存储</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bsz</span><span class="p">,</span> <span class="n">seqlen</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 最终投影回残差流。</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resid_dropout</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">output</span></span></span></code></pre></div></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-08-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/en/learn-documentation-happy-llm3/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/en/learn-documentation-happy-llm3/" data-title="Happy_LLM_03 Transformer的注意力机制"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/en/tags/llm/">LLM</a>,&nbsp;<a href="/en/tags/configuration/">Configuration</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/en/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/en/theme-documentation-content/" class="prev" rel="prev" title="Theme Documentation - Content"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Theme Documentation - Content</a>
+            <a href="/en/learn-documentation-happy-llm2/" class="next" rel="next" title="Happy_LLM_02 什么是NLP">Happy_LLM_02 什么是NLP<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"lightgallery":true,"search":{"algoliaAppID":"4D1IDY8JU6","algoliaIndex":"index","algoliaSearchKey":"05332ac5ed76655a511f0da583a9afac","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"🦴     |   ","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>

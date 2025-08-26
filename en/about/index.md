@@ -1,4 +1,4 @@
-# About LoveIt
+# About me
 
 
 {{< style "img { height: 1.25rem; }" >}}
