@@ -283,7 +283,7 @@ embedding_dim），要和词向量矩阵的维度一样才可以相加。</p></b
 残差连接不让模型走偏，下一层input = 上一层output + 上一层 input</p></blockquote>
 <h3 id="代码实现"><em>代码实现</em></h3>
 <p>先写encoder layer类，再组装出encoder</p>
-<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
     <div class="code-header language-python">
         <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
@@ -307,7 +307,7 @@ embedding_dim），要和词向量矩阵的维度一样才可以相加。</p></b
 </span></span><span class="line"><span class="cl">        <span class="c1"># 经过前馈神经网络</span>
 </span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fnn_norm</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span></span></span></code></pre></div></div>
-<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
     <div class="code-header language-python">
         <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
@@ -347,7 +347,7 @@ embedding_dim），要和词向量矩阵的维度一样才可以相加。</p></b
 <p>第一个注意力层是一个掩码自注意力层，即使用 <code>Mask 的</code>注意力计算，保证每一个 token 只能使用该 token之前的注意力分数；
 第二个注意力层是一个多头注意力层，该层将使用<code>第一个注意力层的输出作为 query</code>，使用 <code>Encoder 的输出作为 key和 value</code>，来计算注意力分数。</p></blockquote>
 <h3 id="代码实现-1">代码实现</h3>
-<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
     <div class="code-header language-python">
         <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
@@ -378,7 +378,7 @@ embedding_dim），要和词向量矩阵的维度一样才可以相加。</p></b
 </span></span><span class="line"><span class="cl">        <span class="c1"># 经过前馈神经网络</span>
 </span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ffn_norm</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span></span></span></code></pre></div></div>
-<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
     <div class="code-header language-python">
         <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
