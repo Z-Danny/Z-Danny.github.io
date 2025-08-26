@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://z-danny.github.io/"
 
 # theme
 # 主题
@@ -132,7 +132,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       logo = ""
       # title name
       # 标题名称
-      name = "Danny"
+      name = "Danny标题"
       # you can add extra information before the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
