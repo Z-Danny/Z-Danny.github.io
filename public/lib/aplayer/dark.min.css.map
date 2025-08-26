@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "dark.min.css",
-	"sourceRoot": "E:/GitHub projects/Z-Danny blog/Z-Danny.github.io/myblog",
+	"sourceRoot": "E:/GitHub projects/Z-Danny blog/Z-Danny.github.io",
 	"sources": [
 		"themes/LoveIt/assets/lib/aplayer/dark.scss"
 	],
