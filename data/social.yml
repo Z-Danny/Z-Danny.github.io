@@ -1,0 +1,7 @@
+# CSDN
+csdn:
+  Weight: 79
+  Prefix: https://blog.csdn.net/
+  Title: CSDN
+  Icon:
+    Class: fas fa-rss fa-fw

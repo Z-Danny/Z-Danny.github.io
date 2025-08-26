@@ -9,20 +9,20 @@ themesDir = "themes/"
 
 # website title
 # 网站标题
-title = "Danny's Homie"
+title = "~ Danny's Homie ~"
 
 # determines default content language ["en", "zh-cn", "fr", "pl", ...]
 # 设置默认的语言 ["en", "zh-cn", "fr", "pl", ...]
-defaultContentLanguage = "en"
+defaultContentLanguage = "zh-cn"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 # 网站语言, 仅在这里 CN 大写 ["en", "zh-CN", "fr", "pl", ...]
-languageCode = "en"
+languageCode = "zh-CN"
 # language name ["English", "简体中文", "Français", "Polski", ...]
 # 语言名称 ["English", "简体中文", "Français", "Polski", ...]
-languageName = "English"
+languageName = "简体中文"
 # whether to include Chinese/Japanese/Korean
 # 是否包括中日韩文字
-hasCJKLanguage = false
+hasCJKLanguage = true
 
 # copyright description used only for seo schema
 # 版权描述，仅仅用于 SEO
@@ -54,7 +54,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 [menu]
   [[menu.main]]
     weight = 1
-    identifier = "posts"
+    identifier = "posts" # 导航栏博客
     # you can add extra information before the name (HTML format is supported), such as icons
     # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
     pre = ""
@@ -65,7 +65,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     url = "/posts/"
     # title will be shown when you hover on this menu link
     # 当您将鼠标悬停在此菜单链接上时, 将显示标题
-    title = ""
+    title = "博客"
   [[menu.main]]
     weight = 2
     identifier = "tags"
@@ -111,8 +111,8 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Author config
   # 作者配置
   [params.author]
-    name = "曾丹妮"
-    email = ""
+    name = "Danny"
+    email = "2878694584@qq.com"
     link = ""
 
   # Header config
@@ -132,21 +132,21 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       logo = ""
       # title name
       # 标题名称
-      name = "Danny标题"
+      name = "danny's on the way"
       # you can add extra information before the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
+      pre = "<i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
       post = ""
       # whether to use typeit animation for title name
       # 是否为标题显示打字机动画
-      typeit = false
+      typeit = true
 
   # Footer config
   # 页面底部信息配置
   [params.footer]
-    enable = true
+    enable = false
     # Custom content (HTML format is supported)
     # 自定义内容 (支持 HTML 格式)
     custom = ""
@@ -203,7 +203,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     title = "LoveIt"
     # whether to omit favicon resource links
     # 是否隐藏网站图标资源链接
-    noFavicon = false
+    noFavicon = true
     # modern SVG favicon to use in place of older style .png and .ico files
     # 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
     svgFavicon = ""
@@ -268,10 +268,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       title = ""
       # subtitle shown in home page (HTML format is supported)
       # 主页显示的网站副标题 (允许 HTML 格式)
-      subtitle = "A Clean, Elegant but Advanced Hugo Theme"
+      subtitle = "hello！这里是Danny's channel，我现在是北京邮电大学AI的研0学生，本科学的数字媒体技术，正在一步步迈向AI"
       # whether to use typeit animation for subtitle
       # 是否为副标题显示打字机动画
-      typeit = true
+      typeit = false
       # whether to show social links
       # 是否显示社交账号
       social = true
@@ -281,14 +281,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # Home page posts
     # 主页文章列表
     [params.home.posts]
-      enable = true
+      enable = true  
       # special amount of posts in each home posts page
       # 主页每页显示文章数量
       paginate = 6
   # Social config in home page
   # 主页的社交信息设置
   [params.social]
-    GitHub = ""
+    GitHub = "Z-Danny"
     Linkedin = ""
     X = ""
     Instagram = ""
@@ -368,6 +368,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     Threads = ""
     Email = ""
     RSS = ""
+    CSDN = "Z__Danny"
 
   # Page global config
   # 文章页面全局配置
@@ -469,19 +470,19 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # 文章页面的分享信息设置
     [params.page.share]
       enable = true
-      X = true
-      Threads = true
-      Facebook = true
+      X = false
+      Threads = false
+      Facebook = false
       Linkedin = false
       Whatsapp = false
       Pinterest = false
       Tumblr = false
-      HackerNews = true
+      HackerNews = false
       Reddit = false
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Flipboard = false
@@ -492,9 +493,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Evernote = false
       Skype = false
       Trello = false
-      Diaspora = true
+      Diaspora = false
       Mix = false
-      Telegram = true
+      Telegram = false
+      CSDN = true
     # Comment config
     # 评论系统设置
     [params.page.comment]
@@ -643,7 +645,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     cursorSpeed = 1000
     # character used for the cursor (HTML format is supported)
     # 光标的字符 (支持 HTML 格式)
-    cursorChar = "|"
+    cursorChar = "🦴     |   "
     # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
     # 打字结束之后光标的持续时间 (单位是毫秒, "-1" 代表无限大)
     duration = -1
@@ -662,7 +664,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.seo]
     # image URL
     # 图片 URL
-    image = "/images/Apple-Devices-Preview.png"
+    image = "/images/avatar.png"
     # thumbnail URL
     # 缩略图 URL
     thumbnailUrl = "/images/screenshot.png"
@@ -821,7 +823,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         post = ""
         name = "Posts"
         url = "/posts/"
-        title = ""
+        title = "博客"
       [[languages.en.menu.main]]
         weight = 2
         identifier = "tags"
@@ -829,7 +831,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         post = ""
         name = "Tags"
         url = "/tags/"
-        title = ""
+        title = "关键词"
       [[languages.en.menu.main]]
         weight = 3
         identifier = "categories"
@@ -843,9 +845,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         identifier = "documentation"
         pre = ""
         post = ""
-        name = "Docs"
+        name = "Projects"
         url = "/categories/documentation/"
-        title = ""
+        title = "所做项目"
       [[languages.en.menu.main]]
         weight = 5
         identifier = "about"
@@ -853,15 +855,8 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         post = ""
         name = "About"
         url = "/about/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 6
-        identifier = "github"
-        pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
-        post = ""
-        name = ""
-        url = "https://github.com/dillonzq/LoveIt"
-        title = "GitHub"
+        title = "关于我"
+     
     [languages.en.params]
       [languages.en.params.search]
         enable = true
@@ -882,26 +877,26 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
           enable = true
           gravatarEmail = ""
           avatarURL = "/images/avatar.png"
-          title = ""
-          subtitle = "A Clean, Elegant but Advanced Hugo Theme"
-          typeit = true
+          title = "hello！I'm 丹妮，this's my channel"
+          subtitle = "现在是北京邮电大学AI的研0学生，本科学的数字媒体技术，正在一步步迈向AI"
+          typeit = false
           social = true
           disclaimer = ""
       [languages.en.params.social]
-        GitHub = "xxxx"
-        X = "xxxx"
-        Instagram = "xxxx"
-        Facebook = "xxxx"
-        Telegram = "xxxx"
-        Youtubelegacy = "xxxx"
-        HuggingFace = "xxxx"
-        Threads = "xxxx"
-        Phone = "555-555-555"
-        Email = "xxxx@xxxx.com"
-        RSS = true
-        [languages.en.params.social.Mastodon]
-          id = "@xxxx"
-          prefix = "https://mastodon.technology/"
+        GitHub = "Z-Danny"
+        #X = "xxxx"
+        #Instagram = "xxxx"
+        #Facebook = "xxxx"
+        #Telegram = "xxxx"
+        #Youtubelegacy = "xxxx"
+        Email = "2878694584@qq.com"
+        HuggingFace = "ZDanny"
+        #Threads = "xxxx"
+        #Phone = "555-555-555"
+        #RSS = true
+        #[languages.en.params.social.Mastodon]
+        #  id = "@xxxx"
+        #  prefix = "https://mastodon.technology/"
 
   [languages.zh-cn]
     weight = 2
@@ -938,25 +933,18 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         weight = 4
         identifier = "documentation"
         pre = ""
-        name = "文档"
-        url = "/categories/documentation/"
+        name = "项目" #导航栏的名字
+        url = "/categories/projects/" #就是写博客的时候把categories: ["projects"]
         title = ""
       [[languages.zh-cn.menu.main]]
         weight = 5
         identifier = "about"
         pre = ""
         post = ""
-        name = "关于"
+        name = "关于我"
         url = "/about/"
         title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 6
-        identifier = "github"
-        pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
-        post = ""
-        name = ""
-        url = "https://github.com/dillonzq/LoveIt"
-        title = "GitHub"
+     
     [languages.zh-cn.params]
       [languages.zh-cn.params.search]
         enable = true
@@ -977,19 +965,21 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
           enable = true
           gravatarEmail = ""
           avatarURL = "/images/avatar.png"
-          title = ""
-          subtitle = "一个简洁、优雅且高效的 Hugo 主题"
-          typeit = true
+          title = "hello! I'm 丹妮, this's my channel"
+          subtitle = "现在是北京邮电大学AI的研0学生，本科学的数字媒体技术，正在一步步迈向AI"
+          typeit = false
           social = true
           disclaimer = ""
       [languages.zh-cn.params.social]
-        GitHub = "xxxx"
-        Weibo = "xxxx"
-        Steam = "xxxx"
+        GitHub = "Z-Danny"
+        #Weibo = "xxxx"
+        #Steam = "xxxx"
         Zhihu = "xxxx"
         Douban = "xxxx"
-        Devto = "xxxx"
+        #Devto = "xxxx"
         Bilibili = "xxxx"
-        Email = "xxxx@xxxx.com"
-        Phone = "555-555-555"
-        RSS = true
+        Email = "2878694584@qq.com"
+        #Phone = "555-555-555"
+        #RSS = true
+        CSDN = "Z__Danny"
+
