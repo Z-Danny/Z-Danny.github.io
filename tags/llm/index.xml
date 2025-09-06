@@ -1,40 +1,80 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>LLM - 标签 - ~ Danny&#39;s Homie ~</title>
-        <link>https://z-danny.github.io/tags/llm/</link>
+        <link>http://localhost:1313/tags/llm/</link>
         <description>LLM - 标签 - ~ Danny&#39;s Homie ~</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
-            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Aug 2025 17:17:53 &#43;0800</lastBuildDate><atom:link href="https://z-danny.github.io/tags/llm/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Sep 2025 10:28:00 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/llm/" rel="self" type="application/rss+xml" /><item>
+    <title>Happy_LLM_05 BERT</title>
+    <link>http://localhost:1313/projects-re-paddlepaddle/</link>
+    <pubDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/projects-re-paddlepaddle/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+<item>
+    <title>Happy_LLM_05 BERT</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm5/</link>
+    <pubDate>Wed, 27 Aug 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm5/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+<item>
+    <title>LLM中常见的单位换算</title>
+    <link>http://localhost:1313/learn-documentation-parameters/</link>
+    <pubDate>Wed, 27 Aug 2025 10:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-parameters/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+<item>
     <title>Happy_LLM_01 NLP前言</title>
-    <link>https://z-danny.github.io/learn-documentation-happy-llm1/</link>
+    <link>http://localhost:1313/learn-documentation-happy-llm1/</link>
     <pubDate>Tue, 26 Aug 2025 17:17:53 &#43;0800</pubDate>
     <author>Danny</author>
-    <guid>https://z-danny.github.io/learn-documentation-happy-llm1/</guid>
+    <guid>http://localhost:1313/learn-documentation-happy-llm1/</guid>
     <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
 </item>
 <item>
     <title>Happy_LLM_02 什么是NLP</title>
-    <link>https://z-danny.github.io/learn-documentation-happy-llm2/</link>
+    <link>http://localhost:1313/learn-documentation-happy-llm2/</link>
     <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
     <author>Danny</author>
-    <guid>https://z-danny.github.io/learn-documentation-happy-llm2/</guid>
+    <guid>http://localhost:1313/learn-documentation-happy-llm2/</guid>
     <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
 </item>
 <item>
     <title>Happy_LLM_04 编解码器、手搓Transformer</title>
-    <link>https://z-danny.github.io/learn-documentation-happy-llm4/</link>
+    <link>http://localhost:1313/learn-documentation-happy-llm4/</link>
     <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
     <author>Danny</author>
-    <guid>https://z-danny.github.io/learn-documentation-happy-llm4/</guid>
+    <guid>http://localhost:1313/learn-documentation-happy-llm4/</guid>
     <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
 </item>
 <item>
     <title>Happy_LLM_03 Transformer的注意力机制</title>
-    <link>https://z-danny.github.io/learn-documentation-happy-llm3/</link>
+    <link>http://localhost:1313/learn-documentation-happy-llm3/</link>
     <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
     <author>Danny</author>
-    <guid>https://z-danny.github.io/learn-documentation-happy-llm3/</guid>
+    <guid>http://localhost:1313/learn-documentation-happy-llm3/</guid>
     <description><![CDATA[<p>Discover what the Hugo - <strong>LoveIt</strong> theme is all about and the core-concepts behind it.</p>]]></description>
+</item>
+<item>
+    <title>一些想学但是还没学的好东西，不要让收藏夹⭐吃灰了！给我学！赚钱！</title>
+    <link>http://localhost:1313/offer-insight/</link>
+    <pubDate>Fri, 05 Sep 2025 10:28:00 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/offer-insight/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>一些想学但是还没学的好东西，不要让收藏夹⭐吃灰了！给我学！赚钱！</title>
+    <link>http://localhost:1313/info-doc-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
+    <pubDate>Thu, 28 Aug 2025 10:28:00 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/info-doc-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
+    <description><![CDATA[]]></description>
 </item>
 </channel>
 </rss>
