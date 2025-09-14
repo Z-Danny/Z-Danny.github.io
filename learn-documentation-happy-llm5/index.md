@@ -1,4 +1,4 @@
-# Happy_LLM_05 BERT
+# Happy_LLM_05 BERT encoder-only
 
 
 

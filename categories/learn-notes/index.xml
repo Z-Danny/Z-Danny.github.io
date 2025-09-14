@@ -29,7 +29,7 @@
     <description><![CDATA[如何用transformers框架进行开源LLM的pretrain+SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程描述]]></description>
 </item>
 <item>
-    <title>Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO</title>
+    <title>Happy_LLM_09 SFT、RLHF（RM&#43;PPO）、DPO</title>
     <link>http://localhost:1313/learn-documentation-happy-llm9/</link>
     <pubDate>Fri, 05 Sep 2025 11:27:33 &#43;0800</pubDate>
     <author>Danny</author>
@@ -37,7 +37,7 @@
     <description><![CDATA[LLM与PLM的区别？LLM是如何训出来的描述]]></description>
 </item>
 <item>
-    <title>Happy_LLM_05 BERT</title>
+    <title>paddlepaddle飞浆开发</title>
     <link>http://localhost:1313/projects-re-paddlepaddle/</link>
     <pubDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</pubDate>
     <author>Danny</author>
@@ -69,7 +69,7 @@
     <description><![CDATA[Happy_LLM_06 T5 encoder-decoder描述]]></description>
 </item>
 <item>
-    <title>Happy_LLM_05 BERT</title>
+    <title>Happy_LLM_05 BERT encoder-only</title>
     <link>http://localhost:1313/learn-documentation-happy-llm5/</link>
     <pubDate>Wed, 27 Aug 2025 11:27:33 &#43;0800</pubDate>
     <author>Danny</author>
