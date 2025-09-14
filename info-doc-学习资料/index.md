@@ -34,15 +34,65 @@
 国外：
 1. [Huggingface](https://huggingface.co/models)：权威啊
 
+
+
+## 云环境
+1. [阿里-魔搭社区](https://www.modelscope.cn/my/mynotebook)
+2. [百度BML]()
+
 ## RAG
 1. [同济的RAG-Survey教程](https://github.com/Tongji-KGLLM/RAG-Survey?tab=readme-ov-file#what--is-)
 
+## 大模型竞技场
+1. [LMArena](https://lmarena.ai/)———大家可以在上面使用对比不同模型
 
 
 # 项目
 岗位分类应用算法型、研究型
 
 Agent/RAG > 微调 > 
+
+
+# 科研
+
+
+1. [谷歌学术](https://scholar.google.com/)
+
+## 视频
+1. [清华2025夏校之科研：科研是一条你要为之奋斗的路，坚定的持续学习思考！](https://www.bilibili.com/video/BV1zPegzFELs/?share_source=copy_web&vd_source=75e9a92d102eb965bf639abcc7a9d945)
+2. [清华2025夏校之docker，讲的超好](https://www.bilibili.com/video/BV1eSb8zaEAf/?share_source=copy_web&vd_source=75e9a92d102eb965bf639abcc7a9d945)
+---
+### what is 科研？
+新知识
+
+工程（复现代码）、刷榜（只是方法的复现，用别人的方法测不同的参数。我发现这个方法在其他数据集效果更好）、研究（就是为了同行交流，不可学术不端！！永远不可为了有成功而低头，要真的有用）
+
+论文不要都精读，带着问题解决我的问题就行
+
+
+### 论文的构成
+
+- title-标题
+- abstract-摘要：告诉你做了啥，结果是啥
+- introduction-介绍：任务的背景介绍
+- related works- 相关工作：引用同行的工作，要调研清楚同行的
+- method- 方法：用的什么方法解决问题
+- experiments-实验：跑实验，文章是怎么说明问题的
+- conclusion-结论：文章的结论
+- limitations/discussion-局限和讨论：局限、未来可能的方向，展望
+
+
+### 筛选论文
+先花1-3min决定要不要下载/关闭？
+- 标题：是否方向相关？
+- 摘要：什么问题、方法、结论
+- 图标：图的标题和内容，好图胜过千言万语
+- 结论：看第一段+最后一段，确认贡献和局限性
+
+不看introduction、method、results、实验细节、参考文献
+
+### how to 读 paper？
+化为己用！学创新点 不要线性从头到尾读 榨
 
 
 

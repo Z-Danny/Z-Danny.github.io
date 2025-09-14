@@ -4,9 +4,25 @@
         <link>http://localhost:1313/</link>
         <description>Hugo theme - LoveIt</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
-            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Sep 2025 10:28:00 &#43;0800</lastBuildDate>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 14 Sep 2025 10:25:33 &#43;0800</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>保研面试突击</title>
+    <link>http://localhost:1313/%E4%BF%9D%E7%A0%94/</link>
+    <pubDate>Sun, 14 Sep 2025 10:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/%E4%BF%9D%E7%A0%94/</guid>
+    <description><![CDATA[保研面试突击]]></description>
+</item>
+<item>
+    <title>Agent你好，我是你的follower</title>
+    <link>http://localhost:1313/agent-mcp/</link>
+    <pubDate>Fri, 12 Sep 2025 10:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/agent-mcp/</guid>
+    <description><![CDATA[记录dw的agent学习，]]></description>
+</item>
+<item>
     <title>Happy_LLM_05 BERT</title>
     <link>http://localhost:1313/projects-re-paddlepaddle/</link>
     <pubDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</pubDate>
@@ -69,22 +85,6 @@
     <author>Dillon</author>
     <guid>http://localhost:1313/theme-documentation-content/</guid>
     <description><![CDATA[<p>了解如何在 <strong>LoveIt</strong> 主题中快速, 直观地创建和组织内容.</p>]]></description>
-</item>
-<item>
-    <title>主题文档 - 内置 Shortcodes</title>
-    <link>http://localhost:1313/theme-documentation-built-in-shortcodes/</link>
-    <pubDate>Wed, 04 Mar 2020 16:29:59 &#43;0800</pubDate>
-    <author>Dillon</author>
-    <guid>http://localhost:1313/theme-documentation-built-in-shortcodes/</guid>
-    <description><![CDATA[<p><strong>Hugo</strong> 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容的整洁.</p>]]></description>
-</item>
-<item>
-    <title>主题文档 - 扩展 Shortcodes</title>
-    <link>http://localhost:1313/theme-documentation-extended-shortcodes/</link>
-    <pubDate>Tue, 03 Mar 2020 16:29:59 &#43;0800</pubDate>
-    <author>Dillon</author>
-    <guid>http://localhost:1313/theme-documentation-extended-shortcodes/</guid>
-    <description><![CDATA[<p><strong>LoveIt</strong> 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode.</p>]]></description>
 </item>
 </channel>
 </rss>

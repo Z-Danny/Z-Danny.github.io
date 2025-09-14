@@ -4,20 +4,28 @@
         <link>http://localhost:1313/categories/</link>
         <description>Categories - 分类 - ~ Danny&#39;s Homie ~</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
-            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Sep 2025 10:28:00 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/" rel="self" type="application/rss+xml" /><item>
-    <title>资料 Info</title>
-    <link>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</link>
-    <pubDate>Fri, 05 Sep 2025 10:28:00 &#43;0800</pubDate>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 14 Sep 2025 10:25:33 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>ZDN&#39;s 来时路</title>
+    <link>http://localhost:1313/categories/zdns-%E6%9D%A5%E6%97%B6%E8%B7%AF/</link>
+    <pubDate>Sun, 14 Sep 2025 10:25:33 &#43;0800</pubDate>
     <author>Danny</author>
-    <guid>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</guid>
+    <guid>http://localhost:1313/categories/zdns-%E6%9D%A5%E6%97%B6%E8%B7%AF/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Learn-Notes</title>
     <link>http://localhost:1313/categories/learn-notes/</link>
-    <pubDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</pubDate>
+    <pubDate>Fri, 12 Sep 2025 10:25:33 &#43;0800</pubDate>
     <author>Danny</author>
     <guid>http://localhost:1313/categories/learn-notes/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>资料 Info</title>
+    <link>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</link>
+    <pubDate>Fri, 05 Sep 2025 10:28:00 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

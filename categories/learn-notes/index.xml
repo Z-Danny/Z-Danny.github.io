@@ -4,7 +4,15 @@
         <link>http://localhost:1313/categories/learn-notes/</link>
         <description>Learn-Notes - 分类 - ~ Danny&#39;s Homie ~</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
-            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/learn-notes/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 12 Sep 2025 10:25:33 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/learn-notes/" rel="self" type="application/rss+xml" /><item>
+    <title>Agent你好，我是你的follower</title>
+    <link>http://localhost:1313/agent-mcp/</link>
+    <pubDate>Fri, 12 Sep 2025 10:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/agent-mcp/</guid>
+    <description><![CDATA[记录dw的agent学习，]]></description>
+</item>
+<item>
     <title>Happy_LLM_05 BERT</title>
     <link>http://localhost:1313/projects-re-paddlepaddle/</link>
     <pubDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</pubDate>

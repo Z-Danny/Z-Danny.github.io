@@ -19,3 +19,8 @@
 # 图标
 1. [fontawesome](https://fontawesome.com/)
 2. [iconfont阿里巴巴](https://www.iconfont.cn/)
+
+# 流程图
+1. [md画图mermaid [csdn]](https://blog.csdn.net/u014696856/article/details/135616695)
+2. [loveit官方教程 [zh]](https://hugoloveit.com/zh-cn/theme-documentation-mermaid-shortcode/#flowchart)
+3. [mermaid官方 [en]](https://mermaid.js.org/syntax/flowchart.html)

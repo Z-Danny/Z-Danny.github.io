@@ -2,14 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/projects-re-paddlepaddle/</loc><lastmod>2025-09-04T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/learn-documentation-happy-llm5/</loc><lastmod>2025-08-27T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/learn-documentation-parameters/</loc><lastmod>2025-08-27T10:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/learn-documentation-happy-llm1/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/learn-documentation-happy-llm2/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/learn-documentation-happy-llm4/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/learn-documentation-happy-llm3/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/theme-documentation-content/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/%E4%BF%9D%E7%A0%94/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/agent-mcp/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/projects-re-paddlepaddle/</loc><lastmod>2025-09-04T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm5/</loc><lastmod>2025-08-27T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-parameters/</loc><lastmod>2025-08-27T10:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm1/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm2/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm4/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm3/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/theme-documentation-content/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-content/"
@@ -18,7 +20,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-content/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-built-in-shortcodes/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-built-in-shortcodes/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-built-in-shortcodes/"
@@ -27,7 +29,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-built-in-shortcodes/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-extended-shortcodes/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-extended-shortcodes/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-extended-shortcodes/"
@@ -36,7 +38,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-extended-shortcodes/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-mermaid-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-mermaid-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-mermaid-shortcode/"
@@ -45,7 +47,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-mermaid-shortcode/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-echarts-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-echarts-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-echarts-shortcode/"
@@ -54,7 +56,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-echarts-shortcode/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-mapbox-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-mapbox-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-mapbox-shortcode/"
@@ -63,7 +65,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-mapbox-shortcode/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-music-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-music-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-music-shortcode/"
@@ -72,7 +74,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-music-shortcode/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-bilibili-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-bilibili-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-bilibili-shortcode/"
@@ -81,7 +83,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-bilibili-shortcode/"
                     /></url><url>
-            <loc>http://localhost:1313/theme-documentation-typeit-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/theme-documentation-typeit-shortcode/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/theme-documentation-typeit-shortcode/"
@@ -90,7 +92,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/theme-documentation-typeit-shortcode/"
                     /></url><url>
-            <loc>http://localhost:1313/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/"
@@ -99,7 +101,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/"
                     /></url><url>
-            <loc>http://localhost:1313/categories/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/categories/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/categories/"
@@ -108,9 +110,8 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/categories/"
                     /></url><url>
-            <loc>http://localhost:1313/tags/info/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/tags/llm/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/tags/experiences/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/posts/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/posts/"
@@ -119,7 +120,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/posts/"
                     /></url><url>
-            <loc>http://localhost:1313/tags/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>http://localhost:1313/tags/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/tags/"
@@ -128,15 +129,21 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/tags/"
                     /></url><url>
-            <loc>http://localhost:1313/offer-insight/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/categories/learn-notes/</loc><lastmod>2025-09-04T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/info-doc-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc><lastmod>2025-08-28T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/tags/blog/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/info-documentation-loveit/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/categories/%E5%B7%A5%E5%85%B7-info/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/tags/transformer/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/tags/markdown/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/categories/zdns-%E6%9D%A5%E6%97%B6%E8%B7%AF/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/tags/%E4%BF%9D%E7%A0%94/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/tags/agent/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/categories/learn-notes/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/tags/mcp/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/tags/info/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/tags/llm/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/offer-insight/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/info-doc-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc><lastmod>2025-08-28T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/tags/blog/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/info-documentation-loveit/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/categories/%E5%B7%A5%E5%85%B7-info/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/tags/transformer/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/tags/markdown/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/tags/markdown/"
@@ -145,7 +152,7 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/tags/markdown/"
                     /></url><url>
-            <loc>http://localhost:1313/tags/shortcodes/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/tags/shortcodes/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/tags/shortcodes/"
@@ -154,8 +161,8 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/tags/shortcodes/"
                     /></url><url>
-            <loc>http://localhost:1313/categories/projects/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/about/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/categories/projects/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/about/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/about/"
@@ -164,8 +171,8 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/about/"
                     /></url><url>
-            <loc>http://localhost:1313/tags/installation/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/tags/content/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/tags/installation/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/tags/content/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/tags/content/"
@@ -174,8 +181,8 @@
                     hreflang="zh-cn"
                     href="http://localhost:1313/tags/content/"
                     /></url><url>
-            <loc>http://localhost:1313/tags/configuration/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/categories/documentation/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><xhtml:link
+            <loc>http://localhost:1313/tags/configuration/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://localhost:1313/categories/documentation/</loc><lastmod>2025-08-26T10:02:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/en/categories/documentation/"
