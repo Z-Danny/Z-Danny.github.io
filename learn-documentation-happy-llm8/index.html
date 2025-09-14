@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的 - ~ Danny&#39;s Homie ~</title><meta name="Description" content="LLM与PLM的区别？LLM是如何训出来的描述"><meta property="og:url" content="http://localhost:1313/learn-documentation-happy-llm8/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的">
+  <meta property="og:description" content="LLM与PLM的区别？LLM是如何训出来的描述">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-03T11:27:33+08:00">
+    <meta property="article:modified_time" content="2025-09-03T11:27:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的">
+  <meta name="twitter:description" content="LLM与PLM的区别？LLM是如何训出来的描述">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/learn-documentation-happy-llm8/" /><link rel="prev" href="http://localhost:1313/learn-documentation-happy-llm7/" /><link rel="next" href="http://localhost:1313/projects-re-paddlepaddle/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/learn-documentation-happy-llm8\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM","wordcount":  1719 ,
+        "url": "http:\/\/localhost:1313\/learn-documentation-happy-llm8\/","datePublished": "2025-09-03T11:27:33+08:00","dateModified": "2025-09-03T11:27:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "Danny"
+            },"description": "LLM与PLM的区别？LLM是如何训出来的描述"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/projects/"> 项目 </a><a class="menu-item" href="/about/"> 关于我 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/learn-documentation-happy-llm8/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/projects/" title="">项目</a><a class="menu-item" href="/about/" title="">关于我</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/learn-documentation-happy-llm8/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Danny</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learn-notes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Learn-Notes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-03">2025-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1719 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#初识llm">初识LLM</a></li>
+    <li><a href="#训一个llm的步骤">训一个LLM的步骤</a>
+      <ul>
+        <li><a href="#阶段1pretrain">阶段1：Pretrain</a>
+          <ul>
+            <li><a href="#一些模型训练参数对比">一些模型训练参数对比</a></li>
+            <li><a href="#llm-参数量和训练数据的爱恨情仇">LLM 参数量和训练数据的爱恨情仇</a></li>
+            <li><a href="#llm的数据来源处理和使用">LLM的数据来源、处理和使用</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#怎么自己弄数据集"><em>怎么自己弄数据集？</em></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#llm-参数量和训练资源的拉扯">LLM 参数量和训练资源的拉扯</a></li>
+            <li><a href="#llm-的分卡训怎么训">LLM 的分卡训怎么训</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="第四章-大语言模型">第四章 大语言模型</h1>
+<p>（这是笔者自己的学习记录，仅供参考，愿 LLM 越来越好❤）由于篇幅较长，本篇会先讲如何做LLM的第一个阶段预训练，下一篇会讲后面的两个阶段</p>
+<hr>
+<h2 id="初识llm">初识LLM</h2>
+<p>LLM = Large Language Model = 大语言模型
+就是<strong>训练数据</strong>T级别、<strong>参数</strong>百亿10B+都很大，在<strong>多卡</strong>分布集群训出来的语言模型，也正因此让模型一下子超神了（涌现能力：语言能力一下子远超传统的PLM）</p>
+<p>所以回答标题问题，和PLM的区别就是，LLM更大了，训练范式从预训练+微调，LLM的训练见下文</p>
+<hr>
+<h2 id="训一个llm的步骤">训一个LLM的步骤</h2>
+<p>主要有3个阶段：</p>
+<ul>
+<li>Pretrain 预训练</li>
+<li>SFT 监督微调</li>
+<li>RLHF 人类反馈强化学习</li>
+</ul>
+<p>接下来看下每个阶段的难点</p>
+<hr>
+<h3 id="阶段1pretrain">阶段1：Pretrain</h3>
+<blockquote>
+<p>ps：这里就是和之前章节介绍过的PLM差不多，都是训练一个模型出来，因为后面还要继续对这个模型进行调整修改，所以这一阶段的模型叫做预训练模型，阶段叫预训练。很直观了。</p></blockquote>
+<p>预训练阶段，采用的架构是类GPT的decoder-only架构，任务是CLM。</p>
+<hr>
+<h4 id="一些模型训练参数对比">一些模型训练参数对比</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/dbc42e6c39884148a117329b5fa1474f.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/dbc42e6c39884148a117329b5fa1474f.png, https://i-blog.csdnimg.cn/direct/dbc42e6c39884148a117329b5fa1474f.png 1.5x, https://i-blog.csdnimg.cn/direct/dbc42e6c39884148a117329b5fa1474f.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/dbc42e6c39884148a117329b5fa1474f.png"
+        title="在这里插入图片描述" /></p>
+<hr>
+<h4 id="llm-参数量和训练数据的爱恨情仇">LLM 参数量和训练数据的爱恨情仇</h4>
+<p>指的是参数量和训练语料量的经验规律
+<code>Scaling Law</code>（OpenAI）：</p>
+<p>$$C(计算量) \sim 6N(参数量)D(token数)$$实验得出：
+<code>参数与数据的关系（最基本）</code>（OpenAI）
+$$D（数据量） = 1.7N（参数量）$$
+<code>参数与数据（性能最优）</code>（LLaMA）
+$$D（数据量） = 20N（参数量），
+$$</p>
+<table>
+  <thead>
+      <tr>
+          <th>提出方</th>
+          <th>含义</th>
+          <th>举例（175B 参数）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>OpenAI</strong></td>
+          <td>数据量与参数量近似成正比（训练资源平衡的基本经验）</td>
+          <td>$175B \times 1.7 \approx 297.5B$ tokens（GPT-3 实际用了约 300B）</td>
+      </tr>
+      <tr>
+          <td><strong>LLaMA (DeepMind 的 Chinchilla 研究)</strong></td>
+          <td>在计算资源固定下，<strong>最优性能</strong>需要更多数据，约为参数量的 20 倍</td>
+          <td>$175B \times 20 = 3500B = 3.5T$ tokens</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h4 id="llm的数据来源处理和使用">LLM的数据来源、处理和使用</h4>
+<p>模型会的基本来源于训练材料，所以材料很重要。
+训练用数据 =
+【开源语料】（CommonCrawl、C4、Github、Wikipedia 等、昆仑天工开源的SkyPile（150B）、中科闻歌开源的yayi2（100B）英文多中文少）
++
+【自己的高质量数据】<strong>（<code>配比和数据内容</code>都很重要）</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/2d5a523f26a24648a659b905c28296af.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/2d5a523f26a24648a659b905c28296af.png, https://i-blog.csdnimg.cn/direct/2d5a523f26a24648a659b905c28296af.png 1.5x, https://i-blog.csdnimg.cn/direct/2d5a523f26a24648a659b905c28296af.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/2d5a523f26a24648a659b905c28296af.png"
+        title="在这里插入图片描述" />
+<strong>数据内容的质量 &gt; 数量</strong>
+目前有已处理好的语料和用来处理语料的框架，就是有帮你处理的工具和处理好的。
+如：<a href="https://huggingface.co/datasets/cerebras/SlimPajama-627B/tree/main/train" target="_blank" rel="noopener noreffer ">627B Slimpajama 数据集</a>、<a href="https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T" target="_blank" rel="noopener noreffer ">1T 的 RedPajama数据集</a></p>
+<table>
+  <thead>
+      <tr>
+          <th>环节</th>
+          <th>主要内容</th>
+          <th>方法与说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>①文档准备</td>
+          <td>- 爬取<br>- URL 过滤<br>- 文档提取<br>- 语言选择等</td>
+          <td>数据预处理的第一步，保证基础语料来源合法、可用</td>
+      </tr>
+      <tr>
+          <td>②语料过滤</td>
+          <td>- 基于模型的方法：训练文本分类器进行过滤<br>- 基于启发式的方法：人工定义质量指标</td>
+          <td>提升语料质量，去除低质量、不相关或噪声数据</td>
+      </tr>
+      <tr>
+          <td>③语料去重</td>
+          <td>- 基于 Hash 算法：计算相似性并去除<br>- 基于子串匹配：精确去重</td>
+          <td>避免重复语料，提升模型泛化能力，减少冗余</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="怎么自己弄数据集"><em>怎么自己弄数据集？</em></h2>
+<h4 id="llm-参数量和训练资源的拉扯">LLM 参数量和训练资源的拉扯</h4>
+<p>LLM一般都在多卡分布式GPU集群训
+要用<strong>分布式框架</strong>对数据、中间参数、参数切分。</p>
+<ul>
+<li>训练资源：<code>卡（数量、类型） + 时间</code></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>参数量</th>
+          <th>训练资源</th>
+          <th>训练时长</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1B</strong></td>
+          <td>约 256 张 A100</td>
+          <td>2 ~ 3 天</td>
+      </tr>
+      <tr>
+          <td><strong>10B</strong></td>
+          <td>约 1024 张 A100</td>
+          <td>30+ 天</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h4 id="llm-的分卡训怎么训">LLM 的分卡训怎么训</h4>
+<blockquote>
+<p><em>什么是分布式训练框架？</em>
+卡上存参数（模型并行），数据分卡训（数据并行）
+框架就是让开发者更方便运用不同的分布式方法的。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/1c875c85ea574edf9330e6c608b65052.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/1c875c85ea574edf9330e6c608b65052.png, https://i-blog.csdnimg.cn/direct/1c875c85ea574edf9330e6c608b65052.png 1.5x, https://i-blog.csdnimg.cn/direct/1c875c85ea574edf9330e6c608b65052.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/1c875c85ea574edf9330e6c608b65052.png"
+        title="在这里插入图片描述" /></p></blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>常见的分布式方式？</th>
+          <th>说明</th>
+          <th>常见的分布式框架 ？</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>数据并行 (Data Parallel, DP)</strong></td>
+          <td>每个 GPU 训练相同模型副本，不同数据切分，梯度同步更新</td>
+          <td>PyTorch DDP, Horovod</td>
+      </tr>
+      <tr>
+          <td><strong>张量并行 (Tensor Parallel, TP)</strong></td>
+          <td>将单层模型的参数（矩阵）切分到多个 GPU 上并行计算</td>
+          <td>Megatron-LM, ColossalAI</td>
+      </tr>
+      <tr>
+          <td><strong>流水线并行 (Pipeline Parallel, PP)</strong></td>
+          <td>将模型层切分到不同 GPU，分批次流水线执行</td>
+          <td>GPipe, Megatron-LM</td>
+      </tr>
+      <tr>
+          <td><strong>3D 并行 (DP + TP + PP)</strong></td>
+          <td>同时结合数据并行、张量并行和流水线并行，提升扩展性</td>
+          <td>Megatron-LM</td>
+      </tr>
+      <tr>
+          <td><strong>ZeRO (Zero Redundancy Optimizer)零冗余优化器</strong></td>
+          <td>将优化器状态、梯度、参数切分到不同 GPU，减少显存占用</td>
+          <td>DeepSpeed （挺广的）</td>
+      </tr>
+      <tr>
+          <td><strong>异构并行 (Heterogeneous Parallel)</strong></td>
+          <td>同时利用 GPU、CPU、TPU 等不同设备协作</td>
+          <td>ColossalAI, Ray</td>
+      </tr>
+  </tbody>
+</table>
+<p>拓展：Deepspeed框架=核心策略：ZeRO+CPU-offload</p>
+<blockquote>
+<p>ZeRO</p>
+<ul>
+<li>数据并行（分数据到不同卡）+ 显存优化（优化计算时单卡的显存占用）</li>
+<li>训练时单卡的显存占用是什么样的？
+<ul>
+<li>模型状态占用的显存：模型参数、模型梯度和优化器 Adam 的状态参数。   ☞ 1M参数量 &ndash; 混合精度训练下 &ndash;16M显存（12M的Adam状态参数）</li>
+<li>剩余状态占用的显存：包括激活值、各种缓存和显存碎片</li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/3fa42d7e80bf452f9e7bc40f02399009.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/3fa42d7e80bf452f9e7bc40f02399009.png, https://i-blog.csdnimg.cn/direct/3fa42d7e80bf452f9e7bc40f02399009.png 1.5x, https://i-blog.csdnimg.cn/direct/3fa42d7e80bf452f9e7bc40f02399009.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/3fa42d7e80bf452f9e7bc40f02399009.png"
+        title="在这里插入图片描述" />
+可以发现Adam的状态参数占用很大，所以ZeRO就针对这个问题给出了一些优化策略。</p>
+<ul>
+<li><em>ZeRO给的优化策略是什么？</em>
+分片，但分的越细，合并时通信开销就大
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/ae980ff0d43c4dee9b4e519ebfe74fd3.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/ae980ff0d43c4dee9b4e519ebfe74fd3.png, https://i-blog.csdnimg.cn/direct/ae980ff0d43c4dee9b4e519ebfe74fd3.png 1.5x, https://i-blog.csdnimg.cn/direct/ae980ff0d43c4dee9b4e519ebfe74fd3.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/ae980ff0d43c4dee9b4e519ebfe74fd3.png"
+        title="在这里插入图片描述" /></li>
+</ul></blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-09-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/learn-documentation-happy-llm8/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/learn-documentation-happy-llm8/" data-title="Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llm/">LLM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/learn-documentation-happy-llm7/" class="prev" rel="prev" title="Happy_LLM_07 3种常见的decoder-only模型"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Happy_LLM_07 3种常见的decoder-only模型</a>
+            <a href="/projects-re-paddlepaddle/" class="next" rel="next" title="Happy_LLM_05 BERT">Happy_LLM_05 BERT<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"search":{"algoliaAppID":"GZT24PWKNT","algoliaIndex":"index","algoliaSearchKey":"634ab679e825b815de2663de38908f9d","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"🦴     |   ","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>

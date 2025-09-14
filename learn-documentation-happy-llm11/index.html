@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程 - ~ Danny&#39;s Homie ~</title><meta name="Description" content="如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程描述"><meta property="og:url" content="http://localhost:1313/learn-documentation-happy-llm11/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程">
+  <meta property="og:description" content="如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程描述">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-09T11:27:33+08:00">
+    <meta property="article:modified_time" content="2025-09-09T11:27:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程">
+  <meta name="twitter:description" content="如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程描述">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/learn-documentation-happy-llm11/" /><link rel="prev" href="http://localhost:1313/learn-documentation-happy-llm9/" /><link rel="next" href="http://localhost:1313/learn-documentation-happy-llm12/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain+SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/learn-documentation-happy-llm11\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM","wordcount":  2603 ,
+        "url": "http:\/\/localhost:1313\/learn-documentation-happy-llm11\/","datePublished": "2025-09-09T11:27:33+08:00","dateModified": "2025-09-09T11:27:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "Danny"
+            },"description": "如何用transformers框架进行开源LLM的pretrain+SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程描述"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/projects/"> 项目 </a><a class="menu-item" href="/about/"> 关于我 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/learn-documentation-happy-llm11/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/projects/" title="">项目</a><a class="menu-item" href="/about/" title="">关于我</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/learn-documentation-happy-llm11/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain+SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Danny</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learn-notes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Learn-Notes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-09">2025-09-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2603 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-transformers框架">what Transformers框架？</a>
+      <ul>
+        <li><a href="#框架介绍">框架介绍</a></li>
+        <li><a href="#咱今天来逛三园拥抱脸">咱今天来逛三园（拥抱脸）</a></li>
+        <li><a href="#目前比较多的llm工作">目前比较多的LLM工作</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-transformers-自定义-llm训参数">how Transformers 自定义 LLM（训参数）？</a>
+      <ul>
+        <li><a href="#1初始化一个-llm--tokenizer">1.初始化一个 LLM + tokenizer</a></li>
+        <li><a href="#2预训练数据处理">2.预训练数据处理</a></li>
+        <li><a href="#3配置训练参数">3.配置训练参数</a></li>
+        <li><a href="#4用deepspeed分布式开训">4.用DeepSpeed分布式开训！</a></li>
+        <li><a href="#5sft开调指令微调">5.SFT开调（指令微调）</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-高效微调">how 高效微调？</a>
+      <ul>
+        <li><a href="#adapt-tuning">Adapt Tuning</a></li>
+        <li><a href="#prefix-tuning-前缀微调">Prefix Tuning 前缀微调</a></li>
+      </ul>
+    </li>
+    <li><a href="#高效微调lora微调peft库">高效微调——LoRA微调（peft库）</a>
+      <ul>
+        <li><a href="#what-peft库">what peft库？</a></li>
+        <li><a href="#lora整体流程">LoRA整体流程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="task11第六章-大模型训练流程实践">Task11：第六章 大模型训练流程实践</h1>
+<p>为啥会有这一篇，希望大家明白前因后果，帮助更好理解现在流行的框架。
+接task10，每训一个大模型每个组件都自己写代码，显然不合适。
+原因如下：</p>
+<ul>
+<li>麻烦</li>
+<li>各个模型之间不一定通用、参数可能没法移植</li>
+<li>自己写的分布式训练也不好搞</li>
+</ul>
+<p>所以，机智的开源社区给出了LLM相关的</p>
+<ul>
+<li>主流训练框架Transformers——进行模型的pretrain、sft</li>
+<li>分布式框架deepseed</li>
+<li>高效微调框架peft</li>
+</ul>
+<hr>
+<h2 id="what-transformers框架">what Transformers框架？</h2>
+<h3 id="框架介绍">框架介绍</h3>
+<p>Transformers框架 ≠ Transformer结构
+它是hugging face开发的，</p>
+<ul>
+<li>模块化组件，就可以支持拼拼凑凑出主流模型架构，如BERT、GPT等，<code>AutoModel类</code></li>
+<li>内置<code>Trainer类</code>，封装分布式训练（pytorch原生的DDP、DeepSeed、Megatron-LM等训练策略）的核心逻辑 + 简单<code>配置训练参数</code> ——数据/模型/流水线并行
+ps：8卡A100集群就可以10+B参数训练</li>
+<li>可实现训练过程<code>自动化管理</code>，（os：不然训那么久还要一直看着，太可怕了）配合SavingPolicy 和 LoggingCallback 等组件</li>
+</ul>
+<h3 id="咱今天来逛三园拥抱脸">咱今天来逛三园（拥抱脸）</h3>
+<p>逛的什么园，hugging face园（os：给大家来段贯口）
+三园里面有什么？</p>
+<ul>
+<li>数亿 pretrain 的<code>模型参数</code></li>
+<li>25w+ 不同类型 <code>数据集</code></li>
+<li>搭好的（pretrain模型+data+eval函数）框架
+（os：这意味着什么你知道吗？那就是你要换哪个开源LLM、用什么data都可以，“随便放随便训”，也没那么随便其实hh）</li>
+</ul>
+<h3 id="目前比较多的llm工作">目前比较多的LLM工作</h3>
+<p>要知道</p>
+<ul>
+<li>训一个pretrain不容易（费时费钱费资源），所以<code>post-train</code>和<code>SFT</code>就很多，基模然后调一调满足下游业务才是真正的<strong>落地</strong></li>
+<li>就算是大款，LLM的 <strong>para 也很大</strong>，所以像<code>deepspeed等分布式训练框架</code>老必备技能了</li>
+</ul>
+<hr>
+<h2 id="how-transformers-自定义-llm训参数">how Transformers 自定义 LLM（训参数）？</h2>
+<p>即，通过 Transformers 框架实现 LLM 的 Pretrain 及 SFT</p>
+<blockquote>
+<p>这里讲的是从只有某个模型框架（参数是随机数）到模型参数pretrain填好，再到SFT监督微调的阶段
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/e418a39829d9418b8e1cef08f1a8287d.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/e418a39829d9418b8e1cef08f1a8287d.png, https://i-blog.csdnimg.cn/direct/e418a39829d9418b8e1cef08f1a8287d.png 1.5x, https://i-blog.csdnimg.cn/direct/e418a39829d9418b8e1cef08f1a8287d.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/e418a39829d9418b8e1cef08f1a8287d.png"
+        title="在这里插入图片描述" /></p></blockquote>
+<h3 id="1初始化一个-llm--tokenizer">1.初始化一个 LLM + tokenizer</h3>
+<p>有两种，以<strong>CausalLM</strong>——<strong>Qwen-2.5-1.5B</strong> 为例（ps：因果LLM，就是用CLM任务训的LLM，前面预测下一个词）
+用到的类：<em>AutoModelForCausalLM、AutoConfig</em></p>
+<ul>
+<li>直接加载一个<code>带para的LLM</code>（后面直接在自己的预料上训）【最多】<strong>（ps：如果选择这种可以直接跳到下一节高效微调的步骤了）</strong></li>
+<li>加载一个<code>盲盒零LLM</code>（权重para是随机的，然后用CLM任务去训出para）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/9c86e1a371754482afb8e6c655b2d5e7.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/9c86e1a371754482afb8e6c655b2d5e7.png, https://i-blog.csdnimg.cn/direct/9c86e1a371754482afb8e6c655b2d5e7.png 1.5x, https://i-blog.csdnimg.cn/direct/9c86e1a371754482afb8e6c655b2d5e7.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/9c86e1a371754482afb8e6c655b2d5e7.png"
+        title="在这里插入图片描述" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/f39e58bb27024499846b20aa39e8c0de.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/f39e58bb27024499846b20aa39e8c0de.png, https://i-blog.csdnimg.cn/direct/f39e58bb27024499846b20aa39e8c0de.png 1.5x, https://i-blog.csdnimg.cn/direct/f39e58bb27024499846b20aa39e8c0de.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/f39e58bb27024499846b20aa39e8c0de.png"
+        title="在这里插入图片描述" />
+tokenizer也是，一般就加载开源LLM自带的分词器就行
+用到的类：<em>AutoTokenizer</em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/7d89bf2ed66442cf83eaeccdf42914c2.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/7d89bf2ed66442cf83eaeccdf42914c2.png, https://i-blog.csdnimg.cn/direct/7d89bf2ed66442cf83eaeccdf42914c2.png 1.5x, https://i-blog.csdnimg.cn/direct/7d89bf2ed66442cf83eaeccdf42914c2.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/7d89bf2ed66442cf83eaeccdf42914c2.png"
+        title="在这里插入图片描述" /></li>
+</ul>
+<h3 id="2预训练数据处理">2.预训练数据处理</h3>
+<p>加载完分词器和架构后，自然就是处理下训练数据了。
+这里用的是 <em>出门问问序列猴子开源数据集30+GB</em> （os：xdm为伟大的开源事业喝彩！）
+【加载（下载解压）&ndash; 分词 &ndash; 拼接切分】</p>
+<blockquote>
+<p>① 加载并看看 jsonl数据</p></blockquote>
+<p>用到的库：hf的<em>datasets</em>
+用到的类：load_dataset
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/a3f1bc71386340f888257b791afa2320.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/a3f1bc71386340f888257b791afa2320.png, https://i-blog.csdnimg.cn/direct/a3f1bc71386340f888257b791afa2320.png 1.5x, https://i-blog.csdnimg.cn/direct/a3f1bc71386340f888257b791afa2320.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/a3f1bc71386340f888257b791afa2320.png"
+        title="在这里插入图片描述" /></p>
+<ul>
+<li>
+<p>json格式 vs jsonl格式？</p>
+<ul>
+<li>json：整个文件是一个json，用“，”分割每个</li>
+<li>jsonl：<strong>大型数据</strong>，json line ，一行是一个json，用“\n”分割json对象</li>
+</ul>
+</li>
+<li>
+<p>ds是 <code>DatasetDict</code>对象，就是<strong>超大数据集</strong>，里面很多<strong>子集</strong></p>
+</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 查看数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">ds</span><span class="p">[</span><span class="s2">&#34;train&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看特征</span>
+</span></span><span class="line"><span class="cl"><span class="n">column_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">&#34;train&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">features</span><span class="p">)</span></span></span></code></pre></div></div>
+<blockquote>
+<p>② 用tokenizer 对数据分词</p></blockquote>
+<p><code>ds.map()</code>：对data中每个样本执行函数，返回新数据集。
+ps：为什么不用for循环？—— 根本不是一个档次，map可以<strong>①并行处理、②自动缓存、③进度条</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/527eb356b2624352bf8a0e23605dff6a.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/527eb356b2624352bf8a0e23605dff6a.png, https://i-blog.csdnimg.cn/direct/527eb356b2624352bf8a0e23605dff6a.png 1.5x, https://i-blog.csdnimg.cn/direct/527eb356b2624352bf8a0e23605dff6a.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/527eb356b2624352bf8a0e23605dff6a.png"
+        title="在这里插入图片描述" /></p>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 对数据集进行 tokenize</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">tokenize_function</span><span class="p">(</span><span class="n">examples</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 使用预先加载的 tokenizer 进行分词</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">examples</span><span class="p">[</span><span class="s2">&#34;text&#34;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">output</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 批量处理</span>
+</span></span><span class="line"><span class="cl"><span class="n">tokenized_datasets</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tokenize_function</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">batched</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_proc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">remove_columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">load_from_cache_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">desc</span><span class="o">=</span><span class="s2">&#34;Running tokenizer on dataset&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></div></div>
+<blockquote>
+<p>③ 拼接分块处理数据</p></blockquote>
+<p>操作：把多个文本段<strong>拼接</strong>在一起，处理成<strong>统一长度</strong>的文本块，再对每个文本块进行训练
+【 切成每个2048 token 长度，再 map 批量处理】
+原因： pretrain的CLM 任务，一次性学习多个样本的序列语义不显著提高模型性能❌，且训练数据量大❌、训练时间长❌，对训练效率要求比较高❌
+用到的库和包：from itertools import <code>chain</code></p>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 预训练一般将文本拼接成固定长度的文本段</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 这里我们取块长为 2048</span>
+</span></span><span class="line"><span class="cl"><span class="n">block_size</span> <span class="o">=</span> <span class="mi">2048</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">group_texts</span><span class="p">(</span><span class="n">examples</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 将文本段拼接起来</span>
+</span></span><span class="line"><span class="cl">    <span class="n">concatenated_examples</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">examples</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">examples</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 计算拼起来的整体长度</span>
+</span></span><span class="line"><span class="cl">    <span class="n">total_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">concatenated_examples</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">examples</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 如果长度太长，进行分块</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">total_length</span> <span class="o">&gt;=</span> <span class="n">block_size</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">total_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">total_length</span> <span class="o">//</span> <span class="n">block_size</span><span class="p">)</span> <span class="o">*</span> <span class="n">block_size</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 按 block_size 进行切分</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_length</span><span class="p">,</span> <span class="n">block_size</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">concatenated_examples</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># CLM 任务，labels 和 input 是相同的</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span><span class="p">[</span><span class="s2">&#34;labels&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&#34;input_ids&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 批量处理</span>
+</span></span><span class="line"><span class="cl"><span class="n">lm_datasets</span> <span class="o">=</span> <span class="n">tokenized_datasets</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">group_texts</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">batched</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_proc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">load_from_cache_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Grouping texts in chunks of </span><span class="si">{</span><span class="n">block_size</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">40000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">lm_datasets</span><span class="p">[</span><span class="s2">&#34;train&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
+<h3 id="3配置训练参数">3.配置训练参数</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/80b299fd23594bf19a9ba72ca3b90ed8.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/80b299fd23594bf19a9ba72ca3b90ed8.png, https://i-blog.csdnimg.cn/direct/80b299fd23594bf19a9ba72ca3b90ed8.png 1.5x, https://i-blog.csdnimg.cn/direct/80b299fd23594bf19a9ba72ca3b90ed8.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/80b299fd23594bf19a9ba72ca3b90ed8.png"
+        title="在这里插入图片描述" /></p>
+<h3 id="4用deepspeed分布式开训">4.用DeepSpeed分布式开训！</h3>
+<p>你直接用 <strong>.jpynb</strong> 运行，训不动，会断。
+一般预训练过程：<code>多卡分布式 + bash 脚本（设定超参) + python脚本（训练控制）</code></p>
+<ul>
+<li>logging 库来实现（日志）记录</li>
+<li>固定间隔保存 checkpoint（防崩）</li>
+<li>（监测）训练进度、loss 下降趋势 ——swanlab 作为训练检测</li>
+</ul>
+<p>具体代码就不展开了，平时也不咋会遇到，知道大概过程就行。<a href="https://datawhalechina.github.io/happy-llm/#/./chapter6/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%E5%AE%9E%E8%B7%B5?id=_61-%e6%a8%a1%e5%9e%8b%e9%a2%84%e8%ae%ad%e7%bb%83" target="_blank" rel="noopener noreffer ">想看戳这里</a></p>
+<h3 id="5sft开调指令微调">5.SFT开调（指令微调）</h3>
+<p>CLM任务 训练时的pre和sft 计算区别</p>
+<ul>
+<li>pretrain 会对全部 text 进行 loss 计算，要求模型对整个文本实现建模预测；</li>
+<li>而 SFT 仅对<code>输出进行 loss 计算</code>，不计算指令部分的 loss</li>
+</ul>
+<p>数据：准备微调数据集，这个数据量也不少哦。构造指令回答<code>数据对</code></p>
+<p>（具体也不说了）<a href="https://datawhalechina.github.io/happy-llm/#/./chapter6/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%E5%AE%9E%E8%B7%B5?id=_62-%e6%a8%a1%e5%9e%8b%e6%9c%89%e7%9b%91%e7%9d%a3%e5%be%ae%e8%b0%83" target="_blank" rel="noopener noreffer ">想看戳这里</a></p>
+<hr>
+<h2 id="how-高效微调">how 高效微调？</h2>
+<h3 id="adapt-tuning">Adapt Tuning</h3>
+<p>在模型架构中每层加入<code>adapter层</code>，<strong>微调时</strong>模型原参数<code>冻结</code>。
+【LoRA就是其改进版】
+存在的问题：</p>
+<ul>
+<li>其实是增加了挺多参数量，也增加了计算量，推理会比原模型<strong>更慢</strong></li>
+</ul>
+<h3 id="prefix-tuning-前缀微调">Prefix Tuning 前缀微调</h3>
+<p>是在微调阶段，不同任务加前缀<strong>prefix</strong>=virtual token 加在输入token前面，微调训练时就只更新<strong>这部分prefix参数</strong>，原模型参数冻结。</p>
+<p>【P-tuning就是其改进版】
+存在的问题：</p>
+<ul>
+<li>模型可用序列<strong>长度缩短</strong>了，因为被prefix占用了。</li>
+<li><strong>微调质量</strong>越好，模型推理可用<strong>context越少</strong></li>
+</ul>
+<hr>
+<h2 id="高效微调lora微调peft库">高效微调——LoRA微调（peft库）</h2>
+<h3 id="what-peft库">what peft库？</h3>
+<ul>
+<li>
+<p>peft也是拥抱脸小哥的，封装了LoRA、Adapt Tuning、P-tuning（就是主流的微调）等方法</p>
+</li>
+<li>
+<p>peft 库目前支持调用 LoRA 的层包括：<strong>nn.Linear、nn.Embedding、nn.Conv2d</strong> 三种。</p>
+</li>
+</ul>
+<h3 id="lora整体流程">LoRA整体流程</h3>
+<blockquote>
+<p>核心： 选层换成lora层，复制冻结原参，更新旁路的两个A、B低秩矩阵数值</p></blockquote>
+<p>优点：</p>
+<ul>
+<li>实际训练大幅降低显存占用，下游也能适配</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>只调整低秩矩阵，其实模型很多的参数没变，所以整体的<code>知识注入没什么增加</code>。</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/154d52741a6b46eeacc74d27fca7b0ad.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/154d52741a6b46eeacc74d27fca7b0ad.png, https://i-blog.csdnimg.cn/direct/154d52741a6b46eeacc74d27fca7b0ad.png 1.5x, https://i-blog.csdnimg.cn/direct/154d52741a6b46eeacc74d27fca7b0ad.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/154d52741a6b46eeacc74d27fca7b0ad.png"
+        title="在这里插入图片描述" />
+用peft进行LoRA微调：
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/6e5fe68944ec4742ba9ad176e4367cc1.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/6e5fe68944ec4742ba9ad176e4367cc1.png, https://i-blog.csdnimg.cn/direct/6e5fe68944ec4742ba9ad176e4367cc1.png 1.5x, https://i-blog.csdnimg.cn/direct/6e5fe68944ec4742ba9ad176e4367cc1.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/6e5fe68944ec4742ba9ad176e4367cc1.png"
+        title="在这里插入图片描述" /></p>
+<hr>
+<p><a href="https://datawhalechina.github.io/happy-llm/#/./chapter6/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%E5%AE%9E%E8%B7%B5?id=_63-%e9%ab%98%e6%95%88%e5%be%ae%e8%b0%83" target="_blank" rel="noopener noreffer ">happy-llm参考资料</a></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-09-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/learn-documentation-happy-llm11/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/learn-documentation-happy-llm11/" data-title="Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llm/">LLM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/learn-documentation-happy-llm9/" class="prev" rel="prev" title="Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Happy_LLM_08 SFT、RLHF（RM+PPO）、DPO</a>
+            <a href="/learn-documentation-happy-llm12/" class="next" rel="next" title="Happy_LLM_12 你问我什么是好的LLM？那我们就来测一测啊">Happy_LLM_12 你问我什么是好的LLM？那我们就来测一测啊<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"search":{"algoliaAppID":"GZT24PWKNT","algoliaIndex":"index","algoliaSearchKey":"634ab679e825b815de2663de38908f9d","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"🦴     |   ","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>

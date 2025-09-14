@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_07 3种常见的decoder-only模型 - ~ Danny&#39;s Homie ~</title><meta name="Description" content="3种常见的decoder-only模型描述"><meta property="og:url" content="http://localhost:1313/learn-documentation-happy-llm7-copy/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_07 3种常见的decoder-only模型">
+  <meta property="og:description" content="3种常见的decoder-only模型描述">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-02T11:27:33+08:00">
+    <meta property="article:modified_time" content="2025-09-02T11:27:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_07 3种常见的decoder-only模型">
+  <meta name="twitter:description" content="3种常见的decoder-only模型描述">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/learn-documentation-happy-llm7-copy/" /><link rel="prev" href="http://localhost:1313/learn-documentation-happy-llm5/" /><link rel="next" href="http://localhost:1313/projects-re-paddlepaddle/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_07 3种常见的decoder-only模型",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/learn-documentation-happy-llm7-copy\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM","wordcount":  3254 ,
+        "url": "http:\/\/localhost:1313\/learn-documentation-happy-llm7-copy\/","datePublished": "2025-09-02T11:27:33+08:00","dateModified": "2025-09-02T11:27:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "Danny"
+            },"description": "3种常见的decoder-only模型描述"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/projects/"> 项目 </a><a class="menu-item" href="/about/"> 关于我 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/learn-documentation-happy-llm7-copy/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/projects/" title="">项目</a><a class="menu-item" href="/about/" title="">关于我</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/learn-documentation-happy-llm7-copy/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_07 3种常见的decoder-only模型</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Danny</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learn-notes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Learn-Notes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-02">2025-09-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3254 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是decoder-only的plm">什么是Decoder-Only的PLM？</a></li>
+    <li><a href="#gpt">GPT</a>
+      <ul>
+        <li><a href="#gpt-123如何一步步超越bert">GPT-123如何一步步超越BERT</a>
+          <ul>
+            <li><a href="#1-历程">1. 历程：</a></li>
+            <li><a href="#2-gpt-123的对比">2. GPT-123的对比</a></li>
+          </ul>
+        </li>
+        <li><a href="#gpt的预训练任务clm">GPT的预训练任务CLM</a>
+          <ul>
+            <li><a href="#什么是clm">什么是CLM？</a></li>
+          </ul>
+        </li>
+        <li><a href="#gpt模型架构">GPT模型架构</a></li>
+        <li><a href="#卷积核咋用的"><em>卷积核咋用的？</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#llama">LLaMA</a>
+      <ul>
+        <li><a href="#llama-123-一路走来">LLaMA-123 一路走来</a></li>
+        <li><a href="#llama的架构">LLaMA的架构</a></li>
+      </ul>
+    </li>
+    <li><a href="#glm">GLM</a>
+      <ul>
+        <li><a href="#glm系列">GLM系列</a></li>
+        <li><a href="#glm用的预训练任务">GLM用的预训练任务</a></li>
+        <li><a href="#glm的模型架构">GLM的模型架构</a>
+          <ul>
+            <li><a href="#差异点一用post-norm--后归一化">差异点一：用Post-Norm = 后归一化</a></li>
+            <li><a href="#差异点二减少输出参数量">差异点二：减少输出参数量</a></li>
+            <li><a href="#差异点三激活函数换成gelus">差异点三：激活函数换成GeLUs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="task07第三章-预训练语言模型plm">Task07：第三章 预训练语言模型PLM</h1>
+<p>（这是笔者自己的学习记录，仅供参考，原始<a href="https://datawhalechina.github.io/happy-llm/#/./chapter1/%E7%AC%AC%E4%B8%80%E7%AB%A0%20NLP%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5?id=_13-nlp-%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener noreffer ">学习链接</a>，愿 LLM 越来越好❤）</p>
+<hr>
+<p>本篇介绍3种很典的decoder-only的PLM（GPT、LlaMA、GLM）。目前火🔥的LLM基本都是用解码器的架构</p>
+<h2 id="什么是decoder-only的plm">什么是Decoder-Only的PLM？</h2>
+<p>就是Transformer的decoder层堆叠，或者在此基础上改进而来的。
+对NLG，生成任务比较牛，这也是为什么用来做LLM生成文本。</p>
+<hr>
+<h2 id="gpt">GPT</h2>
+<h3 id="gpt-123如何一步步超越bert">GPT-123如何一步步超越BERT</h3>
+<p>= <strong>G</strong>enerative <strong>P</strong>re-<strong>T</strong>raining Language Model 生成式预训练语言模型</p>
+<h4 id="1-历程">1. 历程：</h4>
+<ul>
+<li>2018年<strong>OpenAI</strong>就已经发了GPT，但是那时候性能还不行，比BERT差。</li>
+<li>&ndash;&gt;通过增大数据集、参数，（认为的“体量即正义”）让模型能力得到了突破【<code>涌现能力</code>：不知怎的当年的小黑变身了】</li>
+<li>&ndash;&gt; 2020年 GPT-3 就BOOM💣了</li>
+</ul>
+<h4 id="2-gpt-123的对比">2. GPT-123的对比</h4>
+<p>主打一个越来越大，最终 GPT-3 达到了<strong>百亿级别参数量和百GB级别的语料规模</strong>。（这里对数量级有个认知就差不多了）</p>
+<table>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>Decoder Layer</th>
+          <th>Hidden Size</th>
+          <th>注意力头数</th>
+          <th>注意力维度</th>
+          <th>总参数量</th>
+          <th>预训练语料</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>GPT-1</td>
+          <td>12</td>
+          <td>3072</td>
+          <td>12</td>
+          <td>768</td>
+          <td>0.12B</td>
+          <td>5GB</td>
+      </tr>
+      <tr>
+          <td>GPT-2</td>
+          <td>48</td>
+          <td>6400</td>
+          <td>25</td>
+          <td>1600</td>
+          <td>1.5B</td>
+          <td>40GB</td>
+      </tr>
+      <tr>
+          <td>GPT-3</td>
+          <td>96</td>
+          <td>49152</td>
+          <td>96</td>
+          <td>12288</td>
+          <td>175B</td>
+          <td>570GB</td>
+      </tr>
+  </tbody>
+</table>
+<p><em>GPT-2比1的变化：</em>
+规模变大 + 尝试 zero-shot（这种方式GPT-3都不太行，2的效果肯定一般）</p>
+<p><em>GPT-3比2的变化：</em>
+规模疯狂大 + few-shot（这个不是预训练+微调 范式了）</p>
+<p>注：GPT-3 要在1024张 A100（80GB显存）显卡上分布式 训1个月（显卡要千张，时间要几十天）</p>
+<p><em>chatGPT：</em>
+模型：GPT-3
+方法：预训练+<strong>指令微调</strong>+RLHF（人类反馈强化学习）</p>
+<blockquote>
+<p><em>什么是zero-shot？什么是few-shot？</em>
+<code>零样本学习</code>：就是预训练训完PLM就用来做任务了，不再进行微调；
+<code>少样本学习</code>：是零样本学习和微调的偏0的折中，一般在prompt里面给3-5个例子（让PLM稍微知道我说的任务是怎么个回事）。</p></blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">如</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl"><span class="n">zero</span><span class="o">-</span><span class="n">shot</span><span class="err">：</span><span class="n">请你判断</span><span class="err">‘</span><span class="n">这真是一个绝佳的机会</span><span class="err">’</span><span class="n">的情感是正向还是负向</span><span class="err">，</span><span class="n">如果是正向</span><span class="err">，</span><span class="n">输出1</span><span class="err">；</span><span class="n">否则输出0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">few</span><span class="o">-</span><span class="n">shot</span><span class="err">：</span><span class="n">请你判断</span><span class="err">‘</span><span class="n">这真是一个绝佳的机会</span><span class="err">’</span><span class="n">的情感是正向还是负向</span><span class="err">，</span><span class="n">如果是正向</span><span class="err">，</span><span class="n">输出1</span><span class="err">；</span><span class="n">否则输出0</span><span class="err">。</span><span class="n">你可以参考以下示例来判断</span><span class="err">：‘</span><span class="n">你的表现非常好</span><span class="err">’——</span><span class="mi">1</span><span class="err">；‘</span><span class="n">太糟糕了</span><span class="err">’——</span><span class="mi">0</span><span class="err">；‘</span><span class="n">真是一个好主意</span><span class="err">’——</span><span class="mi">1</span><span class="err">。</span></span></span></code></pre></div></div>
+<h3 id="gpt的预训练任务clm">GPT的预训练任务CLM</h3>
+<p>CLM = Casual Language Modeling 因果语言建模
+（ps：这里原文写的是模型model，但我觉得这是一个任务，所以我喜欢把它理解成是modeling建模）</p>
+<h4 id="什么是clm">什么是CLM？</h4>
+<p>可以看出是N-gram的拓展。
+前面所有token 预测 下一个token，补全。
+一直重复这个训练过程，模型渐渐就能预判了。
+（比之前其他PLM的预训练任务MLM掩码的、NLP下一句，更直接）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">input</span><span class="p">:</span> <span class="n">今天天气</span>
+</span></span><span class="line"><span class="cl"><span class="n">output</span><span class="p">:</span> <span class="n">今天天气很</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">:</span> <span class="n">今天天气很</span>
+</span></span><span class="line"><span class="cl"><span class="n">output</span><span class="err">：</span><span class="n">今天天气很好</span></span></span></code></pre></div></div>
+<h3 id="gpt模型架构">GPT模型架构</h3>
+<ul>
+<li>位置编码：
+GPT 沿用transformer典的Sinusoidal（三角函数绝对位置编码）BERT用的可训练的全连接层</li>
+<li>注意力：
+和tran的不一样了，因为前面无encoder了，反而变得类encoder了。只有一次掩码自注意。</li>
+<li>归一化：
+采用pre-norm，很典的</li>
+<li>FNN：
+用的2个一维卷积核而不是tran的线性矩阵</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/80249f5c596b4928b86fabea9865b63e.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/80249f5c596b4928b86fabea9865b63e.png, https://i-blog.csdnimg.cn/direct/80249f5c596b4928b86fabea9865b63e.png 1.5x, https://i-blog.csdnimg.cn/direct/80249f5c596b4928b86fabea9865b63e.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/80249f5c596b4928b86fabea9865b63e.png"
+        title="请添加图片描述" /></p>
+<h3 id="卷积核咋用的"><em>卷积核咋用的？</em></h3>
+<p>卷积核就是一个滑动的窗口，可以和输入点积计算，提取局部特征</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="c1">#输入序列</span>
+</span></span><span class="line"><span class="cl"><span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>  <span class="c1">#一个大小为 3 的一维卷积核</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#就是每次取输入的3个数一起看，如：</span>
+</span></span><span class="line"><span class="cl"><span class="n">输出第一个位置</span><span class="err">：</span><span class="mf">0.2</span><span class="err">×</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.5</span><span class="err">×</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.3</span><span class="err">×</span><span class="mi">3</span> <span class="o">=</span> <span class="mf">2.6</span>
+</span></span><span class="line"><span class="cl"><span class="n">输出第二个位置</span><span class="err">：</span><span class="mf">0.2</span><span class="err">×</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span><span class="err">×</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.3</span><span class="err">×</span><span class="mi">4</span> <span class="o">=</span> <span class="mf">3.6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.6</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">]</span></span></span></code></pre></div></div>
+<p><em>卷积核的数值很有讲究的，可以看出这个核的偏好</em>
+这个也有些抽象</p>
+<blockquote>
+<ul>
+<li>w = [0.2, 0.5, 0.3] 说明每次取输入序列的3个数中更关注中间的=帮助模型理解一个词与前后词之间的平衡关系</li>
+<li>w = [0.1, 0.8, 0.1] =强调中间词（当前 token），但也考虑前后词</li>
+</ul></blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/af82bd7eaa0f47caaea2f2f8d7794e76.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/af82bd7eaa0f47caaea2f2f8d7794e76.png, https://i-blog.csdnimg.cn/direct/af82bd7eaa0f47caaea2f2f8d7794e76.png 1.5x, https://i-blog.csdnimg.cn/direct/af82bd7eaa0f47caaea2f2f8d7794e76.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/af82bd7eaa0f47caaea2f2f8d7794e76.png"
+        title="在这里插入图片描述" />
+序列长度：词的个数
+10个词128维词向量，矩阵形状：（10，128）
+256个卷积核，nn.Conv1d(in_channels=128, out_channels=256, kernel_size=3)
+in_channels=128 ：填的是输入一个词向量的维度
+out_channels=256：说明用了256个一维卷积核
+kernel_size=3：说明卷积核大小是3，三个数字</p>
+<blockquote>
+<p>ps：（这里还有一点问题）
+NLP一行是一个token， DL中一行是一维词向量</p></blockquote>
+<hr>
+<h2 id="llama">LLaMA</h2>
+<p>模型系列（开源但还要到它官网去申请）
+参数：从几亿 7B 到几十、几百亿
+数据：从 1T → 15T
+上下文长度：2K → 8K
+架构的优化：tokenizer+大词表、分组查询注意力机制GQA</p>
+<h3 id="llama-123-一路走来">LLaMA-123 一路走来</h3>
+<p>Meta的（前脸书Facebook的）</p>
+<table>
+  <thead>
+      <tr>
+          <th>版本</th>
+          <th>发布时间</th>
+          <th>参数规模</th>
+          <th>训练语料规模</th>
+          <th>上下文长度</th>
+          <th>核心改进</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>LLaMA-1</td>
+          <td>2023年2月</td>
+          <td>7B / 13B / 30B / 65B</td>
+          <td>&gt;1T tokens</td>
+          <td>2048</td>
+          <td>2048 张 <code>&quot;GPT-3&quot;</code> 训21天</td>
+      </tr>
+      <tr>
+          <td>LLaMA-2</td>
+          <td>2023年7月</td>
+          <td>7B / 13B / 34B / 70B</td>
+          <td>&gt;2T tokens</td>
+          <td>4096</td>
+          <td>引入 <strong>GQA（Grouped-Query Attention）</strong>，推理更高效</td>
+      </tr>
+      <tr>
+          <td>LLaMA-3</td>
+          <td>2024年4月</td>
+          <td>8B / 70B  /400B</td>
+          <td>&gt;15T tokens</td>
+          <td>8K</td>
+          <td>优化tokenizer：词表扩展至 <strong>128K</strong>，编码效率更高</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="llama的架构">LLaMA的架构</h3>
+<p>下面是LlaMA3的结构，和GPT挺像，但是有些地方有差异，这里不展开了。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/340af4002f8b4c60a29fa8642e7bf372.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/340af4002f8b4c60a29fa8642e7bf372.png, https://i-blog.csdnimg.cn/direct/340af4002f8b4c60a29fa8642e7bf372.png 1.5x, https://i-blog.csdnimg.cn/direct/340af4002f8b4c60a29fa8642e7bf372.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/340af4002f8b4c60a29fa8642e7bf372.png"
+        title="请添加图片描述" /></p>
+<h2 id="glm">GLM</h2>
+<p>智谱的，清华计算机的，2023年国内首个开源中文LLM。
+GLM也是一个任务名称</p>
+<h3 id="glm系列">GLM系列</h3>
+<p>看下来发现：
+数据直接用T级别的
+对架构、训练策略等有一些改变</p>
+<table>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>时间</th>
+          <th>上下文长度</th>
+          <th>语料规模</th>
+          <th>架构/特点</th>
+          <th>关键能力</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ChatGLM-6B</strong></td>
+          <td>2023年3月</td>
+          <td>2k</td>
+          <td>1T 中文语料</td>
+          <td>参考 ChatGPT 思路，SFT + RLHF</td>
+          <td>中文 LLM 起点</td>
+      </tr>
+      <tr>
+          <td><strong>ChatGLM2-6B</strong></td>
+          <td>2023年6月</td>
+          <td>32k</td>
+          <td>-</td>
+          <td>LLaMA 架构 + <strong>MQA 注意力机制</strong></td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><strong>ChatGLM3-6B</strong></td>
+          <td>2023年10月</td>
+          <td>-</td>
+          <td>-</td>
+          <td>架构无大改，<strong>多样化训练数据集 + 训练策略</strong><br>支持函数调用 &amp; 代码解释器</td>
+          <td>语义、数学、推理、代码、知识达到当时 SOTA；可用于 Agent开发</td>
+      </tr>
+      <tr>
+          <td><strong>GLM-4 系列</strong></td>
+          <td>2024年1月</td>
+          <td>128k</td>
+          <td>-</td>
+          <td>-</td>
+          <td>新一代基座</td>
+      </tr>
+      <tr>
+          <td><strong>GLM-4-9B</strong></td>
+          <td>2024年1月</td>
+          <td>8k</td>
+          <td>1T 多语言语料</td>
+          <td>与 GLM-4 方法一致</td>
+          <td>在同规模上超越 LLaMA3-8B</td>
+      </tr>
+  </tbody>
+</table>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/8957a39d9b9f48e788e6dae3cfa1ee20.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/8957a39d9b9f48e788e6dae3cfa1ee20.png, https://i-blog.csdnimg.cn/direct/8957a39d9b9f48e788e6dae3cfa1ee20.png 1.5x, https://i-blog.csdnimg.cn/direct/8957a39d9b9f48e788e6dae3cfa1ee20.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/8957a39d9b9f48e788e6dae3cfa1ee20.png"
+        title="GLM 系列模型在基准集上的表现演进" /></p>
+<h3 id="glm用的预训练任务">GLM用的预训练任务</h3>
+<p>GLM既是模型名字，又是这个模型用的预训练任务的名字
+GLM=general language model <strong>通用语言模型任务</strong></p>
+<p><em>GLM任务是怎么做的呢？</em>
+=CLM（因果）+MLM（掩码）的结合，</p>
+<blockquote>
+<p>ps：感觉也是为啥它是G，general，可能就是因为融合了两种学习语言的任务。掩码让你会用词，因果让你会表达，这也是人可以用来学习语言的抽象任务吧。</p></blockquote>
+<p>一个序列进行随机位置的几个token掩码，然后让模型预测被遮蔽的部分+这个序列的下一token。</p>
+<p><em>GLM任务的效果？</em>
+使用时间：GLM在预训练模型时代比较火，只第一代用，后来GLM团队自己也还是回到了传统的CLM任务。
+效果：对增强<strong>模型理解能力</strong>比较好</p>
+<p>【模型性能与通体了BERT（encoder-only）的性能对比】
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/515af1941a94439e9b481d160d986088.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/515af1941a94439e9b481d160d986088.png, https://i-blog.csdnimg.cn/direct/515af1941a94439e9b481d160d986088.png 1.5x, https://i-blog.csdnimg.cn/direct/515af1941a94439e9b481d160d986088.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/515af1941a94439e9b481d160d986088.png"
+        title="模型性能与通体了BERT（encoder-only）的性能对比" /></p>
+<h3 id="glm的模型架构">GLM的模型架构</h3>
+<p>和GPT架构很像（咱就是说，毕竟大佬，所以咱也得respect一下）</p>
+<h4 id="差异点一用post-norm--后归一化">差异点一：用Post-Norm = 后归一化</h4>
+<p>如下公式很直观了</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">LayerOutput</span> <span class="o">=</span> <span class="n">LayerNorm</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">Sublayer</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>post-norm和pre-norm的区别？</strong>
+这两个是有顺序差别的归一化方法。
+计算差别： （在计算残差链接的时候，）</p>
+<ul>
+<li>post归一化顾名思义，残差计算之后再归一化。</li>
+<li>pre归一化就是先进行归一化，再残差连接。</li>
+</ul>
+<p>效果差别：</p>
+<ul>
+<li>post归一化对<strong>参数整体</strong>的正则化效果更好，模型的鲁棒性更好（泛化能力更强，在面对不同场景的时候）。</li>
+<li>pre自然的是有一部分参数加载参数正则化之后，所以可以防止<strong>模型梯度</strong>失控（消失或者爆炸）</li>
+</ul></blockquote>
+<blockquote>
+<p><strong>二者如何选择？</strong></p>
+<ul>
+<li>对很大的模型，一般默认觉得pre会好一点（防梯度失控）</li>
+<li>但GLM里提出说post可以避免LLM数值错误，可能就是post就让参数整体进到归一化里，所以比较不割裂吧 。</li>
+</ul></blockquote>
+<h4 id="差异点二减少输出参数量">差异点二：减少输出参数量</h4>
+<p>做法：MLP &ndash;&gt; 单个线性层
+作用：输出层参数量少了，参数都在模型本身</p>
+<blockquote>
+<p>ps：</p>
+<ul>
+<li><em>输出层参数量少了有什么用？</em>
+输出层参数并不是模型掌握的知识，他是最终生成文本的数字表示。所以量少了转成文本就简单了</li>
+<li><em>参数都在模型本身有什么用？</em>
+模型的参数就是模型学到的能力的数字抽象，输入进来的内容经过和这些参数的计算，就可以运用到模型能力
+（这里可能涉及到大模型参数的可解释性问题，大家可以再去看看别的资料讲解）</li>
+</ul></blockquote>
+<h4 id="差异点三激活函数换成gelus">差异点三：激活函数换成GeLUs</h4>
+<ul>
+<li>传统的激活函数——ReLU，就是保留正的数（传播），负的为0</li>
+<li>GLM的激活函数——GeLUs，在0附近做软过渡，非线性映射（更柔）</li>
+</ul>
+<blockquote>
+<p>可能后期出一个激活函数的合集吧，大家想看也可以评论区催更</p></blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-09-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/learn-documentation-happy-llm7-copy/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/learn-documentation-happy-llm7-copy/" data-title="Happy_LLM_07 3种常见的decoder-only模型"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llm/">LLM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/learn-documentation-happy-llm5/" class="prev" rel="prev" title="Happy_LLM_05 BERT"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Happy_LLM_05 BERT</a>
+            <a href="/projects-re-paddlepaddle/" class="next" rel="next" title="Happy_LLM_05 BERT">Happy_LLM_05 BERT<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"search":{"algoliaAppID":"GZT24PWKNT","algoliaIndex":"index","algoliaSearchKey":"634ab679e825b815de2663de38908f9d","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"🦴     |   ","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>

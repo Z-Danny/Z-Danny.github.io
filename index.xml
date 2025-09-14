@@ -23,6 +23,30 @@
     <description><![CDATA[记录dw的agent学习，]]></description>
 </item>
 <item>
+    <title>Happy_LLM_12 你问我什么是好的LLM？那我们就来测一测啊</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm12/</link>
+    <pubDate>Tue, 09 Sep 2025 13:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm12/</guid>
+    <description><![CDATA[你问我什么是好的LLM？那我们就来测一测啊描述]]></description>
+</item>
+<item>
+    <title>Happy_LLM_11 如何用transformers框架进行开源LLM的pretrain&#43;SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm11/</link>
+    <pubDate>Tue, 09 Sep 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm11/</guid>
+    <description><![CDATA[如何用transformers框架进行开源LLM的pretrain+SFT（deepspeed分布式）、高效微调（adapt、prefix、lora微调）的流程描述]]></description>
+</item>
+<item>
+    <title>Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm9/</link>
+    <pubDate>Fri, 05 Sep 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm9/</guid>
+    <description><![CDATA[LLM与PLM的区别？LLM是如何训出来的描述]]></description>
+</item>
+<item>
     <title>Happy_LLM_05 BERT</title>
     <link>http://localhost:1313/projects-re-paddlepaddle/</link>
     <pubDate>Thu, 04 Sep 2025 11:27:33 &#43;0800</pubDate>
@@ -31,60 +55,36 @@
     <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
 </item>
 <item>
+    <title>Happy_LLM_08 LLM与PLM的区别？LLM是如何训出来的</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm8/</link>
+    <pubDate>Wed, 03 Sep 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm8/</guid>
+    <description><![CDATA[LLM与PLM的区别？LLM是如何训出来的描述]]></description>
+</item>
+<item>
+    <title>Happy_LLM_07 3种常见的decoder-only模型</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm7/</link>
+    <pubDate>Tue, 02 Sep 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm7/</guid>
+    <description><![CDATA[3种常见的decoder-only模型描述]]></description>
+</item>
+<item>
+    <title>Happy_LLM_06 T5 encoder-decoder</title>
+    <link>http://localhost:1313/learn-documentation-happy-llm6/</link>
+    <pubDate>Fri, 29 Aug 2025 11:27:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/learn-documentation-happy-llm6/</guid>
+    <description><![CDATA[Happy_LLM_06 T5 encoder-decoder描述]]></description>
+</item>
+<item>
     <title>Happy_LLM_05 BERT</title>
     <link>http://localhost:1313/learn-documentation-happy-llm5/</link>
     <pubDate>Wed, 27 Aug 2025 11:27:33 &#43;0800</pubDate>
     <author>Danny</author>
     <guid>http://localhost:1313/learn-documentation-happy-llm5/</guid>
     <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
-</item>
-<item>
-    <title>LLM中常见的单位换算</title>
-    <link>http://localhost:1313/learn-documentation-parameters/</link>
-    <pubDate>Wed, 27 Aug 2025 10:27:33 &#43;0800</pubDate>
-    <author>Danny</author>
-    <guid>http://localhost:1313/learn-documentation-parameters/</guid>
-    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
-</item>
-<item>
-    <title>Happy_LLM_01 NLP前言</title>
-    <link>http://localhost:1313/learn-documentation-happy-llm1/</link>
-    <pubDate>Tue, 26 Aug 2025 17:17:53 &#43;0800</pubDate>
-    <author>Danny</author>
-    <guid>http://localhost:1313/learn-documentation-happy-llm1/</guid>
-    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
-</item>
-<item>
-    <title>Happy_LLM_02 什么是NLP</title>
-    <link>http://localhost:1313/learn-documentation-happy-llm2/</link>
-    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
-    <author>Danny</author>
-    <guid>http://localhost:1313/learn-documentation-happy-llm2/</guid>
-    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
-</item>
-<item>
-    <title>Happy_LLM_04 编解码器、手搓Transformer</title>
-    <link>http://localhost:1313/learn-documentation-happy-llm4/</link>
-    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
-    <author>Danny</author>
-    <guid>http://localhost:1313/learn-documentation-happy-llm4/</guid>
-    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
-</item>
-<item>
-    <title>Happy_LLM_03 Transformer的注意力机制</title>
-    <link>http://localhost:1313/learn-documentation-happy-llm3/</link>
-    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
-    <author>Danny</author>
-    <guid>http://localhost:1313/learn-documentation-happy-llm3/</guid>
-    <description><![CDATA[<p>Discover what the Hugo - <strong>LoveIt</strong> theme is all about and the core-concepts behind it.</p>]]></description>
-</item>
-<item>
-    <title>主题文档 - 内容</title>
-    <link>http://localhost:1313/theme-documentation-content/</link>
-    <pubDate>Thu, 05 Mar 2020 16:30:05 &#43;0800</pubDate>
-    <author>Dillon</author>
-    <guid>http://localhost:1313/theme-documentation-content/</guid>
-    <description><![CDATA[<p>了解如何在 <strong>LoveIt</strong> 主题中快速, 直观地创建和组织内容.</p>]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO - ~ Danny&#39;s Homie ~</title><meta name="Description" content="LLM与PLM的区别？LLM是如何训出来的描述"><meta property="og:url" content="http://localhost:1313/learn-documentation-happy-llm9-copy/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO">
+  <meta property="og:description" content="LLM与PLM的区别？LLM是如何训出来的描述">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-05T11:27:33+08:00">
+    <meta property="article:modified_time" content="2025-09-05T11:27:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO">
+  <meta name="twitter:description" content="LLM与PLM的区别？LLM是如何训出来的描述">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/learn-documentation-happy-llm9-copy/" /><link rel="prev" href="http://localhost:1313/learn-documentation-happy-llm9/" /><link rel="next" href="http://localhost:1313/agent-mcp/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_08 SFT、RLHF（RM+PPO）、DPO",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/learn-documentation-happy-llm9-copy\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM","wordcount":  2130 ,
+        "url": "http:\/\/localhost:1313\/learn-documentation-happy-llm9-copy\/","datePublished": "2025-09-05T11:27:33+08:00","dateModified": "2025-09-05T11:27:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "Danny"
+            },"description": "LLM与PLM的区别？LLM是如何训出来的描述"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/projects/"> 项目 </a><a class="menu-item" href="/about/"> 关于我 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/learn-documentation-happy-llm9-copy/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/projects/" title="">项目</a><a class="menu-item" href="/about/" title="">关于我</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/learn-documentation-happy-llm9-copy/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_08 SFT、RLHF（RM+PPO）、DPO</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Danny</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learn-notes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Learn-Notes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-09-05">2025-09-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2130 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#llm二阶段sft-alignment对齐阶段1">LLM二阶段：SFT—— Alignment对齐阶段1</a>
+      <ul>
+        <li><a href="#sft概要">SFT概要</a></li>
+        <li><a href="#sft的微调数据指令数据集">SFT的微调数据（指令数据集）</a></li>
+        <li><a href="#训练模型的多轮对话能力">训练模型的多轮对话能力</a></li>
+      </ul>
+    </li>
+    <li><a href="#llm三阶段rlhf--alignment对齐阶段2">LLM三阶段：RLHF —— Alignment对齐阶段2</a>
+      <ul>
+        <li><a href="#how-rlhf">how RLHF？</a>
+          <ul>
+            <li><a href="#what-is-rm">what is RM？</a></li>
+            <li><a href="#怎么训rm">怎么训RM？</a></li>
+            <li><a href="#怎么用rm操作">怎么用RM（操作）？</a></li>
+            <li><a href="#rm的能力阐述">RM的能力（阐述）？</a></li>
+            <li><a href="#rm的难点和挑战">RM的难点和挑战？</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#llm三阶段dpo-rlhf平替">LLM三阶段：DPO ——RLHF平替</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="task09第四章-大语言模型">Task09：第四章 大语言模型</h1>
+<p>（这是笔者自己的happy-llm学习记录，仅供参考，愿 LLM 越来越好❤）接上篇task08的第一阶段：预训练，之后的二三阶段：SFT和RLHF\DPO</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/491c4e27ebbf45e6a41b77705b37766d.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/491c4e27ebbf45e6a41b77705b37766d.png, https://i-blog.csdnimg.cn/direct/491c4e27ebbf45e6a41b77705b37766d.png 1.5x, https://i-blog.csdnimg.cn/direct/491c4e27ebbf45e6a41b77705b37766d.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/491c4e27ebbf45e6a41b77705b37766d.png"
+        title="在这里插入图片描述" /></p>
+<hr>
+<h2 id="llm二阶段sft-alignment对齐阶段1">LLM二阶段：SFT—— Alignment对齐阶段1</h2>
+<h3 id="sft概要">SFT概要</h3>
+<p>SFT=<strong>S</strong>upervised <strong>F</strong>ine <strong>T</strong>uning=有监督微调</p>
+<blockquote>
+<p><em>为什么要SFT？</em></p></blockquote>
+<ul>
+<li>表面原因：因为光pretrain出来的LLM很牛，但不会说话，无法接<strong>下游任务</strong>，就是很难大程度压榨他的能力，所以需要SFT进行微调。</li>
+<li>本质原因：pretrain的模型用的是<code>CLM任务，模型有的是预测下一个token</code>，所以不好和用户指令适配。</li>
+</ul>
+<blockquote>
+<p><em>SFT要干什么？</em></p></blockquote>
+<p>这个阶段训练的是<code>模型“遵循通用指令的能力”</code><strong>（指令微调）</strong></p>
+<ul>
+<li>表面上看：理解并可以回复好user的chat时各种各样的指令。多轮对话能力也是在这里实现的</li>
+<li>实际上：就是<strong>继续进行CLM训练</strong>，但是要求对指令 理解+回复</li>
+<li>简单预测下一token❌，预测input + output✔️</li>
+</ul>
+<hr>
+<h3 id="sft的微调数据指令数据集">SFT的微调数据（指令数据集）</h3>
+<blockquote>
+<p><em>微调数据的内容是什么样的？</em></p></blockquote>
+<ul>
+<li>要包括大量类别的<code>用户指令 + 对应回复</code></li>
+</ul>
+<p>1.简易版：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;instruction&#34;</span><span class="p">:</span><span class="s2">&#34;将下列文本翻译成英文：&#34;</span><span class="p">,</span><span class="err">（</span><span class="n">用户指令</span><span class="err">，</span><span class="n">让模型做的事情的描述</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;input&#34;</span><span class="p">:</span><span class="s2">&#34;今天天气真好&#34;</span><span class="p">,</span><span class="err">（</span><span class="n">执行改指令的补充输入</span><span class="err">，</span><span class="n">没用的话可以空着</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;output&#34;</span><span class="p">:</span><span class="s2">&#34;Today is a nice day！&#34;</span><span class="err">（</span><span class="n">模型应该给的回复</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>2.LLaMA用的指令数据集的数据格式：
+他把instruction和input合成content了，是为了让模型学到和预训练不一样的范式</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">Instruction</span><span class="p">:</span>\<span class="n">n</span><span class="p">{{</span><span class="n">content</span><span class="p">}}</span>\<span class="n">n</span>\<span class="n">n</span><span class="c1">### Response:\n</span>
+</span></span><span class="line"><span class="cl"><span class="n">Instruction</span><span class="p">:</span>\<span class="n">n将下列文本翻译成英文</span><span class="err">：</span><span class="n">今天天气真好</span>\<span class="n">n</span>\<span class="n">n</span><span class="c1">### Response:\n</span></span></span></code></pre></div></div>
+<p>3.开源AIpaca指令数据集的格式：
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/e0dfae272d7a4b7faca8b94ae9ca4847.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/e0dfae272d7a4b7faca8b94ae9ca4847.png, https://i-blog.csdnimg.cn/direct/e0dfae272d7a4b7faca8b94ae9ca4847.png 1.5x, https://i-blog.csdnimg.cn/direct/e0dfae272d7a4b7faca8b94ae9ca4847.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/e0dfae272d7a4b7faca8b94ae9ca4847.png"
+        title="在这里插入图片描述" /></p>
+<blockquote>
+<p><em>指令数据集有什么难点？</em></p></blockquote>
+<ul>
+<li>问答类别<code>覆盖范围</code>越大越好，但是高质量的数据集难获取，有监督，人工检查标注。开源出来的少</li>
+<li><code>不同任务类别数据的配比</code>也很重要
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/5c7c36e7c9094a7a85c78774e51faa0d.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/5c7c36e7c9094a7a85c78774e51faa0d.png, https://i-blog.csdnimg.cn/direct/5c7c36e7c9094a7a85c78774e51faa0d.png 1.5x, https://i-blog.csdnimg.cn/direct/5c7c36e7c9094a7a85c78774e51faa0d.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/5c7c36e7c9094a7a85c78774e51faa0d.png"
+        title="在这里插入图片描述" /></li>
+</ul>
+<blockquote>
+<p><em>SFT数据集规模？</em></p></blockquote>
+<p>一般，
+单个任务 —— 500~1000条
+多种任务泛化能力好 —— 数B（十亿） token</p>
+<blockquote>
+<p><em>一些获取数据的方法？</em></p></blockquote>
+<p><strong>用chatGPT生成指令数据集</strong>：一些种子prompt ——&gt;chatGPT ——&gt; 生成更多指令 ——&gt; 生成对应回复（如开源指令数据集<a href="https://github.com/yizhongw/self-instruct/blob/main/human_eval/user_oriented_instructions.jsonl" target="_blank" rel="noopener noreffer ">AIpaca</a>）</p>
+<hr>
+<h3 id="训练模型的多轮对话能力">训练模型的多轮对话能力</h3>
+<p>模型的多轮对话能力完全来自于 SFT 阶段，</p>
+<blockquote>
+<p><em>训练数据怎么做？</em></p></blockquote>
+<p>将训练数据构造成<strong>多轮对话格式</strong>，让模型能够利用之前的知识来生成回答。
+<em>ps：这里的<code>[MASK]</code> 并不是“遮盖”，而是表示模型在训练时不计算这些部分的损失</em></p>
+<p>1.直接将最后一次模型回复作为输出，前面所有历史对话作为输入，直接拟合最后一次回复（丢失大量中间信息）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-json">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"> <span class="err">input=&lt;prompt_</span><span class="mi">1</span><span class="err">&gt;&lt;completion_</span><span class="mi">1</span><span class="err">&gt;&lt;prompt_</span><span class="mi">2</span><span class="err">&gt;&lt;completion_</span><span class="mi">2</span><span class="err">&gt;&lt;prompt_</span><span class="mi">3</span><span class="err">&gt;&lt;completion_</span><span class="mi">3</span><span class="err">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="err">output=</span><span class="p">[</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">3</span><span class="err">_&gt;</span></span></span></code></pre></div></div>
+<p>2.和上面的差不多。只是分开了。（有大量重复计算）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-json">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"> <span class="err">input_</span><span class="mi">1</span> <span class="err">=</span> <span class="err">&lt;prompt_</span><span class="mi">1</span><span class="err">&gt;&lt;completion_</span><span class="mi">1</span><span class="err">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="err">output_</span><span class="mi">1</span> <span class="err">=</span> <span class="p">[</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">1</span><span class="err">_&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="err">input_</span><span class="mi">2</span> <span class="err">=</span> <span class="err">&lt;prompt_</span><span class="mi">1</span><span class="err">&gt;&lt;completion_</span><span class="mi">1</span><span class="err">&gt;&lt;prompt_</span><span class="mi">2</span><span class="err">&gt;&lt;completion_</span><span class="mi">2</span><span class="err">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="err">output_</span><span class="mi">2</span> <span class="err">=</span> <span class="p">[</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">2</span><span class="err">_&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="err">input_</span><span class="mi">3</span><span class="err">=&lt;prompt_</span><span class="mi">1</span><span class="err">&gt;&lt;completion_</span><span class="mi">1</span><span class="err">&gt;&lt;prompt_</span><span class="mi">2</span><span class="err">&gt;&lt;completion_</span><span class="mi">2</span><span class="err">&gt;&lt;prompt_</span><span class="mi">3</span><span class="err">&gt;&lt;completion_</span><span class="mi">3</span><span class="err">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="err">output_</span><span class="mi">3</span><span class="err">=</span><span class="p">[</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">][</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">3</span><span class="err">_&gt;</span></span></span></code></pre></div></div>
+<p>3.直接要求模型预测每一轮对话的输出。（最合理）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-json">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"> <span class="err">input=&lt;prompt_</span><span class="mi">1</span><span class="err">&gt;&lt;completion_</span><span class="mi">1</span><span class="err">&gt;&lt;prompt_</span><span class="mi">2</span><span class="err">&gt;&lt;completion_</span><span class="mi">2</span><span class="err">&gt;&lt;prompt_</span><span class="mi">3</span><span class="err">&gt;&lt;completion_</span><span class="mi">3</span><span class="err">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="err">output=</span><span class="p">[</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">1</span><span class="err">_&gt;</span><span class="p">[</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">2</span><span class="err">_&gt;</span><span class="p">[</span><span class="err">MASK</span><span class="p">]</span><span class="err">&lt;completion_</span><span class="mi">3</span><span class="err">_&gt;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="llm三阶段rlhf--alignment对齐阶段2">LLM三阶段：RLHF —— Alignment对齐阶段2</h2>
+<p>= <strong>R</strong>einforcement <strong>L</strong>earning from <strong>H</strong>uman <strong>F</strong>eedback = 人类反馈<strong>强化学习</strong>
+是chatGPT比GPT-3的核心突破，也是为什么chatGPT能够让大众和他好好对话——和人类对齐</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">SFT</span><span class="err">：</span><span class="n">让LLM和人类的指令对齐</span> <span class="err">——</span><span class="n">指令遵循能力</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">RLHF</span><span class="err">：</span><span class="n">让LLM和人类价值观对齐</span> <span class="err">——</span><span class="n">回答</span> <span class="n">安全无害有用</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">强化学习</span> <span class="n">vs</span> <span class="n">监督学习</span> <span class="err">（</span> <span class="o">&lt;</span> <span class="n">机器学习</span><span class="err">）</span> 
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">强化</span><span class="err">：</span><span class="n">就是不断调整直到能在这个</span><span class="o">**</span><span class="n">环境</span><span class="o">**</span><span class="n">中获得最大</span><span class="o">**</span><span class="n">奖励</span><span class="o">**</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">监督</span><span class="err">：</span><span class="n">就是规范行为</span></span></span></code></pre></div></div>
+<blockquote>
+<p><em>LLM后训练阶段中的RLHF是什么样的？</em></p></blockquote>
+<p>让人类标注员给模型的回答打分（奖励） &ndash; &gt; 模型不断调整自己的回复来获得高分（进化强化了）</p>
+<h3 id="how-rlhf">how RLHF？</h3>
+<p>分成两步：训练RM + PPO训练</p>
+<h4 id="what-is-rm">what is RM？</h4>
+<p><strong>R</strong>eward <strong>M</strong>odel = 奖励模型</p>
+<h4 id="怎么训rm">怎么训RM？</h4>
+<p>学会按照偏好排序 + 选出来后怎么映射到分数。（原因：分数尺度不一样，我觉得好给9分，他觉得好只给6分）</p>
+<ol>
+<li>训练数据：
+模型对齐chosen的回答
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/fc135a247c04470689862a17a3e3f2e4.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/fc135a247c04470689862a17a3e3f2e4.png, https://i-blog.csdnimg.cn/direct/fc135a247c04470689862a17a3e3f2e4.png 1.5x, https://i-blog.csdnimg.cn/direct/fc135a247c04470689862a17a3e3f2e4.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/fc135a247c04470689862a17a3e3f2e4.png"
+        title="在这里插入图片描述" /></li>
+<li>初始模型：
+小参数的LLM（OpenAI是175BLLM + 6B RM）
+可以是SFT后的LLM、基于偏好训的LLM</li>
+</ol>
+<h4 id="怎么用rm操作">怎么用RM（操作）？</h4>
+<p>使用PPO算法进行强化学习，（最大化奖励分数，所以要不断的更新更新调整）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/4f4df92f43fd465198878947389580f9.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/4f4df92f43fd465198878947389580f9.png, https://i-blog.csdnimg.cn/direct/4f4df92f43fd465198878947389580f9.png 1.5x, https://i-blog.csdnimg.cn/direct/4f4df92f43fd465198878947389580f9.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/4f4df92f43fd465198878947389580f9.png"
+        title="在这里插入图片描述" />（ps：右上↗蓝字是RM不是RL，打错了）</p>
+<blockquote>
+<p>什么是PPO算法？</p></blockquote>
+<ul>
+<li>Proximal Policy Optimization = 近端策略优化算法</li>
+<li>经典的RL强化学习算法，目前最适合RLHF的</li>
+</ul>
+<blockquote>
+<p>KL散度是什么？作用是什么？</p></blockquote>
+<p>广义，衡量两个概率分布之间差异的指标
+RLHF中，评估actor模型和ref模型之间输出差异的指标
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/82e9ef267b834e9b9a4f32b702e75c5e.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/82e9ef267b834e9b9a4f32b702e75c5e.png, https://i-blog.csdnimg.cn/direct/82e9ef267b834e9b9a4f32b702e75c5e.png 1.5x, https://i-blog.csdnimg.cn/direct/82e9ef267b834e9b9a4f32b702e75c5e.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/82e9ef267b834e9b9a4f32b702e75c5e.png"
+        title="在这里插入图片描述" />
+当作惩罚项/正则化项，防止actor太偏离ref，限制模型复杂度。防止模型疯了，丢之前的pretrain和SFT能力
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/c7c97c0837d34a17be231971fc4575a9.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/c7c97c0837d34a17be231971fc4575a9.png, https://i-blog.csdnimg.cn/direct/c7c97c0837d34a17be231971fc4575a9.png 1.5x, https://i-blog.csdnimg.cn/direct/c7c97c0837d34a17be231971fc4575a9.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/c7c97c0837d34a17be231971fc4575a9.png"
+        title="在这里插入图片描述" /></p>
+<h4 id="rm的能力阐述">RM的能力（阐述）？</h4>
+<p>是人类偏好的抽象，
+RM的任务（RL中）：对LLM的回复（input）进行打分（output）
+本质是文本分类模型，隐藏层输出✔️，分类层输出❌</p>
+<h4 id="rm的难点和挑战">RM的难点和挑战？</h4>
+<ul>
+<li>偏好排序如何转成分数？
+模型结构的最后加上线性层做映射</li>
+<li>PPO训练过程显存占用大</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>模型配置</th>
+          <th>总显存占用</th>
+          <th>卡</th>
+          <th>单卡显存占用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>4个都是7B</td>
+          <td>≈240G</td>
+          <td>4×&ldquo;GPT-3&rdquo;<br>(A100 80G)</td>
+          <td>≈60G</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>训练复杂，门槛高</li>
+</ul>
+<h2 id="llm三阶段dpo-rlhf平替">LLM三阶段：DPO ——RLHF平替</h2>
+<ul>
+<li>= Direct Preference Optimization = 直接偏好优化</li>
+<li><strong>监督学习</strong>的思路，</li>
+<li>直接学人类偏好（偏好数据出发），不用先训练奖励函数（RM）然后更新参数</li>
+</ul>
+<p>核心思路：</p>
+<ol>
+<li>DPO的RM：不用显式训，而是直接通过<code>偏好data</code>构造的损失函数</li>
+<li>再将损失值反向传播更新参数。只用到2个LLM</li>
+</ol>
+<p>RLHF vs DPO
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/a7cf6ff9afb041c990a86fce8bbd7898.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/a7cf6ff9afb041c990a86fce8bbd7898.png, https://i-blog.csdnimg.cn/direct/a7cf6ff9afb041c990a86fce8bbd7898.png 1.5x, https://i-blog.csdnimg.cn/direct/a7cf6ff9afb041c990a86fce8bbd7898.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/a7cf6ff9afb041c990a86fce8bbd7898.png"
+        title="在这里插入图片描述" /></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-09-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/learn-documentation-happy-llm9-copy/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/learn-documentation-happy-llm9-copy/" data-title="Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llm/">LLM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/learn-documentation-happy-llm9/" class="prev" rel="prev" title="Happy_LLM_08 SFT、RLHF（RM&#43;PPO）、DPO"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Happy_LLM_08 SFT、RLHF（RM+PPO）、DPO</a>
+            <a href="/agent-mcp/" class="next" rel="next" title="Agent你好，我是你的follower">Agent你好，我是你的follower<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"search":{"algoliaAppID":"GZT24PWKNT","algoliaIndex":"index","algoliaSearchKey":"634ab679e825b815de2663de38908f9d","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"🦴     |   ","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>

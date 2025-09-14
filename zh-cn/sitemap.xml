@@ -4,7 +4,13 @@
     ><url>
             <loc>http://localhost:1313/%E4%BF%9D%E7%A0%94/</loc><lastmod>2025-09-14T10:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/agent-mcp/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm12/</loc><lastmod>2025-09-09T13:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm11/</loc><lastmod>2025-09-09T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm9/</loc><lastmod>2025-09-05T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>http://localhost:1313/projects-re-paddlepaddle/</loc><lastmod>2025-09-04T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm8/</loc><lastmod>2025-09-03T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm7/</loc><lastmod>2025-09-02T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://localhost:1313/learn-documentation-happy-llm6/</loc><lastmod>2025-08-29T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://localhost:1313/learn-documentation-happy-llm5/</loc><lastmod>2025-08-27T11:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://localhost:1313/learn-documentation-parameters/</loc><lastmod>2025-08-27T10:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://localhost:1313/learn-documentation-happy-llm1/</loc><lastmod>2025-08-26T18:00:47&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
@@ -134,8 +140,8 @@
             <loc>http://localhost:1313/tags/agent/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/categories/learn-notes/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/tags/mcp/</loc><lastmod>2025-09-12T14:25:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/tags/llm/</loc><lastmod>2025-09-09T13:27:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/tags/info/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://localhost:1313/tags/llm/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>http://localhost:1313/offer-insight/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>http://localhost:1313/categories/%E8%B5%84%E6%96%99-info/</loc><lastmod>2025-09-05T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>http://localhost:1313/info-doc-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc><lastmod>2025-08-28T10:17:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>

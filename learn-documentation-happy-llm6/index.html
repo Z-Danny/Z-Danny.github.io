@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Happy_LLM_06 T5 encoder-decoder - ~ Danny&#39;s Homie ~</title><meta name="Description" content="Happy_LLM_06 T5 encoder-decoder描述"><meta property="og:url" content="http://localhost:1313/learn-documentation-happy-llm6/">
+  <meta property="og:site_name" content="~ Danny&#39;s Homie ~">
+  <meta property="og:title" content="Happy_LLM_06 T5 encoder-decoder">
+  <meta property="og:description" content="Happy_LLM_06 T5 encoder-decoder描述">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-29T11:27:33+08:00">
+    <meta property="article:modified_time" content="2025-08-29T11:27:33+08:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="og:image" content="http://localhost:1313/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:title" content="Happy_LLM_06 T5 encoder-decoder">
+  <meta name="twitter:description" content="Happy_LLM_06 T5 encoder-decoder描述">
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="http://localhost:1313/learn-documentation-happy-llm6/" /><link rel="prev" href="http://localhost:1313/learn-documentation-happy-llm5/" /><link rel="next" href="http://localhost:1313/learn-documentation-happy-llm7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Happy_LLM_06 T5 encoder-decoder",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/learn-documentation-happy-llm6\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                            "width":  254 ,
+                            "height":  254 
+                        }],"genre": "posts","keywords": "LLM","wordcount":  1666 ,
+        "url": "http:\/\/localhost:1313\/learn-documentation-happy-llm6\/","datePublished": "2025-08-29T11:27:33+08:00","dateModified": "2025-08-29T11:27:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/localhost:1313\/images\/avatar.png",
+                    "width":  254 ,
+                    "height":  254 
+                }},"author": {
+                "@type": "Person",
+                "name": "Danny"
+            },"description": "Happy_LLM_06 T5 encoder-decoder描述"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/projects/"> 项目 </a><a class="menu-item" href="/about/"> 关于我 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/learn-documentation-happy-llm6/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="~ Danny&#39;s Homie ~"><span class="header-title-pre"><i class='far fa-sharp-duotone fa-solid fa-dog' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/projects/" title="">项目</a><a class="menu-item" href="/about/" title="">关于我</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/learn-documentation-happy-llm6/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Happy_LLM_06 T5 encoder-decoder</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Danny</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learn-notes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Learn-Notes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-29">2025-08-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1666 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#t5是什么">T5是什么</a>
+      <ul>
+        <li><a href="#t5的核心思想大一统再分而治之">T5的核心思想——大一统再分而治之</a></li>
+        <li><a href="#t5模型的伪解释图">T5模型的伪解释图</a></li>
+      </ul>
+    </li>
+    <li><a href="#t5的结构">T5的结构</a>
+      <ul>
+        <li><a href="#总体结构图">总体结构图</a></li>
+        <li><a href="#修改一t5的attention">修改一：T5的attention</a>
+          <ul>
+            <li><a href="#自注意-vs-编解码注意力-vs-多头注意力的区别">自注意 vs 编解码注意力 vs 多头注意力的区别</a></li>
+          </ul>
+        </li>
+        <li><a href="#修改二t5用的归一化rmsnorm">修改二：T5用的归一化RMSNorm</a>
+          <ul>
+            <li><a href="#transformer中的神经元是什么">Transformer中的神经元是什么？</a></li>
+            <li><a href="#rms是什么"><em>RMS是什么？</em></a></li>
+            <li><a href="#rmsnorm是什么"><em>RMSNorm是什么？</em></a></li>
+          </ul>
+        </li>
+        <li><a href="#修改三t5的预训练任务">修改三：T5的预训练任务</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="task06">Task06</h1>
+<p>：第三章 预训练语言模型PLM
+3.2 Encoder-Decoder（以<strong>T5</strong>为代表）
+（这是笔者自己的学习记录，仅供参考，原始<a href="https://datawhalechina.github.io/happy-llm/#/./chapter1/%E7%AC%AC%E4%B8%80%E7%AB%A0%20NLP%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5?id=_13-nlp-%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener noreffer ">学习链接</a>，愿 LLM 越来越好❤）</p>
+<hr>
+<h2 id="t5是什么">T5是什么</h2>
+<p>T5 = 5个T：<strong>T</strong>ext-<strong>T</strong>o-<strong>T</strong>ext <strong>T</strong>ransfer <strong>T</strong>ransformer 文生文转化变换器
+是Google的PLM，是模型。</p>
+<hr>
+<h3 id="t5的核心思想大一统再分而治之">T5的核心思想——大一统再分而治之</h3>
+<blockquote>
+<p>其实也就还是之前章节提到的思想，<code>预训练+微调</code>+所有NLP都T2T</p></blockquote>
+<ol>
+<li>
+<p><strong><code>大一统</code></strong>：认为所有的NLP都是<em><strong>文2文</strong></em>，简化忽略不同任务的差异，所以搞一个通用泛化好的模型。</p>
+<ul>
+<li>如之前task中章节提到的NLP任务，翻译、问答、给句子定性等，退退退抛去很多任务差异，底层都是输入文本经过模型之后输出文本。</li>
+<li>NLP任务的差异，问答可能输出就比输入长，定性输出可能就比输入短。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>分而治之</code></strong>：再根据<strong>具体任务</strong>微调，所以T5是一个泛化能力强的模型，基于T5微调后的模型就是更专精。</p>
+</li>
+</ol>
+<hr>
+<h3 id="t5模型的伪解释图">T5模型的伪解释图</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/0130af43cb17433e90d154e2301e8571.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/0130af43cb17433e90d154e2301e8571.png, https://i-blog.csdnimg.cn/direct/0130af43cb17433e90d154e2301e8571.png 1.5x, https://i-blog.csdnimg.cn/direct/0130af43cb17433e90d154e2301e8571.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/0130af43cb17433e90d154e2301e8571.png"
+        title="在这里插入图片描述" /></p>
+<hr>
+<h2 id="t5的结构">T5的结构</h2>
+<p>从大往小看：
+还是tokenizer+Transformer架构；
+Transformer 用了编、解码<code>器</code>；
+每个编、解码<code>层</code>有attention、fnn、norm；
+attention是捕（一个序列内部全局、输入输出序列之间）的关系。fnn是<strong>处理特征的非线性变换</strong>。</p>
+<h3 id="总体结构图">总体结构图</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/37c638bda8e345f4b3327d04482aeedd.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/37c638bda8e345f4b3327d04482aeedd.png, https://i-blog.csdnimg.cn/direct/37c638bda8e345f4b3327d04482aeedd.png 1.5x, https://i-blog.csdnimg.cn/direct/37c638bda8e345f4b3327d04482aeedd.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/37c638bda8e345f4b3327d04482aeedd.png"
+        title="请添加图片描述" /></p>
+<h3 id="修改一t5的attention">修改一：T5的attention</h3>
+<p>encoder 1️⃣个attention：encoder-self-attention
+decoder 2️⃣个attention：decoder-self-attention、encoder-decoder-attention</p>
+<h4 id="自注意-vs-编解码注意力-vs-多头注意力的区别">自注意 vs 编解码注意力 vs 多头注意力的区别</h4>
+<table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>Q、K、V 来源</th>
+          <th>出现位置</th>
+          <th>作用</th>
+          <th>举例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>自注意力（Self-Attention）</strong></td>
+          <td>Q、K、V 来自同一个序列</td>
+          <td>编码器 &amp; 解码器</td>
+          <td><strong>全局依赖关系建模方法</strong><br>通过计算 QK 相似度来捕捉输入序列内部的依赖关系</td>
+          <td>翻译“我爱你”时，模型要<code>理解“我”和“你”的关系</code></td>
+      </tr>
+      <tr>
+          <td><strong>编解码注意力（Encoder-Decoder Attention）</strong></td>
+          <td>Q 来自解码器当前步骤；K、V 来自编码器输出</td>
+          <td>解码器</td>
+          <td>让解码的输出关注到编码的输出内容</td>
+          <td>翻译“Grilled Salmon with Lemon Butter Sauce”<code>中的“Grilled Salmon”</code>时，解码器回看英文句子中的“Grilled”、“Salmon”、“Lemon Butter Sauce”，决定中文可能是“柠檬黄油烤三文鱼”</td>
+      </tr>
+      <tr>
+          <td><strong>多头注意力（Multi-Head Attention）</strong></td>
+          <td>它是一种策略，自注意或者编解码注意力的<strong>并行版本</strong></td>
+          <td>编码器 &amp; 解码器 &amp; 编解码层都可用</td>
+          <td>并行关注不同的语义子空间，同一句从不同角度（头）关注，增强模型的表达能力</td>
+          <td>翻译“爱”时，同时从<code>多个角度理解“爱”</code>，不同头分别从<strong>情感、语法、语境</strong>等角度理解</td>
+      </tr>
+  </tbody>
+</table>
+<p>补充说明：编码器 vs 解码器 中的自注意力</p>
+<ul>
+<li>encoder-self-attention 没有 mask，所有位置互相关注</li>
+<li>decoder-self-attention  有mask，防止偷看未来</li>
+</ul>
+<hr>
+<h3 id="修改二t5用的归一化rmsnorm">修改二：T5用的归一化RMSNorm</h3>
+<h4 id="transformer中的神经元是什么">Transformer中的神经元是什么？</h4>
+<p>一个隐藏层输出是向量，向量有很多维度，比如768或者1024。这<strong>每一维度就是一个神经元</strong>，维度的值就叫<strong>神经元的激活值</strong>。所以神经元就是维度、也是<strong>特征</strong>。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">隐藏层输出向量</span><span class="err">（</span><span class="n">假设维度为</span> <span class="mi">4</span><span class="err">）：</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#这 4 个数值就可以看作是 4 个“神经元”的激活值。</span></span></span></code></pre></div></div>
+<h4 id="rms是什么"><em>RMS是什么？</em></h4>
+<blockquote>
+<p>root mean square= 均方根，顾名思义：平方的均值开根号。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/5a451809345845fa9657fe4c17dc9ca4.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/5a451809345845fa9657fe4c17dc9ca4.png, https://i-blog.csdnimg.cn/direct/5a451809345845fa9657fe4c17dc9ca4.png 1.5x, https://i-blog.csdnimg.cn/direct/5a451809345845fa9657fe4c17dc9ca4.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/5a451809345845fa9657fe4c17dc9ca4.png"
+        title="在这里插入图片描述" /></p></blockquote>
+<h4 id="rmsnorm是什么"><em>RMSNorm是什么？</em></h4>
+<p>是个函数，也是归一化层用的方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i-blog.csdnimg.cn/direct/d2295bc7535143fc92bab052328501a4.png"
+        data-srcset="https://i-blog.csdnimg.cn/direct/d2295bc7535143fc92bab052328501a4.png, https://i-blog.csdnimg.cn/direct/d2295bc7535143fc92bab052328501a4.png 1.5x, https://i-blog.csdnimg.cn/direct/d2295bc7535143fc92bab052328501a4.png 2x"
+        data-sizes="auto"
+        alt="https://i-blog.csdnimg.cn/direct/d2295bc7535143fc92bab052328501a4.png"
+        title="在这里插入图片描述" /></p>
+<blockquote>
+<ul>
+<li><strong>做法</strong>：如公式展示的，每个神经元的激活值➗他们的均方根进行放缩，从而实现归一化</li>
+<li><strong>好处</strong>：相比于layerNorm，它只需要学一个参数 $\gamma$（缩放因子），而$\varepsilon$就是为了放置除以0的小常数</li>
+<li><strong>用RMSNorm的目的</strong>：确保权重的规模不会太大或太小（否则容易训着训着模型就梯度爆炸或者消失），稳定神经元的数值来稳定梯度。（尤其是层多了就要很注意）</li>
+</ul></blockquote>
+<h3 id="修改三t5的预训练任务">修改三：T5的预训练任务</h3>
+<table>
+  <thead>
+      <tr>
+          <th>修改点</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>数据集扩大</strong></td>
+          <td>- 数据集：Google 自建 <strong>C4 数据集（Colossal Clean Crawled Corpus）</strong><br>- 规模：约 <strong>750GB</strong>，已在 TensorFlow Datasets 开源<br>- 来源：从 Common Crawl 中提取大量英文文本  +  清洗去除了无意义文本、重复文本</td>
+      </tr>
+      <tr>
+          <td><strong>训练任务增多</strong></td>
+          <td>- 主要还是 <strong>BERT-style 的 MLM（掩码语言建模）</strong><br>- 同时尝试 <strong>多任务混合训练（Multi-task Learning）</strong>（具体怎么个混合法就不知道了）</td>
+      </tr>
+  </tbody>
+</table></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-08-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/learn-documentation-happy-llm6/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/learn-documentation-happy-llm6/" data-title="Happy_LLM_06 T5 encoder-decoder"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llm/">LLM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/learn-documentation-happy-llm5/" class="prev" rel="prev" title="Happy_LLM_05 BERT"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Happy_LLM_05 BERT</a>
+            <a href="/learn-documentation-happy-llm7/" class="next" rel="next" title="Happy_LLM_07 3种常见的decoder-only模型">Happy_LLM_07 3种常见的decoder-only模型<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/algoliasearch/lite/browser.umd.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/typeit/index.umd.js"></script><script>window.config={"comment":{},"data":{"id-1":"danny's on the way","id-2":"danny's on the way"},"search":{"algoliaAppID":"GZT24PWKNT","algoliaIndex":"index","algoliaSearchKey":"634ab679e825b815de2663de38908f9d","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"🦴     |   ","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script></body>
+</html>
