@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - 曾丹妮</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.5;
+            font-size: 15px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #layout-content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 40px 40px 40px;
+            flex: 1;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #800000;
+        }
+
+        .tab-item {
+            padding: 10px 25px;
+            cursor: pointer;
+            color: #666;
+            font-size: 15px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            top: 2px;
+        }
+
+        .tab-item:hover {
+            color: #800000;
+        }
+
+        .tab-item.active {
+            color: #800000;
+            border-bottom: 3px solid #800000;
+            font-weight: bold;
+        }
+
+        /* Construction Container */
+        .construction-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+        }
+
+        .construction-icon {
+            font-size: 48px;
+            color: #800000;
+            margin-bottom: 20px;
+        }
+
+        .construction-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .construction-subtext {
+            font-size: 16px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Loading Animation */
+        .loading-dots {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #800000;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        #footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+        }
+
+        #footer a {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="layout-content">
+        <!-- Tab Navigation -->
+        <nav class="tab-nav">
+            <a href="./index.html" class="tab-item">Home</a>
+            <a href="/posts/" class="tab-item">Blog</a>
+            <a href="./projects.html" class="tab-item active">Projects</a>
+        </nav>
+
+        <!-- Construction Content -->
+        <div class="construction-container">
+            <div class="construction-icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="construction-text">Under Construction</div>
+            <div class="construction-subtext">持续建设中...</div>
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div id="footer">
+            <div id="footer-text">
+                Page updated on January 2026 | <a href="https://github.com/Z-Danny" target="_blank">GitHub</a> | <a href="https://blog.csdn.net/Z__Danny?spm=1000.2115.3001.5343" target="_blank">CSDN</a> | <a href="mailto:2878694584@qq.com">QQ Mail</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -26,6 +26,45 @@
             padding: 0 40px 40px 40px;
         }
 
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #800000;
+        }
+
+        .tab-item {
+            padding: 10px 25px;
+            cursor: pointer;
+            color: #666;
+            font-size: 15px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            top: 2px;
+        }
+
+        .tab-item:hover {
+            color: #800000;
+        }
+
+        .tab-item.active {
+            color: #800000;
+            border-bottom: 3px solid #800000;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         /* Top Title */
         #toptitle {
             padding-bottom: 0;
@@ -347,6 +386,13 @@
 </head>
 <body>
     <div id="layout-content">
+        <!-- Tab Navigation -->
+        <nav class="tab-nav">
+            <a href="./index.html" class="tab-item active">Home</a>
+            <a href="/posts/" class="tab-item">Blog</a>
+            <a href="./projects.html" class="tab-item">Projects</a>
+        </nav>
+
         <!-- Top Title -->
         <div id="toptitle">
             <h1>曾丹妮 @ BUPT</h1>
@@ -369,7 +415,6 @@
                         <font size="+2">Danni Zeng</font> <font size="+2">(Danny)</font><br />
                         <span class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:2878694584@qq.com">2878694584@qq.com</a></span> &nbsp;|&nbsp;
                         <span class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/Z-Danny" target="_blank">github.com/Z-Danny</a></span> &nbsp;|&nbsp;
-                        <span class="contact-item"><i class="fas fa-blog"></i> <a href="/posts/">My Blog</a></span> &nbsp;|&nbsp;
                         <span class="contact-item"><i class="fas fa-phone"></i> 15701293969</span><br />
                         <br />
                         Ph.D. Student in <b>Intelligent Science and Technology</b> (智能科学与技术) at <a href="https://www.bjzgca.edu.cn/">BJZGCA</a> (Beijing Zhongguancun Academy)<br />
