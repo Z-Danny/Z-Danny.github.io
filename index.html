@@ -12,25 +12,35 @@
         }
 
         body {
-            font-family: 'Times New Roman', Georgia, serif;
-            background: #f8f9fa;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background: #f5f5f5;
             color: #333;
-            line-height: 1.6;
-            font-size: 15px;
+            line-height: 1.4;
+            font-size: 14px;
         }
 
         .container {
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 0 40px;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 30px;
+        }
+
+        /* Top Title */
+        .top-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
         }
 
         /* Header */
         .header {
             display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            padding-bottom: 25px;
+            gap: 25px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 2px solid #333;
         }
 
@@ -39,10 +49,10 @@
         }
 
         .photo img {
-            width: 180px;
-            height: 230px;
+            width: 160px;
+            height: 205px;
             object-fit: cover;
-            border: 1px solid #ccc;
+            border: 1px solid #999;
         }
 
         .info {
@@ -50,21 +60,21 @@
         }
 
         .name-cn {
-            font-size: 32px;
+            font-size: 22px;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             color: #000;
         }
 
         .name-en {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
         }
 
         .info-row {
-            margin-bottom: 6px;
-            font-size: 15px;
+            margin-bottom: 4px;
+            font-size: 14px;
         }
 
         .info-row b {
@@ -83,25 +93,30 @@
 
         /* Sections */
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 18px;
         }
 
         .section-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: #000;
             border-bottom: 1px solid #333;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
         }
 
         .section-content {
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .section-content p {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             text-align: justify;
+            text-indent: 2em;
+        }
+
+        .section-content p:first-child {
+            text-indent: 0;
         }
 
         /* Research Interests */
@@ -119,23 +134,25 @@
 
         /* Projects */
         .project-item {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .project-title {
             font-weight: bold;
             color: #000;
+            text-indent: 0;
         }
 
         .project-desc {
-            margin-top: 4px;
+            margin-top: 2px;
             color: #444;
+            text-indent: 2em;
         }
 
         /* Awards */
         .award-item {
-            margin-bottom: 6px;
-            padding-left: 18px;
+            margin-bottom: 3px;
+            padding-left: 15px;
             position: relative;
         }
 
@@ -148,7 +165,7 @@
 
         /* Skills */
         .skill-line {
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .skill-line b {
@@ -157,12 +174,12 @@
 
         /* Correspondence */
         .contact-line {
-            margin-bottom: 6px;
+            margin-bottom: 3px;
         }
 
         .contact-line b {
             font-weight: 700;
-            min-width: 70px;
+            min-width: 60px;
             display: inline-block;
         }
 
@@ -177,10 +194,10 @@
 
         /* Footer */
         .footer {
-            margin-top: 40px;
-            padding-top: 15px;
+            margin-top: 25px;
+            padding-top: 10px;
             border-top: 1px solid #ddd;
-            font-size: 13px;
+            font-size: 12px;
             color: #888;
             text-align: center;
         }
@@ -203,8 +220,12 @@
         /* Mobile */
         @media (max-width: 768px) {
             .container {
-                padding: 0 20px;
-                margin: 20px;
+                padding: 0 15px;
+                margin: 15px;
+            }
+
+            .top-title {
+                font-size: 22px;
             }
 
             .header {
@@ -214,18 +235,21 @@
             }
 
             .photo img {
-                width: 150px;
-                height: 190px;
+                width: 140px;
+                height: 180px;
             }
 
             .name-cn {
-                font-size: 26px;
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Top Title -->
+        <div class="top-title">曾丹妮 @中关村学院</div>
+
         <!-- Header -->
         <div class="header">
             <div class="photo">
@@ -253,7 +277,7 @@
             <div class="section-title">Research Interests</div>
             <div class="section-content">
                 <p>My research interests include <b>Artificial Intelligence</b> and <b>Deep Learning</b>, especially:</p>
-                <p style="margin-top: 8px;">
+                <p style="margin-top: 5px; text-indent: 2em;">
                     <span class="interest-item"><b>Large Language Models</b></span>
                     <span class="interest-item"><b>Multimodal Learning</b></span>
                     <span class="interest-item"><b>Agent AI</b></span>
