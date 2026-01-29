@@ -137,61 +137,6 @@
             margin-bottom: 8px;
         }
 
-        /* Award Hover Tooltip */
-        .award-item {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .award-desc {
-            display: none;
-            position: absolute;
-            left: 100%;
-            top: 0;
-            margin-left: 15px;
-            padding: 15px 18px;
-            background: #fff;
-            border: 1px solid #800000;
-            border-radius: 6px;
-            font-size: 14px;
-            line-height: 1.6;
-            width: 300px;
-            max-width: 400px;
-            z-index: 1000;
-            color: #333;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .award-item:hover .award-desc {
-            display: block;
-        }
-
-        /* Arrow pointing to the award */
-        .award-desc::after {
-            content: "";
-            position: absolute;
-            left: -8px;
-            top: 16px;
-            width: 0;
-            height: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-right: 8px solid #800000;
-        }
-
-        .award-desc::before {
-            content: "Project Details";
-            display: block;
-            font-weight: bold;
-            color: #800000;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #ddd;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         /* Footer */
         #footer {
             margin-top: 40px;
@@ -249,20 +194,6 @@
 
             .info-cell p {
                 max-width: 100%;
-            }
-
-            .award-desc {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                width: 90%;
-                max-width: 90%;
-                margin-left: 0;
-            }
-
-            .award-desc::after {
-                display: none;
             }
         }
     </style>
@@ -347,33 +278,15 @@
         <!-- Awards -->
         <h2>Awards & Honors</h2>
         <ul>
-            <li class="award-item">Migu Zone AI+ University Innovation and Wisdom Plan (咪咕动感地带AI+高校创智计划), <b>most application value award</b> (特等奖), 2025
-                <div class="award-desc"><b>"famlee"</b> - An AI psychological companion specifically designed for college students. Uses multimodal emotion recognition technology to analyze emotional state through text and voice input, providing immediate, empathetic feedback and companionship.</div>
-            </li>
-            <li class="award-item">The 5th National Artificial Intelligence Competition (NAIC), AI + Digital Human Capabilities and Customer Service Application Track, <b>third prize</b> (全国三等奖), 2024
-                <div class="award-desc"><b>AI + Digital Human Capabilities and Customer Service Application</b> (Team Leader, Mar. 2025 - May 2025) — An end-to-end digital human broadcasting system based on multimodal AI technology. Integrates FaceVerseV4 3D face modeling, F5-TTS voice synthesis, and NVIDIA Audio2Face audio-driven technologies to achieve functional collaboration in avatar generation, voice cloning, face driving, and digital human broadcasting. <b>My contributions:</b> Overall program integration, model calling and optimization for each module, and face driving solution implementation.</div>
-            </li>
-            <li class="award-item">The 16th China University Student Service Outsourcing Innovation and Entrepreneurship Competition, Enterprise Proposition Track, <b>second prize</b> (全国二等奖), 2024
-                <div class="award-desc"><b>"Soul Matrix" (声灵矩阵) AI + Education Project</b> (Team Leader, Apr. 2025 - Aug. 2025) — An AI-based voice cloning and intelligent teaching video synthesis system with web and desktop applications. Provides a full-process multimodal education tool for voice cloning, long-text reading, and teaching courseware explanation. <b>My contributions:</b> Software frontend/backend development (PySide), web backend, PPT parsing with LLM polishing, and model debugging.</div>
-            </li>
-            <li class="award-item">China Collegiate Computing Contest (C4) Network Technology Challenge, North China Regional, <b>second prize</b> (华北赛区二等奖), 2025
-                <div class="award-desc">Project description placeholder.</div>
-            </li>
-            <li class="award-item">The 10th National University Student Internet of Things Technology and Application "3S Cup" Competition, <b>third prize</b> (全国三等奖), 2024
-                <div class="award-desc">Project description placeholder.</div>
-            </li>
-            <li class="award-item">China International College Students' Innovation Competition, Beijing Regional, <b>second prize</b> (北京赛区二等奖), 2025
-                <div class="award-desc">Project description placeholder.</div>
-            </li>
-            <li class="award-item">"Qingchuang Beijing" 2025 "Challenge Cup" Beijing University Student Extracurricular Academic Science and Technology Works Competition, "AI+" Special Track, <b>second prize</b> (二等奖), 2025
-                <div class="award-desc">Project description placeholder.</div>
-            </li>
-            <li class="award-item">"National Youth Cup" National University Art and Design Works Exhibition, <b>first prize</b> (学生组一等奖), 2024
-                <div class="award-desc">Project description placeholder.</div>
-            </li>
-            <li class="award-item">NCDA National University Digital Art and Design Competition, <b>second prize</b> (北京市二等奖), 2025
-                <div class="award-desc">Project description placeholder.</div>
-            </li>
+            <li>Migu Zone AI+ University Innovation and Wisdom Plan (咪咕动感地带AI+高校创智计划), <b>most application value award</b> (特等奖), 2025</li>
+            <li>The 5th National Artificial Intelligence Competition (NAIC), AI + Digital Human Capabilities and Customer Service Application Track, <b>third prize</b> (全国三等奖), 2024</li>
+            <li>The 16th China University Student Service Outsourcing Innovation and Entrepreneurship Competition, Enterprise Proposition Track, <b>second prize</b> (全国二等奖), 2024</li>
+            <li>China Collegiate Computing Contest (C4) Network Technology Challenge, North China Regional, <b>second prize</b> (华北赛区二等奖), 2025</li>
+            <li>The 10th National University Student Internet of Things Technology and Application "3S Cup" Competition, <b>third prize</b> (全国三等奖), 2024</li>
+            <li>China International College Students' Innovation Competition, Beijing Regional, <b>second prize</b> (北京赛区二等奖), 2025</li>
+            <li>"Qingchuang Beijing" 2025 "Challenge Cup" Beijing University Student Extracurricular Academic Science and Technology Works Competition, "AI+" Special Track, <b>second prize</b> (二等奖), 2025</li>
+            <li>"National Youth Cup" National University Art and Design Works Exhibition, <b>first prize</b> (学生组一等奖), 2024</li>
+            <li>NCDA National University Digital Art and Design Competition, <b>second prize</b> (北京市二等奖), 2025</li>
         </ul>
          <!-- Software Copyright -->
         <h2>Software Copyrights</h2>
