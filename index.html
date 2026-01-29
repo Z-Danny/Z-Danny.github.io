@@ -13,27 +13,34 @@
 
         body {
             font-family: 'Times New Roman', Georgia, serif;
-            background: #f5f5f5;
-            color: #222;
-            line-height: 1.4;
-            font-size: 15px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            color: #333;
+            line-height: 1.7;
+            font-size: 16px;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 950px;
-            margin: 40px auto;
-            padding: 50px 60px;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0;
+        }
+
+        /* Profile Card */
+        .profile-card {
             background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 50px 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
         }
 
         /* Header */
         .header {
             display: flex;
-            gap: 35px;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #333;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: flex-start;
         }
 
         .photo {
@@ -41,180 +48,219 @@
         }
 
         .photo img {
-            width: 200px;
-            height: 255px;
+            width: 220px;
+            height: 280px;
             object-fit: cover;
-            border: 1px solid #999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
 
         .info {
             flex: 1;
+            padding-top: 5px;
         }
 
         .name-cn {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             margin-bottom: 5px;
-            color: #000;
+            color: #1a1a1a;
         }
 
         .name-en {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
-            font-weight: 500;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .info-row {
-            margin-bottom: 6px;
-            font-size: 15px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444;
         }
 
         .info-row b {
-            color: #000;
-            font-weight: 700;
+            color: #1a1a1a;
+            font-weight: 600;
         }
 
         .info-row a {
-            color: #1a4d8f;
+            color: #2563eb;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         .info-row a:hover {
+            color: #1d4ed8;
             text-decoration: underline;
         }
 
         /* Sections */
         .section {
-            margin-bottom: 22px;
+            margin-bottom: 35px;
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #000;
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a1a;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
         }
 
         .section-content {
-            font-size: 15px;
+            font-size: 16px;
+            color: #444;
+            text-align: justify;
         }
 
         .section-content p {
-            margin-bottom: 8px;
-            text-align: justify;
+            margin-bottom: 12px;
         }
 
         /* Research Interests */
         .interests {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .interest-item {
-            background: #e8e8e8;
-            padding: 5px 14px;
-            font-size: 14px;
-            border: 1px solid #bbb;
-            font-weight: 500;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+            padding: 8px 18px;
+            font-size: 15px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+            color: #1e40af;
+            transition: all 0.2s;
+        }
+
+        .interest-item:hover {
+            background: #dbeafe;
+            transform: translateY(-1px);
         }
 
         /* Projects */
         .project-item {
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
         }
 
         .project-title {
-            font-weight: bold;
-            color: #000;
-            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 17px;
+            margin-bottom: 8px;
         }
 
         .project-desc {
-            color: #333;
-            margin-top: 4px;
+            color: #555;
+            line-height: 1.6;
         }
 
         /* Awards */
+        .awards-grid {
+            display: grid;
+            gap: 12px;
+        }
+
         .award-item {
-            margin-bottom: 6px;
-            padding-left: 15px;
-            position: relative;
+            padding: 15px 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
         }
 
-        .award-item:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #000;
-            font-weight: bold;
-        }
-
-        .award-competition {
-            font-weight: 600;
-            color: #000;
-        }
-
-        .award-prize {
+        .award-text {
             color: #333;
         }
 
         .award-year {
-            color: #666;
-            font-style: italic;
+            color: #888;
+            font-size: 14px;
+            margin-top: 4px;
         }
 
         /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
         .skill-category {
-            margin-bottom: 6px;
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-radius: 8px;
         }
 
         .skill-category b {
-            color: #000;
-            font-weight: 700;
+            color: #1a1a1a;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
         }
 
         /* Correspondence */
-        .contact-table {
-            width: 100%;
-            border-collapse: collapse;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
 
-        .contact-table td {
-            padding: 8px 0;
-            vertical-align: top;
+        .contact-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 18px 22px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s;
         }
 
-        .contact-label {
-            font-weight: bold;
-            color: #000;
-            width: 100px;
-            padding-right: 15px;
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .contact-value a {
-            color: #1a4d8f;
+        .contact-icon {
+            font-size: 24px;
+        }
+
+        .contact-info b {
+            display: block;
+            color: #1a1a1a;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .contact-info span, .contact-info a {
+            color: #444;
+            font-size: 15px;
+        }
+
+        .contact-info a {
             text-decoration: none;
+            color: #2563eb;
         }
 
-        .contact-value a:hover {
+        .contact-info a:hover {
             text-decoration: underline;
         }
 
         /* Footer */
         .footer {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
-            font-size: 12px;
-            color: #888;
             text-align: center;
+            padding: 30px 20px;
+            color: #888;
+            font-size: 14px;
         }
 
         .footer a {
@@ -222,21 +268,27 @@
             text-decoration: none;
         }
 
-        /* Links styling */
+        /* Links */
         a {
-            color: #1a4d8f;
+            color: #2563eb;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: #1d4ed8;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
-            .container {
+            .profile-card {
                 padding: 30px 25px;
-                margin: 10px;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .container {
+                margin: 0;
                 max-width: 100%;
             }
 
@@ -247,168 +299,218 @@
             }
 
             .photo img {
-                width: 160px;
-                height: 205px;
+                width: 180px;
+                height: 230px;
             }
 
             .name-cn {
-                font-size: 26px;
+                font-size: 28px;
             }
 
             .section-title {
-                font-size: 16px;
+                font-size: 19px;
+            }
+
+            .skills-grid, .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="photo">
-                <img src="./曾丹妮-预备生.jpg" alt="曾丹妮照片">
+        <div class="profile-card">
+            <!-- Header -->
+            <div class="header">
+                <div class="photo">
+                    <img src="./曾丹妮-预备生.jpg" alt="曾丹妮照片">
+                </div>
+                <div class="info">
+                    <div class="name-cn">曾丹妮</div>
+                    <div class="name-en">Zeng Danni (Danny Zeng)</div>
+                    <div class="info-row">
+                        <b>北京邮电大学</b> · 计算机科学与技术专业 · 2022级本科生（预备转博士）
+                    </div>
+                    <div class="info-row">
+                        <b>GPA:</b> 3.92/4.0 &nbsp;|&nbsp; <b>CET-6:</b> 568
+                    </div>
+                    <div class="info-row">
+                        <b>研究兴趣:</b> 大语言模型 · 多模态学习 · Agent智能体
+                    </div>
+                </div>
             </div>
-            <div class="info">
-                <div class="name-cn">曾丹妮</div>
-                <div class="name-en">Zeng Danni (Danny Zeng)</div>
-                <div class="info-row"><b>北京邮电大学</b> | 计算机科学与技术专业 | 2022级本科生（预备转博士）</div>
-                <div class="info-row"><b>GPA:</b> 3.92/4.0 &nbsp;|&nbsp; <b>CET-6:</b> 568</div>
-                <div class="info-row"><b>研究方向:</b> 大语言模型 | 多模态 | Agent智能体</div>
-            </div>
-        </div>
 
-        <!-- Biography -->
-        <div class="section">
-            <div class="section-title">Biography</div>
-            <div class="section-content">
-                <p>北京邮电大学计算机学院国家示范性软件学院2022级本科生，预备转博士在读。主要从事<a href="https://en.wikipedia.org/wiki/Artificial_intelligence" target="_blank">人工智能</a>领域研究，包括<a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank">大语言模型</a>、<a href="https://en.wikipedia.org/wiki/Multimodal_learning" target="_blank">多模态学习</a>和Agent智能体。本科期间积极参与科研项目和学科竞赛，曾获小米特等奖学金（2025）、国家奖学金（2024）、美国大学生数学建模竞赛一等奖（2024）等多项荣誉。</p>
-            </div>
-        </div>
-
-        <!-- Research Interests -->
-        <div class="section">
-            <div class="section-title">Research Interests</div>
-            <div class="section-content">
-                <div class="interests">
-                    <span class="interest-item">Large Language Models</span>
-                    <span class="interest-item">Multimodal Learning</span>
-                    <span class="interest-item">Agent AI</span>
-                    <span class="interest-item">Natural Language Processing</span>
-                    <span class="interest-item">Prompt Engineering</span>
-                    <span class="interest-item">Chain-of-Thought</span>
+            <!-- Biography -->
+            <div class="section">
+                <div class="section-title">About Me</div>
+                <div class="section-content">
+                    <p>
+                        我是北京邮电大学计算机学院国家示范性软件学院2022级本科生，目前预备转博士在读。我的研究兴趣集中在<a href="https://en.wikipedia.org/wiki/Artificial_intelligence" target="_blank">人工智能</a>领域，特别是大语言模型、多模态学习和Agent智能体等方向。
+                    </p>
+                    <p>
+                        在本科期间，我积极参与科研项目和学科竞赛。我曾参与开发基于<a href="https://huggingface.co/Qwen/Qwen2.5-7B" target="_blank">Qwen2.5-7B</a>的教育大模型智能问答助手，研究通过混合专家架构提升LLM的科学推理能力，并深入探索Chain-of-Thought提示技术在模型推理能力提升中的作用。
+                    </p>
+                    <p>
+                        除了研究工作，我也热衷于参加各类学科竞赛。曾获小米特等奖学金（2025）、国家奖学金（2024）、美国大学生数学建模竞赛一等奖（2024）等多项荣誉。
+                    </p>
                 </div>
             </div>
-        </div>
 
-        <!-- Research Projects -->
-        <div class="section">
-            <div class="section-title">Research Projects</div>
-            <div class="section-content">
-                <div class="project-item">
-                    <div class="project-title">教育大模型智能问答助手</div>
-                    <div class="project-desc">基于<a href="https://huggingface.co/Qwen/Qwen2.5-7B" target="_blank">Qwen2.5-7B</a>模型，利用LoRA技术在alpaca数据集上进行微调，开发了教育领域智能问答系统。</div>
-                </div>
-                <div class="project-item">
-                    <div class="project-title">基于混合专家(MoE)的LLM科学推理能力提升研究</div>
-                    <div class="project-desc">研究通过<a href="https://arxiv.org/abs/2101.03961" target="_blank">混合专家架构</a>提升大语言模型在科学推理任务上的表现。</div>
-                </div>
-                <div class="project-item">
-                    <div class="project-title">链式思维提示工程研究</div>
-                    <div class="project-desc">深入研究<a href="https://arxiv.org/abs/2201.11903" target="_blank">Chain-of-Thought</a>提示技术在大语言模型推理能力提升中的作用。</div>
+            <!-- Research Interests -->
+            <div class="section">
+                <div class="section-title">Research Interests</div>
+                <div class="section-content">
+                    <p>我的研究兴趣包括：</p>
+                    <div class="interests" style="margin-top: 15px;">
+                        <span class="interest-item">Large Language Models</span>
+                        <span class="interest-item">Multimodal Learning</span>
+                        <span class="interest-item">Agent AI</span>
+                        <span class="interest-item">Natural Language Processing</span>
+                        <span class="interest-item">Prompt Engineering</span>
+                        <span class="interest-item">Chain-of-Thought</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Awards -->
-        <div class="section">
-            <div class="section-title">Awards & Honors</div>
-            <div class="section-content">
-                <div class="award-item">
-                    <span class="award-competition">小米特等奖学金</span> <span class="award-year">(2025)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-competition">国家奖学金</span> <span class="award-year">(2024)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-prize">一等奖</span>，<span class="award-competition"><a href="https://www.comap.com/undergraduate/contests/mcm/" target="_blank">美国大学生数学建模竞赛(MCM)</a></span> <span class="award-year">(2024)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-prize">二等奖</span>，<span class="award-competition">全国大学生数学建模竞赛</span> <span class="award-year">(2024)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-prize">二等奖</span>，<span class="award-competition"><a href="https://www.cccf.org.cn/L1/" target="_blank">中国高校计算机大赛-团体程序设计天梯赛</a></span> <span class="award-year">(2024)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-prize">一等奖</span>，<span class="award-competition">全国大学生数学竞赛</span> <span class="award-year">(2024)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-competition">顺丰奖学金</span> <span class="award-year">(2024)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-prize">一等奖</span>，<span class="award-competition">北京邮电大学</span> <span class="award-year">(2023)</span>
-                </div>
-                <div class="award-item">
-                    <span class="award-prize">二等奖</span>，<span class="award-competition">第十五届、第十六届全国大学生数学竞赛（非数学类）</span>
+            <!-- Research Projects -->
+            <div class="section">
+                <div class="section-title">Research Projects</div>
+                <div class="section-content">
+                    <div class="project-item">
+                        <div class="project-title">教育大模型智能问答助手</div>
+                        <div class="project-desc">
+                            基于Qwen2.5-7B模型，利用LoRA技术在alpaca数据集上进行微调，开发了针对教育领域的智能问答系统。该系统能够准确回答各类教育相关问题，为教育智能化提供了新的解决方案。
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-title">基于混合专家(MoE)的LLM科学推理能力提升研究</div>
+                        <div class="project-desc">
+                            研究通过<a href="https://arxiv.org/abs/2101.03961" target="_blank">混合专家架构</a>提升大语言模型在科学推理任务上的表现，探索MoE模型在复杂推理场景中的应用潜力。
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-title">链式思维提示工程研究</div>
+                        <div class="project-desc">
+                            深入研究<a href="https://arxiv.org/abs/2201.11903" target="_blank">Chain-of-Thought</a>提示技术在大语言模型推理能力提升中的作用，通过优化提示策略显著改善模型的逻辑推理表现。
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Skills -->
-        <div class="section">
-            <div class="section-title">Skills</div>
-            <div class="section-content">
-                <div class="skill-category"><b>Programming:</b> Python, C++, SQL</div>
-                <div class="skill-category"><b>Frameworks:</b> <a href="https://pytorch.org/" target="_blank">PyTorch</a>, <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a>, Hugging Face</div>
-                <div class="skill-category"><b>Tools:</b> <a href="https://git-scm.com/" target="_blank">Git</a>, Linux, Docker, LaTeX</div>
-                <div class="skill-category"><b>Languages:</b> 中文 (Native), English (CET-6: 568)</div>
+            <!-- Awards -->
+            <div class="section">
+                <div class="section-title">Honors & Awards</div>
+                <div class="section-content">
+                    <div class="awards-grid">
+                        <div class="award-item">
+                            <div class="award-text">小米特等奖学金</div>
+                            <div class="award-year">2025</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">国家奖学金</div>
+                            <div class="award-year">2024</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">一等奖，<a href="https://www.comap.com/undergraduate/contests/mcm/" target="_blank">美国大学生数学建模竞赛(MCM)</a></div>
+                            <div class="award-year">2024</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">二等奖，全国大学生数学建模竞赛</div>
+                            <div class="award-year">2024</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">二等奖，<a href="https://www.cccf.org.cn/L1/" target="_blank">中国高校计算机大赛-团体程序设计天梯赛</a></div>
+                            <div class="award-year">2024</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">一等奖，全国大学生数学竞赛（北京市）</div>
+                            <div class="award-year">2024</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">顺丰奖学金</div>
+                            <div class="award-year">2024</div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-text">一等奖学金，<a href="https://www.bupt.edu.cn/" target="_blank">北京邮电大学</a></div>
+                            <div class="award-year">2023</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Education -->
-        <div class="section">
-            <div class="section-title">Education</div>
-            <div class="section-content">
-                <p><b><a href="https://www.bupt.edu.cn/" target="_blank">北京邮电大学</a></b> | 计算机科学与技术 | 本科（预备转博士） | 2022 - 至今</p>
-                <p style="margin-left: 15px; color: #666;">GPA: 3.92/4.0 | 专业排名: 前5%</p>
+            <!-- Skills -->
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="section-content">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <b>Programming</b>
+                            Python, C++, SQL
+                        </div>
+                        <div class="skill-category">
+                            <b>Frameworks</b>
+                            <a href="https://pytorch.org/" target="_blank">PyTorch</a>, <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a>, Hugging Face
+                        </div>
+                        <div class="skill-category">
+                            <b>Tools</b>
+                            <a href="https://git-scm.com/" target="_blank">Git</a>, Linux, Docker, LaTeX
+                        </div>
+                        <div class="skill-category">
+                            <b>Languages</b>
+                            中文 (Native), English (CET-6: 568)
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Correspondence -->
-        <div class="section">
-            <div class="section-title">Correspondence</div>
-            <div class="section-content">
-                <table class="contact-table">
-                    <tr>
-                        <td class="contact-label"><b>Email:</b></td>
-                        <td class="contact-value"><a href="mailto:2878694584@qq.com">2878694584@qq.com</a></td>
-                    </tr>
-                    <tr>
-                        <td class="contact-label"><b>GitHub:</b></td>
-                        <td class="contact-value"><a href="https://github.com/Z-Danny" target="_blank">github.com/Z-Danny</a></td>
-                    </tr>
-                    <tr>
-                        <td class="contact-label"><b>QQ:</b></td>
-                        <td class="contact-value">2878694584</td>
-                    </tr>
-                    <tr>
-                        <td class="contact-label"><b>WeChat:</b></td>
-                        <td class="contact-value">15701293969</td>
-                    </tr>
-                    <tr>
-                        <td class="contact-label"><b>Office:</b></td>
-                        <td class="contact-value">北京邮电大学</td>
-                    </tr>
-                    <tr>
-                        <td class="contact-label"><b>Address:</b></td>
-                        <td class="contact-value">北京邮电大学计算机学院，北京市海淀区西土城路10号</td>
-                    </tr>
-                </table>
+            <!-- Correspondence -->
+            <div class="section">
+                <div class="section-title">Correspondence</div>
+                <div class="section-content">
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-info">
+                                <b>Email</b>
+                                <a href="mailto:2878694584@qq.com">2878694584@qq.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💻</div>
+                            <div class="contact-info">
+                                <b>GitHub</b>
+                                <a href="https://github.com/Z-Danny" target="_blank">github.com/Z-Danny</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🐧</div>
+                            <div class="contact-info">
+                                <b>QQ</b>
+                                <span>2878694584</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-info">
+                                <b>WeChat</b>
+                                <span>15701293969</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-info">
+                                <b>Office</b>
+                                <span>北京邮电大学</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            Last updated: January 2025 | <a href="https://github.com/Z-Danny">github.com/Z-Danny</a>
+            <p>Last updated: January 2025 | <a href="https://github.com/Z-Danny">github.com/Z-Danny</a></p>
         </div>
     </div>
 </body>
