@@ -166,6 +166,20 @@
             display: block;
         }
 
+        /* Info indicator for awards with project details */
+        .award-item::after {
+            content: "ⓘ";
+            font-size: 11px;
+            color: #800000;
+            margin-left: 4px;
+            opacity: 0.6;
+            vertical-align: super;
+        }
+
+        .award-item:hover::after {
+            opacity: 1;
+        }
+
         /* Arrow pointing to the award */
         .award-desc::after {
             content: "";
