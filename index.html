@@ -137,6 +137,34 @@
             margin-bottom: 8px;
         }
 
+        /* Award Hover Tooltip */
+        .award-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .award-desc {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 5px;
+            padding: 10px 12px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.5;
+            width: 100%;
+            max-width: 500px;
+            z-index: 100;
+            color: #333;
+        }
+
+        .award-item:hover .award-desc {
+            display: block;
+        }
+
         /* Footer */
         #footer {
             margin-top: 40px;
@@ -300,15 +328,33 @@
         <!-- Awards -->
         <h2>Awards & Honors</h2>
         <ul>
-            <li>Migu Zone AI+ University Innovation and Wisdom Plan (咪咕动感地带AI+高校创智计划), <b>most application value award</b> (特等奖), 2025</li>
-            <li>The 5th National Artificial Intelligence Competition (NAIC), AI + Digital Human Capabilities and Customer Service Application Track, <b>third prize</b> (全国三等奖), 2024</li>
-            <li>The 16th China University Student Service Outsourcing Innovation and Entrepreneurship Competition, Enterprise Proposition Track, <b>second prize</b> (全国二等奖), 2024</li>
-            <li>China Collegiate Computing Contest (C4) Network Technology Challenge, North China Regional, <b>second prize</b> (华北赛区二等奖), 2025</li>
-            <li>The 10th National University Student Internet of Things Technology and Application "3S Cup" Competition, <b>third prize</b> (全国三等奖), 2024</li>
-            <li>China International College Students' Innovation Competition, Beijing Regional, <b>second prize</b> (北京赛区二等奖), 2025</li>
-            <li>"Qingchuang Beijing" 2025 "Challenge Cup" Beijing University Student Extracurricular Academic Science and Technology Works Competition, "AI+" Special Track, <b>second prize</b> (二等奖), 2025</li>
-            <li>"National Youth Cup" National University Art and Design Works Exhibition, <b>first prize</b> (学生组一等奖), 2024</li>
-            <li>NCDA National University Digital Art and Design Competition, <b>second prize</b> (北京市二等奖), 2025</li>
+            <li class="award-item">Migu Zone AI+ University Innovation and Wisdom Plan (咪咕动感地带AI+高校创智计划), <b>most application value award</b> (特等奖), 2025
+                <div class="award-desc"><b>"famlee"</b> - An AI psychological companion specifically designed for college students. Uses multimodal emotion recognition technology to analyze emotional state through text and voice input, providing immediate, empathetic feedback and companionship.</div>
+            </li>
+            <li class="award-item">The 5th National Artificial Intelligence Competition (NAIC), AI + Digital Human Capabilities and Customer Service Application Track, <b>third prize</b> (全国三等奖), 2024
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">The 16th China University Student Service Outsourcing Innovation and Entrepreneurship Competition, Enterprise Proposition Track, <b>second prize</b> (全国二等奖), 2024
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">China Collegiate Computing Contest (C4) Network Technology Challenge, North China Regional, <b>second prize</b> (华北赛区二等奖), 2025
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">The 10th National University Student Internet of Things Technology and Application "3S Cup" Competition, <b>third prize</b> (全国三等奖), 2024
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">China International College Students' Innovation Competition, Beijing Regional, <b>second prize</b> (北京赛区二等奖), 2025
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">"Qingchuang Beijing" 2025 "Challenge Cup" Beijing University Student Extracurricular Academic Science and Technology Works Competition, "AI+" Special Track, <b>second prize</b> (二等奖), 2025
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">"National Youth Cup" National University Art and Design Works Exhibition, <b>first prize</b> (学生组一等奖), 2024
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
+            <li class="award-item">NCDA National University Digital Art and Design Competition, <b>second prize</b> (北京市二等奖), 2025
+                <div class="award-desc">Project description placeholder.</div>
+            </li>
         </ul>
 
         <!-- Skills -->
