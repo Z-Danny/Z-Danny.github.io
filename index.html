@@ -30,6 +30,9 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
             border-bottom: 3px double #888;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         #toptitle h1 {
@@ -37,6 +40,15 @@
             font-weight: normal;
             color: #800000;
             margin: 0;
+        }
+
+        #toptitle .logo {
+            flex-shrink: 0;
+        }
+
+        #toptitle .logo img {
+            max-width: 200px;
+            height: auto;
         }
 
         /* Image Table */
@@ -68,6 +80,7 @@
         .info-cell p {
             margin: 0 0 10px 0;
             line-height: 1.6;
+            max-width: 450px;
         }
 
         .logo-cell {
@@ -144,6 +157,20 @@
                 padding: 15px 20px;
             }
 
+            #toptitle {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            #toptitle h1 {
+                font-size: 22px;
+            }
+
+            #toptitle .logo img {
+                max-width: 150px;
+            }
+
             table.imgtable {
                 display: block;
             }
@@ -160,12 +187,13 @@
                 padding-bottom: 15px;
             }
 
-            .logo-cell {
-                display: none;
+            table.imgtable td:first-child,
+            table.imgtable td.info-cell {
+                padding: 0;
             }
 
-            #toptitle h1 {
-                font-size: 22px;
+            .info-cell p {
+                max-width: 100%;
             }
         }
     </style>
@@ -175,6 +203,11 @@
         <!-- Top Title -->
         <div id="toptitle">
             <h1>曾丹妮 @ BUPT</h1>
+            <div class="logo">
+                <a href="https://www.bjzgc.org.cn/" target="_blank">
+                    <img src="./bjzgc.png" alt="中关村学院" />
+                </a>
+            </div>
         </div>
 
         <!-- Image Table -->
@@ -195,13 +228,6 @@
                         <br />
                         <b>Email:</b> <a href="mailto:2878694584@qq.com">2878694584@qq.com</a><br />
                         <b>GitHub:</b> <a href="https://github.com/Z-Danny" target="_blank">github.com/Z-Danny</a>
-                    </p>
-                </td>
-                <td class="logo-cell" valign="middle">
-                    <p align="center">
-                        <a href="https://www.bjzgc.org.cn/" target="_blank">
-                            <img src="./bjzgc.png" alt="中关村学院" />
-                        </a>
                     </p>
                 </td>
             </tr>
