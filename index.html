@@ -145,24 +145,39 @@
 
         .award-desc {
             display: none;
-            position: absolute;
-            left: 0;
-            top: 100%;
-            margin-top: 5px;
-            padding: 10px 12px;
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 13px;
-            line-height: 1.5;
-            width: 100%;
-            max-width: 500px;
-            z-index: 100;
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 15px 18px;
+            background: #fff;
+            border: 1px solid #800000;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+            width: 320px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
             color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .award-item:hover .award-desc {
             display: block;
+        }
+
+        .award-desc::before {
+            content: "Project Details";
+            display: block;
+            font-weight: bold;
+            color: #800000;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Footer */
@@ -222,6 +237,13 @@
 
             .info-cell p {
                 max-width: 100%;
+            }
+
+            .award-desc {
+                right: 10px;
+                left: 10px;
+                width: auto;
+                max-width: none;
             }
         }
     </style>
