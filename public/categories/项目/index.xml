@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>项目 - 分类 - ~ Danny&#39;s Homie ~</title>
+        <link>http://localhost:1313/categories/%E9%A1%B9%E7%9B%AE/</link>
+        <description>项目 - 分类 - ~ Danny&#39;s Homie ~</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 03 Mar 2020 11:29:41 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E9%A1%B9%E7%9B%AE/" rel="self" type="application/rss+xml" /><item>
+    <title>主题文档 - bilibili Shortcode</title>
+    <link>http://localhost:1313/theme-documentation-bilibili-shortcode/</link>
+    <pubDate>Tue, 03 Mar 2020 11:29:41 &#43;0800</pubDate>
+    <author>Dillon</author>
+    <guid>http://localhost:1313/theme-documentation-bilibili-shortcode/</guid>
+    <description><![CDATA[<a href="https://github.com/dillonzq/LoveIt/releases/tag/v0.2.0" rel="noopener noreffer" target="_blank"></a>
+<p><code>bilibili</code> shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.</p>]]></description>
+</item>
+</channel>
+</rss>

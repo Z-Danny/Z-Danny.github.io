@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>LLM - 标签 - ~ Danny&#39;s Homie ~</title>
+        <link>http://localhost:1313/zh-cn/tags/llm/</link>
+        <description>LLM - 标签 - ~ Danny&#39;s Homie ~</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/llm/" rel="self" type="application/rss+xml" /><item>
+    <title>Happy_LLM_04 编解码器、手搓Transformer</title>
+    <link>http://localhost:1313/zh-cn/hello_world/</link>
+    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
+    <author>曾丹妮</author>
+    <guid>http://localhost:1313/zh-cn/hello_world/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+</channel>
+</rss>

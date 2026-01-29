@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Transformer - 标签 - ~ Danny&#39;s Homie ~</title>
+        <link>https://z-danny.github.io/tags/transformer/</link>
+        <description>Transformer - 标签 - ~ Danny&#39;s Homie ~</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</lastBuildDate><atom:link href="https://z-danny.github.io/tags/transformer/" rel="self" type="application/rss+xml" /><item>
+    <title>Happy_LLM_03 Transformer的注意力机制</title>
+    <link>https://z-danny.github.io/learn-documentation-happy-llm3/</link>
+    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>https://z-danny.github.io/learn-documentation-happy-llm3/</guid>
+    <description><![CDATA[<p>Discover what the Hugo - <strong>LoveIt</strong> theme is all about and the core-concepts behind it.</p>]]></description>
+</item>
+</channel>
+</rss>

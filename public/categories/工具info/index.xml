@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>工具info - 分类 - ~ Danny&#39;s Homie ~</title>
+        <link>http://localhost:1313/categories/%E5%B7%A5%E5%85%B7info/</link>
+        <description>工具info - 分类 - ~ Danny&#39;s Homie ~</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Aug 2025 17:28:00 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E5%B7%A5%E5%85%B7info/" rel="self" type="application/rss+xml" /><item>
+    <title>Ha</title>
+    <link>http://localhost:1313/info-documentation-loveit/</link>
+    <pubDate>Tue, 26 Aug 2025 17:28:00 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/info-documentation-loveit/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+</channel>
+</rss>

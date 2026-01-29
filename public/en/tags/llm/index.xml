@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>LLM - Tag - ~ Danny&#39;s Homie ~</title>
+        <link>http://localhost:1313/en/tags/llm/</link>
+        <description>LLM - Tag - ~ Danny&#39;s Homie ~</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>2878694584@qq.com (Danny)</managingEditor>
+            <webMaster>2878694584@qq.com (Danny)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/en/tags/llm/" rel="self" type="application/rss+xml" /><item>
+    <title>Happy_LLM_02 什么是NLP</title>
+    <link>http://localhost:1313/en/learn-documentation-happy-llm2/</link>
+    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/en/learn-documentation-happy-llm2/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+<item>
+    <title>Happy_LLM_04 编解码器、手搓Transformer</title>
+    <link>http://localhost:1313/en/learn-documentation-happy-llm4/</link>
+    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/en/learn-documentation-happy-llm4/</guid>
+    <description><![CDATA[bilibili shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.]]></description>
+</item>
+<item>
+    <title>Happy_LLM_03 Transformer的注意力机制</title>
+    <link>http://localhost:1313/en/learn-documentation-happy-llm3/</link>
+    <pubDate>Tue, 26 Aug 2025 14:25:33 &#43;0800</pubDate>
+    <author>Danny</author>
+    <guid>http://localhost:1313/en/learn-documentation-happy-llm3/</guid>
+    <description><![CDATA[<p>Discover what the Hugo - <strong>LoveIt</strong> theme is all about and the core-concepts behind it.</p>]]></description>
+</item>
+</channel>
+</rss>
